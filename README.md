@@ -1,9 +1,10 @@
-cc-frontend
-[![Build Status](https://travis-ci.org/hmrc/cc-frontend.svg)](https://travis-ci.org/hmrc/cc-frontend) 
-[ ![Download](https://api.bintray.com/packages/hmrc/releases/cc-frontend/images/download.svg) ]
-(https://bintray.com/hmrc/releases/cc-frontend/_latestVersion)
-=============
 Childcare Calculator Frontend Micro-service.
+====================================================================
+
+[![Build Status](https://travis-ci.org/hmrc/cc-frontend.svg?branch=master)](https://travis-ci.org/hmrc/cc-frontend)
+ [ ![Download](https://api.bintray.com/packages/hmrc/releases/cc-frontend/images/download.svg) ]
+ (https://bintray.com/hmrc/releases/cc-frontend/_latestVersion)
+
 
 
 The Childcare Calculator will help parents quickly self-assess the options for their childcare support, allowing them to
