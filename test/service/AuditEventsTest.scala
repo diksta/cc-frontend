@@ -17,6 +17,7 @@
 package service
 
 import controllers.FakeCCApplication
+import models.claimant.Disability
 import org.joda.time.LocalDate
 import org.scalatest.mock.MockitoSugar
 import play.api.test.FakeRequest
@@ -281,6 +282,126 @@ class AuditEventsTest extends UnitSpec with FakeCCApplication with MockitoSugar 
       event.auditType should equal("resultSummary")
       event.detail("tfcAmount") shouldBe  "1000"
       event.detail("escAmount") shouldBe  "3000"
+
+    }
+
+    "audit costs per age details" in {
+
+      val observableAuditConnector = createObservableAuditConnector
+      val auditor = createAuditor(observableAuditConnector)
+
+      when(auditor.auditDataHelper.getChildcareCostPerAgeAuditData(any())).thenReturn(Map("Child0" -> "200.0"))
+
+      val children = List(_root_.models.child.Child(
+        id = 0,
+        name = "Child1",
+        dob = Some(LocalDate.now()),
+        childCareCost = Some(BigDecimal(200.00)),
+        disability = _root_.models.child.Disability(
+          disabled = false,
+          severelyDisabled = false,
+          blind = false,
+          nonDisabled = false
+        )))
+
+      auditor.auditCostPerAge(children)
+
+      val event =  observableAuditConnector.events.head
+      event.auditType should equal("costsPerAge")
+      event.detail("Child0") shouldBe  "200.0"
+    }
+
+    "do not audit costs per age details" in {
+
+      val observableAuditConnector = createObservableAuditConnector
+      val auditor = createAuditor(observableAuditConnector)
+
+      when(auditor.auditDataHelper.getChildcareCostPerAgeAuditData(any())).thenReturn(Map[String, String]())
+
+      val children = List(_root_.models.child.Child(
+        id = 0,
+        name = "Child1",
+        dob = Some(LocalDate.now()),
+        childCareCost = Some(BigDecimal(200.00)),
+        disability = _root_.models.child.Disability(
+          disabled = false,
+          severelyDisabled = false,
+          blind = false,
+          nonDisabled = false
+        )))
+
+      auditor.auditCostPerAge(children)
+
+      val event =  observableAuditConnector.events
+      event shouldBe empty
+
+    }
+
+    "audit claimant and children benefits" in {
+
+      val observableAuditConnector = createObservableAuditConnector
+      val auditor = createAuditor(observableAuditConnector)
+
+      val auditDataMap =  Map("partnerDisabled" -> "false", "parentSeverelyDisabled" -> "false",
+        "parentIncomeBenefits" -> "false", "Child2Blind" -> "false", "Child1SeverelyDisabled" -> "false",
+        "parentNoBenefits" -> "false", "Child1NoBenefit" -> "true", "partnerIncomeBenefits" -> "false",
+        "parentCarersAllowance" -> "false", "Child2Disabled" -> "false", "Child1Blind" -> "false",
+        "partnerCarersAllowance" -> "false", "Child2SeverelyDisabled" -> "true", "partnerNoBenefits" -> "true",
+        "parentDisabled" -> "true", "Child1Disabled" -> "false", "partnerSeverelyDisabled" -> "false",
+        "Child2NoBenefit" -> "false")
+
+      when(auditor.auditDataHelper.getClaimantChildrenBenefitsAuditData(any(),any())).thenReturn(auditDataMap)
+
+      val children = List(_root_.models.child.Child(
+        id = 0,
+        name = "Child1",
+        dob = Some(LocalDate.now()),
+        childCareCost = Some(BigDecimal(200.00)),
+        disability = _root_.models.child.Disability(
+          disabled = false,
+          severelyDisabled = false,
+          blind = false,
+          nonDisabled = true
+        )),
+        _root_.models.child.Child(
+          id = 0,
+          name = "Child2",
+          dob = Some(LocalDate.now()),
+          childCareCost = Some(BigDecimal(500.00)),
+          disability = _root_.models.child.Disability(
+            disabled = false,
+            severelyDisabled = true,
+            blind = false,
+            nonDisabled = false
+          )))
+
+      val claimants = List(_root_.models.claimant.Claimant(
+        id = 1,
+        disability = Disability(
+          disabled = true,
+          severelyDisabled = false,
+          incomeBenefits = false,
+          carersAllowance = false,
+          noBenefits = false
+        )
+      ),
+        _root_.models.claimant.Claimant(
+          id = 1,
+          disability = Disability(
+            disabled = false,
+            severelyDisabled = false,
+            incomeBenefits = false,
+            carersAllowance = false,
+            noBenefits = true
+          )
+        ))
+
+       auditor.auditClaimantChildrenBenefits(claimants,  children)
+
+      val event =  observableAuditConnector.events.head
+      event.auditType should equal("claimantChildrenBenefits")
+      event.detail("parentCarersAllowance") shouldBe  "false"
+      event.detail("partnerNoBenefits") shouldBe  "true"
 
     }
 

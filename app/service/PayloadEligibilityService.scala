@@ -33,9 +33,9 @@ import play.api.Logger
 /**
  * Created by user on 17/03/16.
  */
-object PayloadEligibilityService extends PayloadEligibilityService
+object PayloadEligibilityService extends PayloadEligibilityService with ClaimantManager
 
-trait PayloadEligibilityServiceHelper {
+trait PayloadEligibilityServiceHelper extends ClaimantManager{
 
   def determineApril6DateFromNow(from: LocalDate) : LocalDate = {
     Logger.debug(s"PayloadEligibilityServiceHelper.determineApril6DateFromNow")
@@ -300,18 +300,11 @@ trait PayloadEligibilityService extends PayloadEligibilityServiceHelper with Cla
   private def getPreviousIncomes(previousIncome: Option[Income]) = {
     Logger.debug(s"PayloadEligibilityService.getPreviousIncomes")
     previousIncome match {
-      case Some(x) => (getIncomeValue(x.benefits), getIncomeValue(x.employmentIncome), getIncomeValue(x.otherIncome),getIncomeValue(x.pension))
+      case Some(x) => (claimantService.getIncomeValue(x.benefits), claimantService.getIncomeValue(x.employmentIncome), claimantService.getIncomeValue(x.otherIncome),claimantService.getIncomeValue(x.pension))
       case _ =>   (BigDecimal(0.00), BigDecimal(0.00), BigDecimal(0.00), BigDecimal(0.00))
     }
   }
 
-  private def getIncomeValue(value : Option[BigDecimal]): BigDecimal = {
-    Logger.debug(s"PayloadEligibilityService.getIncomeValue")
-    value match {
-      case Some(x) => x
-      case _ => BigDecimal(0.00)
-    }
 
-  }
 
 }

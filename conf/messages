@@ -279,10 +279,10 @@ cc.claimant.hours.parent.empty = You must tell us the average number of hours a 
 cc.claimant.hours.partner.empty = You must tell us the average number of hours a week they work
 cc.claimant.hours.error.not.a.number = You must enter numbers and 1 decimal point only
 cc.claimant.hours.error.one.decimal.place = You must enter a number with no more than 2 digits and 1 decimal place
-cc.claimant.hours.parent.heading = On average, how many hours a week do you work?
-cc.claimant.hours.partner.heading = On average, how many hours a week do they work?
-cc.claimant.hours.parent.hint.text = If you''re on maternity, paternity, adoption or sick leave, tell us how many hours you''d usually work or enter ''0'' if you don''t work
-cc.claimant.hours.partner.hint.text = If they''re on maternity, paternity, adoption or sick leave, tell us how many hours they''d usually work or enter ''0'' if they don''t work
+cc.claimant.hours.parent.heading = On average, how many hours a week do you usually work?
+cc.claimant.hours.partner.heading = On average, how many hours a week does your partner usually work?
+cc.claimant.hours.parent.hint.text = Tell us how many hours you''d usually work if you''re on maternity, paternity, adoption or sick leave, or enter ''0'' if you don''t work
+cc.claimant.hours.partner.hint.text = Tell us how many hours they''d usually work if they''re on maternity, paternity, adoption or sick leave, or enter ''0'' if they don''t work
 cc.claimant.hours.hoursText = hours
 cc.claimant.hours.employment.income.entered.must.have.hours = As you have an income from employment you must enter a number greater than 0 for your average working hours
 

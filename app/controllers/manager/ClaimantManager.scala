@@ -129,7 +129,7 @@ trait ClaimantManager {
 
 
     def getEscEligibility(escEligibilityResult : ESCEligibilityOutput) = {
-
+      Logger.debug(s"ClaimantManager.getEscEligibility")
       val escEligibilityParent = escEligibilityResult.taxYears.exists(taxYears => taxYears.periods.exists(periods => periods.claimants.exists(claimant => if(!claimant.isPartner && claimant.qualifying) true else false)))
       val escEligibilityPartner = escEligibilityResult.taxYears.exists(taxYears => taxYears.periods.exists(periods => periods.claimants.exists(claimant => if(claimant.isPartner && claimant.qualifying) true else false)))
       (escEligibilityParent, escEligibilityPartner)
@@ -150,6 +150,14 @@ trait ClaimantManager {
 
     def replaceClaimantInAList(claimants: List[_root_.models.claimant.Claimant], claimant :_root_.models.claimant.Claimant, index : Int) :
     List[_root_.models.claimant.Claimant] = claimants.patch(index-1, Seq(claimant), index)
+
+    def getIncomeValue(value : Option[BigDecimal]): BigDecimal = {
+      Logger.debug(s"AuditDataHelper.getIncomeValue")
+      value match {
+        case Some(x) => x
+        case _ => BigDecimal(0.00)
+      }
+    }
 
   }
 }

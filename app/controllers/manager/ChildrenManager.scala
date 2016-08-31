@@ -168,7 +168,7 @@ trait ChildrenManager  {
     }
 
     def getEscEligibility(escEligibilityResult : ESCEligibilityOutput) = {
-
+      Logger.debug(s"ChildrenManager.getEscEligibility")
       val escEligibilityChild = escEligibilityResult.taxYears.exists(taxYears => taxYears.periods.exists(periods => periods.children.exists(children => if(children.qualifying) true else false)))
       (escEligibilityChild)
 

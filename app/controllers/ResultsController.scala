@@ -114,6 +114,18 @@ trait ResultsController extends FrontendController {
         false)).isEmpty).isEmpty
   }
 
+  private def auditData(auditData : Tuple10[String, String, String, String, String, String, String, String, String, String],
+                        claimants : List[_root_.models.claimant.Claimant],
+                        children: List[_root_.models.child.Child],
+                        resultsPageModel : _root_.models.pages.results.ResultsPageModel)
+                       (implicit request: Request[_], hc: HeaderCarrier) = {
+    Logger.debug(s"ResultsController.auditData")
+    auditEvents.auditResultSummary(auditData,claimants, children)
+    auditEvents.auditClaimantChildrenBenefits(claimants, children)
+    auditEvents.auditResultPageDetails((Json.toJson[_root_.models.pages.results.ResultsPageModel](resultsPageModel)).toString())
+    auditEvents.auditCostPerAge(children)
+  }
+
   private def determineFreeEntitlementMessage(claimant : _root_.models.claimant.Claimant, childrenList: List[_root_.models.child.Child], tfcEligibility : Boolean) : Option[FreeEntitlementPageModel] = {
     val whereDoYouLIve = claimant.whereDoYouLive match {
       case Some(x) => true
@@ -236,11 +248,10 @@ trait ResultsController extends FrontendController {
                       escVouchersAvailable = determineEscVouchersAvailable(claimants)
                     )
 
-                    val auditData = (tfcAmount.toString(), tcAmounts.toString(), escAmount.toString(), tcAmountByUser.toString(), ucAmountByUser.toString(), tfcEligibility.toString(), tcEligibility.toString(), escClaimantEligibilityResult._1.toString, escClaimantEligibilityResult._2.toString, annualCost.toString())
+                    val auditDataMap = (tfcAmount.toString(), tcAmounts.toString(), escAmount.toString(), tcAmountByUser.toString(), ucAmountByUser.toString(), tfcEligibility.toString(), tcEligibility.toString(), escClaimantEligibilityResult._1.toString, escClaimantEligibilityResult._2.toString, annualCost.toString())
 
-                    auditEvents.auditResultSummary(auditData,claimants, children)
+                    auditData(auditDataMap,claimants, children,resultsPageModel)
 
-                    auditEvents.auditResultPageDetails((Json.toJson[_root_.models.pages.results.ResultsPageModel](resultsPageModel)).toString())
                     Future.successful( Ok(views.html.results(resultsPageModel)))
                 }recover {
                   case e : Exception =>

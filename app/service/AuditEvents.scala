@@ -81,11 +81,27 @@ trait AuditEvents {
   def auditResultPageDetails(data: String) (implicit request: Request[_], hc: HeaderCarrier): Unit = {
     auditEvent("resultPageDetails", Map("resultPageDetails" -> data))
   }
-  def auditResultSummary(auditData : Tuple10[String, String, String, String, String, String, String, String, String, String], claimants : List[_root_.models.claimant.Claimant], children: List[_root_.models.child.Child]) (implicit request: Request[_], hc: HeaderCarrier): Unit = {
+  def auditResultSummary(auditData : Tuple10[String, String, String, String, String, String, String, String, String, String],
+                         claimants : List[_root_.models.claimant.Claimant],
+                         children: List[_root_.models.child.Child])
+                        (implicit request: Request[_], hc: HeaderCarrier): Unit = {
     val data = auditDataHelper.getResultSummaryAuditData(auditData,claimants, children)
     auditEvent("resultSummary", data)
   }
 
+  def auditClaimantChildrenBenefits(claimants : List[_root_.models.claimant.Claimant],
+                                    children: List[_root_.models.child.Child]) (implicit request: Request[_],
+                                     hc: HeaderCarrier): Unit = {
+    val data = auditDataHelper.getClaimantChildrenBenefitsAuditData(claimants, children)
+    auditEvent("claimantChildrenBenefits", data)
+  }
+
+  def auditCostPerAge(children : List[_root_.models.child.Child]) (implicit request: Request[_],
+                                                                  hc: HeaderCarrier): Unit = {
+    val data = auditDataHelper.getChildcareCostPerAgeAuditData(children)
+    if(data.nonEmpty)
+      auditEvent("costsPerAge", data)
+  }
 
   def auditEmailRegistrationDetails(data: String) (implicit request: Request[_], hc: HeaderCarrier): Unit = {
     auditEvent("emailRegistrationDetails", Map("emailRegistrationDetails" -> data))

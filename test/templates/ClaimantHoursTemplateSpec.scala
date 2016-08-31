@@ -55,7 +55,7 @@ class ClaimantHoursTemplateSpec extends UnitSpec with CCSession with FakeCCAppli
         val form = new ClaimantHoursFormInstance(parent = true, previousIncome, currentIncome).form
         val template = views.html.claimantHours(form, 1)(request)
         val doc = Jsoup.parse(contentAsString(template))
-        doc.getElementById("page-title").text() shouldBe "On average, how many hours a week do you work?"
+        doc.getElementById("page-title").text() shouldBe "On average, how many hours a week do you usually work?"
       }
 
     "display the title (partner)" in {
@@ -64,7 +64,7 @@ class ClaimantHoursTemplateSpec extends UnitSpec with CCSession with FakeCCAppli
       val form = new ClaimantHoursFormInstance(parent = false, previousIncome, currentIncome).form
       val template = views.html.claimantHours(form, 2)(request)
       val doc = Jsoup.parse(contentAsString(template))
-      doc.getElementById("page-title").text() shouldBe "On average, how many hours a week do they work?"
+      doc.getElementById("page-title").text() shouldBe "On average, how many hours a week does your partner usually work?"
     }
 
       "display the input field" in {
