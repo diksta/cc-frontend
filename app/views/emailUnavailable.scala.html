@@ -1,0 +1,13 @@
+@(implicit request: Request[_])
+
+@import uk.gov.hmrc.play.views.html._
+
+@cccommon.ccMain(
+    pageTitle = Messages("cc.technical.difficulties.heading"),
+    heading = Messages("cc.technical.difficulties.heading")) {
+
+        <div class="form-group">
+            <p id="email-down-information" class="font-small">@Messages("cc.technical.difficulties.email") <a id="emailRegisterLink" href=@(controllers.routes.EmailRegistrationController.onPageLoad) >@Messages("cc.technical.difficulties.email.retry.link.text")</a></p>
+        </div>
+        <a id="resultsControllerLink" href=@(controllers.routes.ResultsController.onPageLoad) >@Messages("cc.technical.difficulties.email.results.link")</a>
+}

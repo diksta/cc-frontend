@@ -1,0 +1,36 @@
+@import "modules/grid";
+@import "modules/clearfix";
+@import "overrides/errors";
+@import "overrides/forms";
+@import "modules/results";
+@import "modules/startpage";
+
+.print-shown {
+    display: none;
+}
+
+.print-hidden {
+    display: block;
+}
+.input-sibling-text-left, .input-sibling-text-right {
+    line-height: (37.5/20);
+    @media (max-width: 640px) {
+        line-height: (30/16);
+    }
+}
+
+.input-sibling-text-left {
+    margin-left: 10px;
+}
+
+.multi-line-checkbox {
+    top: 28px !important;
+}
+
+.incomeCheckbox.block-label {
+    clear: both;
+}
+
+.form-field.confirmationBackLink {
+    margin-top: 2em;
+}

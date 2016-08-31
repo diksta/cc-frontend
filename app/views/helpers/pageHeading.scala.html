@@ -1,0 +1,17 @@
+@(heading: String, subHeading : Option[String] = None, isBefore : Boolean = false)(implicit request:Request[_])
+@import views.html._
+
+
+<h1 id="page-title" class="@if(subHeading.isDefined){heading-xlarge} else {heading-large} content__body">
+    @if(subHeading.isDefined && isBefore) {
+        <span id="heading-secondary" class="heading-secondary">
+            @subHeading.get
+        </span>
+    }
+    @heading
+    @if(subHeading.isDefined && !isBefore) {
+        <span id="heading-secondary" class="heading-secondary">
+            @subHeading.get
+        </span>
+    }
+</h1>

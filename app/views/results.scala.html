@@ -1,0 +1,249 @@
+@(results : _root_.models.pages.results.ResultsPageModel)(implicit request:Request[_])
+@import views.html.helpers.checkbox._
+@import play.api.i18n._
+@import uk.gov.hmrc.play.views.html._
+@import views.html.helpers._
+@import utils.HasError._
+
+
+@schemeAmount(name: String) = @{
+    if(results.schemes.lift(0).get.name.equalsIgnoreCase(name))
+    {
+        ("FIRST", results.schemes.lift(0).get.amount)
+    } else if(results.schemes.lift(1).get.name.equalsIgnoreCase(name))
+    {
+        ("SECOND",results.schemes.lift(1).get.amount)
+    } else if(results.schemes.lift(2).get.name.equalsIgnoreCase(name))
+    {
+        ("LAST",results.schemes.lift(2).get.amount)
+    } else ("",0)
+}
+
+
+@freeEntitlementModel = @{results.freeEntitlement}
+
+@additionalHours = @{if(freeEntitlementModel) {if(freeEntitlementModel.get.threeFourYearOldSep2017 && freeEntitlementModel.get.region == "england") true else false} else false}
+
+@currentlyOnTCUC = @{if((results.tcAmountByUser == 0 && results.ucAmountByUser > 0) || (results.tcAmountByUser > 0 && results.ucAmountByUser == 0)){true} else {false}}
+
+@tcORucEligible = @{if(schemeAmount("TC")._2 > 0 || results.tcAmountByUser > 0 || results.ucAmountByUser > 0) {true} else {false}}
+
+
+
+@tfc = {
+    <div class="grid-layout">
+        <div data-mh="tfc" id="tfcHeading" class="@if((schemeAmount("TFC")._2 > 0) || (results.tfcEligibility && results.annualCost == 0)){schemeName} else {schemeName not-eligible} grid-layout__column--1-3">
+            <h3 class="heading-medium">@Messages("cc.results.page.tfc")</h3>
+        </div>
+        <div data-mh="tfc" id="tfcEligibility" class="@if((schemeAmount("TFC")._2 > 0) || (results.tfcEligibility && results.annualCost == 0)){entitlement} else {entitlement not-eligible} grid-layout__column--1-3">
+            @if(schemeAmount("TFC")._2 > 0) {
+                <p>@Messages("cc.results.page.you.could.get")</p>
+                <p class="bold-large amount" id="tfcEntitlement">@Messages("cc.results.page.entitlements.amount", {schemeAmount("TFC")._2}) <span class="bold-medium">@Messages("cc.results.page.a.year")</span></p>
+                <p>@Messages("cc.results.page.you.entitlement.tfc.text.after")</p>
+            } else {
+                @if(results.tfcEligibility && results.annualCost == 0) {
+                    <p id="tfcEligibleZeroChildcare">@Messages("cc.results.page.tfc.eligible.without.childcare.cost")</p>
+                } else {
+                    <p>@Messages("cc.results.page.not.eligible")</p>
+                }
+            }
+        </div>
+        <div data-mh="tfc" class="howToApply grid-layout__column--1-3">
+            <h4 class="heading-small">@Messages("cc.results.page.available2017")</h4>
+            <p>@Messages("cc.results.page.how.to.apply.tfc.before.link")</p>
+            <p id="textbeforeKeepMeUpdated"><a id="tfcHowToApplyLink" class="button" href=@if(additionalHours && results.tfcEligibility){@(controllers.routes.EmailRegistrationController.onPageLoadFreeEntitlement)} else {@(controllers.routes.EmailRegistrationController.onPageLoad)} >@Messages("cc.results.page.keep.me.updated.tfc.link.text")</a></p>
+        </div>
+    </div>
+
+    @if(((results.tcAmountByUser > 0) || (results.ucAmountByUser > 0)) && ({schemeAmount("TFC")._2} > 0)) {
+        <div  class="tcWarning" id="additionalSupportTFCMessage">
+            @if(results.tcAmountByUser > 0){<span class="exclamation"></span><p id="losingTCSpecificMessageForTFC" class="warningText">@Messages("cc.results.page.additional.support.tfc.message.tc.specific")</p>}
+            @if(results.ucAmountByUser > 0){<span class="exclamation"></span><p id="losingUCSpecificMessageForTFC" class="warningText">@Messages("cc.results.page.additional.support.tfc.message.uc.specific")</p>}
+        </div>
+    } else {
+        @if((schemeAmount("TFC")._2 > 0) || (results.tfcEligibility)){
+            <div  class="tcWarning" id="additionalSupportTFCMessage">
+                <span class="exclamation"></span><p id="losingTCGenericMessageForTFC" class="warningText">@Messages("cc.results.page.additional.support.tfc.message")</p>
+            </div>
+        }
+    }
+    <details class="how-it-works">
+        <summary id="tfcHowItWorksLink">@Messages("cc.results.page.how.it.works")</summary>
+        <ul class="list-bullet">
+            <li>@Messages("cc.results.page.tfc.how.it.works.1")</li>
+            <li>@Messages("cc.results.page.tfc.how.it.works.2")</li>
+            <li>@Messages("cc.results.page.tfc.how.it.works.3") <a rel="external" target="_blank" id="nationalMinimumWageLink" href="@Messages("cc.results.page.tfc.how.it.works.3.link.url")">@Messages("cc.results.page.tfc.how.it.works.3.link.text")</a></li>
+            <li>@Messages("cc.results.page.tfc.how.it.works.4.start") <a rel="external" target="_blank" id="tfcMoreInfoLink" href="@Messages("cc.results.page.tfc.how.it.works.4.link.url")">@Messages("cc.results.page.tfc.how.it.works.4.link.text")</a></li>
+        </ul>
+    </details>
+
+}
+
+@esc = {
+    <div class="grid-layout">
+        <div data-mh="esc" id="escHeading" class="@if((schemeAmount("ESC")._2 > 0) || (results.escEligibility && results.annualCost == 0)){schemeName} else {schemeName not-eligible} grid-layout__column--1-3">
+            <h3 class="heading-medium">@Messages("cc.results.page.esc")</h3>
+        </div>
+        <div data-mh="esc" id="escEligibility" class="@if((schemeAmount("ESC")._2 > 0) || (results.escEligibility && results.annualCost == 0)){entitlement} else {entitlement not-eligible} grid-layout__column--1-3">
+            @if(schemeAmount("ESC")._2 > 0){
+                @if(results.escVouchersAvailable.partner.isDefined) {
+                    @if(results.escVouchersAvailable.parent && results.escVouchersAvailable.partner.get) {
+                        <p id="escBothEligible">@Messages("cc.results.page.both.get.esc")</p>
+                    }
+                    @if(results.escVouchersAvailable.parent && !results.escVouchersAvailable.partner.get) {
+                        <p id="escOnlyOneEligible">@Messages("cc.results.page.one.person.get.esc")</p>
+                    }
+                    @if(!results.escVouchersAvailable.parent && results.escVouchersAvailable.partner.get) {
+                        <p id="escOnlyOneEligible">@Messages("cc.results.page.one.person.get.esc")</p>
+                    }
+                } else {
+                    <p id="escEligibleDefaultMessage">@Messages("cc.results.page.you.could.get")</p>
+                }
+                <p class="bold-large amount" id="escEntitlement">@Messages("cc.results.page.entitlements.amount", {schemeAmount("ESC")._2}) <span class="bold-medium">@Messages("cc.results.page.a.year")</span></p>
+                <p>@Messages("cc.results.page.you.entitlement.text.after")</p>
+            } else {
+                @if(results.escEligibility && results.annualCost == 0){
+                    <p id="escEligibleZeroChildcare">@Messages("cc.results.page.esc.eligible.without.childcare.cost")</p>
+                } else {
+                    <p id="notEligibleForESC">@Messages("cc.results.page.not.eligible")</p>
+                }
+            }
+        </div>
+        <div data-mh="esc" class="howToApply grid-layout__column--1-3">
+            <h4 class="heading-small">@Messages("cc.results.page.how.to.apply")</h4>
+            <p>@Messages("cc.results.page.how.to.apply.esc")</p>
+        </div>
+    </div>
+            @if((results.ucAmountByUser > 0) && ({schemeAmount("ESC")._2} > 0)) {
+                <div class="tcWarning" id="additionalSupportESCMessage">
+                    <span class="exclamation"></span><p id="losingUCSpecificMessageForESC" class="warningText">@Messages("cc.results.page.additional.support.esc.message.uc.specific")</p>
+                </div>
+            } else {
+                @if(({schemeAmount("ESC")._2} > 0) || (results.escEligibility)){
+                    <div class="tcWarning" id="additionalSupportESCMessage">
+                        <span class="exclamation"></span><p id="losingTCGenericMessageForESC" class="warningText">@Messages("cc.results.page.additional.support.esc.message")</p>
+                    </div>
+                }
+            }
+    <details class="how-it-works">
+        <summary id="escHowItWorksLink">@Messages("cc.results.page.how.it.works")</summary>
+        <ul class="list-bullet">
+            <li>@Messages("cc.results.page.esc.how.it.works.1")</li>
+            <li>@Messages("cc.results.page.esc.how.it.works.2")</li>
+            <li>@Messages("cc.results.page.esc.how.it.works.3")</li>
+            <li>@Messages("cc.results.page.esc.how.it.works.4")</li>
+            <li>@Messages("cc.results.page.esc.how.it.works.5")</li>
+        </ul>
+    </details>
+
+}
+
+@tc = {
+    <div class="grid-layout">
+        <div data-mh="tfc" id="tcHeading" class="@if(tcORucEligible){schemeName} else {schemeName not-eligible} grid-layout__column--1-3">
+            @if(results.ucAmountByUser > 0) {
+                <h3 class="heading-medium">@Messages("cc.results.page.uc")</h3>
+            } else {
+                <h3 class="heading-medium">@Messages("cc.results.page.tc")</h3>
+            }
+        </div>
+        <div data-mh="tfc" id="tcEligibility" class="@if(tcORucEligible){entitlement} else {entitlement not-eligible} grid-layout__column--1-3">
+            @if(currentlyOnTCUC){
+                <p>@Messages("cc.results.page.you.currently.get")</p>
+                @if(results.tcAmountByUser > 0) {
+                    <p class="bold-large amount" id="tcEntitlement">@Messages("cc.results.page.entitlements.amount", {results.tcAmountByUser}) <span class="bold-medium">@Messages("cc.results.page.a.year")</span></p>
+                    <p>@Messages("cc.results.page.you.entitlement.tc.text.after")</p>
+                }
+                @if(results.ucAmountByUser > 0) {
+                    <p class="bold-large amount" id="tcEntitlement">@Messages("cc.results.page.entitlements.amount", {results.ucAmountByUser}) <span class="bold-medium">@Messages("cc.results.page.a.year")</span></p>
+                    <p>@Messages("cc.results.page.you.entitlement.tc.text.after")</p>
+                }
+            } else {
+                @if(tcORucEligible){
+                    <p>@Messages("cc.results.page.you.could.get")</p>
+                    <p class="bold-large amount" id="tcEntitlement">@Messages("cc.results.page.entitlements.amount", {schemeAmount("TC")._2}) <span class="bold-medium">@Messages("cc.results.page.a.year")</span></p>
+                    <p>@Messages("cc.results.page.you.entitlement.tc.text.after")</p>
+                } else {
+                    <p>@Messages("cc.results.page.not.eligible")</p>
+                }
+            }
+        </div>
+        <div data-mh="tfc" class="howToApply grid-layout__column--1-3">
+            @if(currentlyOnTCUC){
+                <h4 class="heading-small" id="currentlyOnThisScheme">@Messages("cc.results.page.currently.on.this.scheme")</h4>
+            } else {
+                <h4 class="heading-small">@Messages("cc.results.page.how.to.apply")</h4>
+                <p>@Messages("cc.results.page.how.to.apply.tc.before.link") <a rel="external" target="_blank" id="tcHowToApplyLink" href="@Messages("cc.results.page.how.to.apply.tc.link.url")">@Messages("cc.results.page.how.to.apply.tc.link.text")</a></p>
+            }
+        </div>
+    </div>
+    @if((schemeAmount("TC")._2 > 0) || (results.tcAmountByUser > 0) || (results.ucAmountByUser > 0)) {
+        <div class="tcWarning" id="additionalSupportTCMessage">
+            @if(results.tcAmountByUser > 0){<span class="exclamation"></span><p id="losingTFCSpecificMessageForTC" class="warningText">@Messages("cc.results.page.tc.warning.message.tc.specific")</p>}
+            @if(results.ucAmountByUser > 0){<span class="exclamation"></span><p id="losingTFCSpecificMessageForUC" class="warningText">@Messages("cc.results.page.tc.warning.message.uc.specific")</p>}
+            @if(!currentlyOnTCUC){<span class="exclamation"></span><p id="losingTFCGenericMessageForTC" class="warningText">@Messages("cc.results.page.tc.warning.message")</p>}
+        </div>
+    }
+    @if(!currentlyOnTCUC) {
+        <details class="how-it-works">
+            <summary id="tcHowItWorksLink">@Messages("cc.results.page.how.it.works")</summary>
+            <ul class="list-bullet">
+                <li>@Messages("cc.results.page.tc.how.it.works.1")</li>
+                <li>@Messages("cc.results.page.tc.how.it.works.2")</li>
+                <li>@Messages("cc.results.page.tc.how.it.works.3")</li>
+                <li>@Messages("cc.results.page.tc.how.it.works.4.before.link") <a rel="external" target="_blank" id="tcOtherHelpLink" href="@Messages("cc.results.page.tc.how.it.works.4.link.url")">@Messages("cc.results.page.tc.how.it.works.4.link.text")</a>@Messages("cc.results.page.tc.how.it.works.4.link.text.comma") @Messages("cc.results.page.tc.how.it.works.4.after.link")</li>
+            </ul>
+            <p class="font-xsmall">@Messages("cc.results.page.tc.universal.credit.before.link") <a rel="external" id="universalCreditLink" target="_blank" href="@Messages("cc.results.page.tc.universal.credit.link.url")">@Messages("cc.results.page.tc.universal.credit.link.text")</a>.</p>
+        </details>
+    }
+}
+
+
+@cccommon.ccMain(
+    pageTitle = Messages("cc.results.page.heading"),
+    heading = Messages("cc.results.page.heading"),
+    mainClass = "resultsPage"
+) {
+
+@if(freeEntitlementModel.isDefined) {
+    @freeEntitlement(
+        freeEntitlementModel
+    )
+</br>
+}
+
+    <div class="subtitle">
+        <p id="annualCost">@Messages("cc.results.page.annual.cost", {results.annualCost})</p>
+        <p>@Messages("cc.results.page.entitlement.heading")</p>
+    </div>
+
+
+    @{if(schemeAmount("TFC")._1.equals("FIRST")){
+        tfc
+     } else if(schemeAmount("TC")._1.equals("FIRST")){
+        tc
+     } else esc
+    }
+
+    @{if(schemeAmount("TFC")._1.equals("SECOND")){
+        tfc
+     } else if(schemeAmount("TC")._1.equals("SECOND")){
+        tc
+     } else esc
+    }
+
+    @{if(schemeAmount("TFC")._1.equals("LAST")){
+        tfc
+     } else if(schemeAmount("TC")._1.equals("LAST")){
+        tc
+     } else esc
+    }
+
+
+    <p id="guidelinesText">@Messages("cc.results.page.amounts.are.guidelines")</p>
+
+    <div class="feedback">
+        <p> <a rel="external" target="_blank" id="feedbackSurveyLink" href="@Messages("cc.results.page.feedback.survey.link.url")">@Messages("cc.results.page.feedback.survey.link.text")</a>@Messages("cc.results.page.feedback.survey.text.after.link")</p>
+    </div>
+
+}

@@ -1,0 +1,62 @@
+@(form : Form[_root_.models.pages.EmailRegisterPageModel])(implicit request:Request[_])
+
+@import play.api.i18n._
+@import uk.gov.hmrc.play.views.html._
+@import views.html.helpers._
+
+@cccommon.ccMain(
+    pageTitle = Messages("cc.keep.me.updated.title"),
+    heading = Messages("cc.keep.me.updated.title"),
+    mainClass = "emailRegistrationFreeEntitlement"
+    ) {
+        @helpers.form(
+            action = controllers.routes.EmailRegistrationController.onSubmitFreeEntitlement,
+            args = 'class -> "form", 'autocomplete -> "off", 'novalidate -> "") {
+
+            @helpers.errorSummary(Messages("cc.error.title"), form)
+
+            <p>@Messages("cc.email.registration.free.entitlement.1")</p>
+
+            <label><strong>@Messages("cc.keep.me.updated.email.address")</strong></label>
+            @ccInput(
+            field = form("emailAddress"),
+            fieldForm = form,
+            args = '_inputClass -> "input--large",
+            '_label -> Messages("cc.keep.me.updated.email.address"),
+            '_labelTextClass -> "visuallyhidden",
+            '_labelDataAttributes -> "aria-hidden=false",
+            '_errorDataAttributes -> "data-input-name=emailAddress",
+            '_error_id -> "emailAddress-error-summary",
+            '_autoComplete -> "off",
+            '_form -> form
+            )
+
+            <p>@Messages("cc.email.registration.free.entitlement.2")</p>
+
+            <p><strong>@Messages("cc.email.registration.free.entitlement.child.dob.question")</strong></p>
+
+            @radio.ccRadioOptions(
+            field = form("childrenDobSelection"),
+            fieldForm = form,
+            radioOptions = Seq(
+            ("true", Messages("cc.radio.yes")),
+            ("false", Messages("cc.radio.no"))
+            ),
+            args = '_groupClass -> "form-group inline",
+            '_radioClass -> "block-label",
+            '_legendClass -> "visuallyhidden",
+            '_legend -> Messages("cc.email.registration.free.entitlement.child.dob.question"),
+            '_globalErrorKey -> Messages("cc.keep.me.updated.error.required.no.selection")
+            )
+
+            <p>@Messages("cc.keep.me.updated.interest.4")</p>
+
+            @buttons.nextButton(
+                title = Messages("cc.keep.me.updated.title"),
+                label = Some(Messages("cc.keep.me.updated.title")),
+                hrefMethod = Some(controllers.routes.ResultsController.onPageLoad),
+                back = Some(Messages("childcare.button.cancel"))
+            )
+
+         }
+    }

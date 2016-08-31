@@ -1,0 +1,15 @@
+@(implicit request: Request[_])
+
+@import play.api.i18n._
+@import uk.gov.hmrc.play.views.html._
+@import play.api.Play
+
+@cccommon.ccMain(pageTitle = Messages("unauthorised.title"), heading = Messages("unauthorised.title")) {
+    <div class="column-two-thirds column-two-thirds__bottom_padding">
+        <div class="form-group">
+            <p id="service-down-information" class="font-small">@Messages("unauthorised.header")</p>
+            <a class="button-link" href="@Play.current.configuration.getString("variables.service.tfc.technical.difficulties.gov.uk.link")" id="technical-difficulties-external">@Messages("cc.return.govuk.link")</a>
+        </div>
+    </div>
+}
+

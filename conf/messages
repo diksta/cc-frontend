@@ -1,0 +1,484 @@
+###### Examples #######
+#Messages("cc.something.to.identify.the.string")
+#cc.something.to.identify.the.string = the value of the string
+
+#Example using string interpolation (variables)
+#cc.something.to.identify.the.string.with.variables = the value of the string is {0} and it is {1}
+#Messages("cc.something.to.identify.the.string.with.variables", "1", "a number")
+
+####### COMMON MESSAGES ######
+cc.or = or
+cc.period.weekly = weekly
+cc.period.fortnightly = fortnightly
+cc.period.monthly = monthly
+cc.period.3monthly = 3-monthly
+cc.period.yearly = yearly
+cc.period.invalid = invalid period
+
+cc.radio.yes = Yes
+cc.radio.no = No
+
+cc.select.all.that.apply = Select all that apply
+cc.nav.title = Childcare calculator
+
+cc.return.govuk.link = Return to GOV.UK
+
+cc.child.details.first.name.plural = ''s
+cc.child.details.title.details = details
+
+cc.a.month = a month
+cc.child.cost.hint.text = Enter ''0'' if you don''t spend anything
+
+######Common errors#######
+cc.date.error.day.empty = You must enter a number in Day.
+cc.date.error.month.empty = You must enter a number in Month.
+cc.date.error.year.empty = You must enter a number in Year.
+cc.date.error.year.4.digits = You must enter a 4 digit Year.
+cc.date.error.empty = You must enter a date of birth.
+error.invalid.date.format = Give a valid date of birth, for example 2 10 2003.
+cc.error.title = Check you have answered the question correctly
+
+unauthorised.title = UNAUTHORISED
+unauthorised.header = You are not authorised to use this service
+
+#######Submit buttons######
+childcare.button.submit = Submit
+childcare.button.next = Next
+childcare.button.continue = Continue
+childcare.button.calculate = Calculate
+childcare.button.back = Back
+childcare.button.add.child = Add details
+childcare.button.cancel = Cancel
+childcare.button.change = Change
+childcare.button.keep.changes = Keep changes
+childcare.button.return.startPage = Return to start page
+childcare.button.startNow = Start now
+
+######Currency######
+cc.currency.pound = £
+
+##### Common Hints ####
+cc.date.example = For example, 21 3 1990
+cc.date.child.example = For example, 06 03 2006
+cc.cost.estimate = This can be an estimate
+
+###### Not used for a current number field #######
+cc.child.details.error.numbers.only = Use numbers only
+cc.child.details.error.amount.decimal.limit = Have only 2 numbers after the decimal point
+
+##### TECHNICAL DIFFICULTIES #####
+cc.technical.difficulties.heading = We''re experiencing technical difficulties
+cc.technical.difficulties.text = We''re having difficulties with the service, try again in a few minutes.
+cc.technical.difficulties.email = We''re having difficulties with the service and are unable to save your details,
+cc.technical.difficulties.email.retry.link.text = try again in a few minutes.
+cc.technical.difficulties.email.results.link = Return to view Your results
+
+##### Childcare Cost Details ######
+cc.childcare.cost.error.required = Enter ''0'' if you have no costs for this child
+cc.childcare.cost.error.not.a.number = Only enter a number between ''0'' and ''9999.99''.
+cc.childcare.cost.heading = How much will you spend on childcare for Child {0}?
+cc.childcare.cost.lede.text.before.link = Childcare must be with an
+cc.childcare.cost.lede.text.link.url = https://www.gov.uk/help-with-childcare-costs
+cc.childcare.cost.lede.text.link.text = approved childcare provider
+cc.childcare.cost.lede.text.after.link = such as a registered childminder, nursery or an Ofsted-registered childminding agency.
+cc.childcare.cost.hint.text = Enter ''0'' if you don''t spend anything
+cc.childcare.cost.a.year = a year
+cc.childcare.cost.a.month = a month
+cc.childcare.education.heading = Is Child {0} in further education?
+cc.childcare.education.hint.text = This includes any study after secondary education that''s not part of higher education or an undergraduate or graduate degree
+cc.childcare.education.error.required = You must select Yes or No
+
+##### START PAGE #####
+cc.childcare.start.page.heading = Check what help you could get with childcare costs
+cc.childcare.start.page.title = Childcare calculator
+
+cc.childcare.start.page.get.help = Get an estimate of how much could be available to help pay for approved childcare.
+
+
+cc.childcare.start.page.free.childcare = All parents of 3 and 4-year-olds and some 2-year-olds can use
+cc.childcare.start.page.free.childcare.link = https://www.gov.uk/help-with-childcare-costs/free-childcare-and-education-for-2-to-4-year-olds
+cc.childcare.start.page.free.childcare.link.text = free childcare hours.
+
+cc.childcare.start.page.do.not.need.heading = You don’t need to do this if:
+cc.childcare.start.page.if.earn.more.than = you or your partner earn over £100,000 -
+cc.childcare.start.page.if.earn.more.than.link = https://www.gov.uk/help-with-childcare-costs/childcare-vouchers
+cc.childcare.start.page.if.earn.more.than.link.text = apply for childcare vouchers
+cc.childcare.start.page.if.no.income = neither you or your partner has an income - there’s extra
+cc.childcare.start.page.if.no.income.link = https://www.gov.uk/help-with-childcare-costs/support-while-you-study
+cc.childcare.start.page.if.no.income.link.text = support for students
+cc.childcare.start.page.if.get.uc = you get Universal Credit
+
+cc.childcare.start.page.before.you.start = Before you start
+cc.childcare.start.page.before.you.start.need.information = You’ll need information about you and your partner, including:
+cc.childcare.start.page.before.you.start.how.much.childcare = how much you’ll spend on childcare
+cc.childcare.start.page.before.you.start.any.benefits = any benefits you get
+cc.childcare.start.page.before.you.start.your.income = your income - you can estimate or use exact figures from your payslip or P60
+
+
+cc.childcare.start.page.how.long = It should take around 10 minutes.
+
+cc.childcare.start.page.elsewhere = Elsewhere on GOV.UK
+cc.childcare.start.page.elsewhere.tax.credits.link = https://www.gov.uk/childcare-costs-for-tax-credits
+cc.childcare.start.page.elsewhere.tax.credits.link.text = Tax credits: working out your childcare costs
+cc.childcare.start.page.elsewhere.help.with.costs.link = https://www.gov.uk/help-with-childcare-costs
+cc.childcare.start.page.elsewhere.help.with.costs.link.text = Help with childcare costs
+cc.childcare.start.page.elsewhere.approved.childcare.link = https://www.gov.uk/help-with-childcare-costs
+cc.childcare.start.page.elsewhere.approved.childcare.link.text = What is approved childcare
+
+###### HOW MANY CHILDREN #######
+cc.how.many.children.error.required = Tell us how many children you have
+cc.how.many.children.error.not.a.number = You must enter a number that’s not below 1 or above 19
+cc.how.many.children.heading = How many children do you have?
+cc.how.many.children.lede.text = Include children under the age of 20 that you''re responsible for.
+cc.how.many.children.back.url = https://www.gov.uk/childcare-calculator
+
+#### CHILD'S DETAILS ####
+cc.child.details.no.benefits.selected = You must select at least one check box
+cc.child.details.invalid.benefits.selected = You can''t select "None of these apply" if you have selected any benefits
+cc.child.details.date.of.birth.mandatory = Check all date of birth fields are complete and only contain numbers
+cc.child.details.heading = Child {0}''s details
+cc.child.details.date.of.birth = What''s your {0} child''s date of birth?
+cc.child.details.invalid.date.of.birth = Invalid date of birth
+
+cc.child.details.benefits = Do any of the following apply to Child {0}?
+cc.child.details.benefits.disability.group = They get disability benefits
+cc.child.details.benefits.disability.allowance = Disability Living Allowance
+cc.child.details.benefits.disability.payment = Personal Independence Payment
+cc.child.details.benefits.severely.disability.group = They get severe disability benefits
+cc.child.details.benefits.severely.disability.allowance = Disability Living Allowance (highest rate care component)
+cc.child.details.benefits.severely.disability.payment = Personal Independence Payment (enhanced daily living component)
+cc.child.details.benefits.blind = They''re registered blind
+cc.child.details.benefits.none = None of these apply
+
+#### CLAIMANT BENEFIT ####
+cc.claimant.benefit.no.benefits.selected = You must select at least one check box
+cc.claimant.benefit.invalid.parent.benefits.selected = You can''t select "I don''t get any of these" if you have selected any benefits
+cc.claimant.benefit.invalid.partner.benefits.selected = You can''t select "They don''t get any of these" if you have selected any benefits
+
+cc.claimant.benefit.parent.heading = Do you get any of these benefits?
+cc.claimant.benefit.partner.heading = Do they get any of these benefits?
+
+cc.claimant.benefit.income.benefit.group = Income benefits
+cc.claimant.benefit.income.benefit.support = Income Support
+cc.claimant.benefit.income.benefit.allowance = Income-based Jobseeker''s Allowance
+cc.claimant.benefit.income.benefit.support.allowance = Income-related Employment and Support Allowance
+cc.claimant.benefit.income.benefit.pension.credit = Pension Credit
+
+cc.claimant.benefit.disability.benefit.group = Disability benefits
+cc.claimant.benefit.disability.benefit.living.allowance = Disability Living Allowance
+cc.claimant.benefit.disability.benefit.attendance.allowance = Attendance Allowance
+cc.claimant.benefit.disability.benefit.personal.allowance = Personal Independence Payment
+
+cc.claimant.benefit.severe.disability.benefit.group = Severe disability benefits
+cc.claimant.benefit.severe.disability.benefit.living.allowance = Disability Living Allowance (highest rate care component)
+cc.claimant.benefit.severe.disability.benefit.attendance.allowance = Attendance Allowance (higher rate)
+cc.claimant.benefit.severe.disability.benefit.personal.payment = Personal Independence Payment (enhanced daily living component)
+cc.claimant.benefit.severe.disability.benefit.independent.payment = Armed Forces Independence Payment
+
+cc.claimant.benefit.carer.benefit = Carer''s Allowance
+
+cc.claimant.benefit.no.parent.benefit = I don''t get any of these
+cc.claimant.benefit.no.partner.benefit = They don''t get any of these
+
+cc.claimant.benefit.parent.title = Do you get any of these benefits?
+cc.claimant.benefit.partner.title = Do they get any of these benefits?
+
+####### PARENT INCOME LAST YEAR ######
+cc.claimant.income.last.year.error = You must enter numbers only
+cc.claimant.income.last.year.benefits.no.selection = You must answer the benefits question
+cc.claimant.income.last.year.other.income.no.selection = You must answer the other income question
+cc.claimant.income.last.year.income.no.selection = You must answer the employment income question
+cc.claimant.income.last.year.income.incorrect = You must enter a number between 0 and 999999.99
+cc.parent.income.last.year.income.empty = You must tell us how much your income was
+cc.claimant.income.last.year.pension.incorrect = You must enter a number between 0 and 9999.99
+cc.claimant.income.last.year.other.income.incorrect = You must enter a number between 0 and 999999.99
+cc.parent.income.last.year.other.income.empty = You must tell us how much your other income was
+cc.claimant.income.last.year.benefits.incorrect = You must enter a number between 0 and 9999.99
+cc.parent.income.last.year.benefits.empty = You must tell us the total amount of benefits you got
+cc.parent.income.last.year.heading = Last year''s income
+cc.claimant.income.last.year.sub.heading = 6 April {0} to 5 April {1}
+cc.claimant.income.last.year.lede = If you''re unsure, you can give approximate figures.
+cc.parent.income.last.year.employment = Did you get any income from employment?
+cc.parent.income.last.year.employment.hint = This is your salary before deductions or your profit if you''re self-employed
+cc.parent.income.last.year.employment.income = How much was your income?
+cc.parent.income.last.year.employment.pension = How much did you pay into your pension?
+cc.parent.income.last.year.employment.pension.hint = Optional, only include if paid through your payroll
+cc.parent.income.last.year.other = Did you get any other income?
+cc.claimant.income.last.year.other.hint = This could be from investments, rental income, interest on savings or foreign income
+cc.parent.income.last.year.other.income = How much was your other income?
+cc.parent.income.last.year.benefits = Did you get any of these benefits?
+cc.claimant.income.last.year.benefits.hint.pension = State Pension
+cc.claimant.income.last.year.benefits.hint.jobseeker = Jobseeker''s Allowance (contribution-based)
+cc.claimant.income.last.year.benefits.hint.carer = Carer''s Allowance
+cc.claimant.income.last.year.benefits.hint.employment = Employment and Support Allowance (contribution-based)
+cc.claimant.income.last.year.benefits.hint.incapacity = Incapacity Benefit
+cc.claimant.income.last.year.benefits.hint.widowed = Widowed Parent''s Allowance
+cc.parent.income.last.year.benefits.income = How much did you get in total?
+cc.parent.income.last.year.pension.higher = Your pension payments cannot be more than your income from employment
+
+###### PARTNER INCOME LAST YEAR ######
+cc.partner.income.last.year.heading = Your partner''s income last year
+cc.partner.income.last.year.employment = Did they get any income from employment?
+cc.partner.income.last.year.employment.hint = This is their salary before deductions or their profit if they''re self-employed
+cc.partner.income.last.year.employment.income = How much was their income?
+cc.partner.income.last.year.employment.pension = How much did they pay into their pension?
+cc.partner.income.last.year.employment.pension.hint = Optional, only include if paid through their payroll
+cc.partner.income.last.year.other = Did they get any other income?
+cc.partner.income.last.year.other.income = How much was their other income?
+cc.partner.income.last.year.benefits = Did they get any of these benefits?
+cc.partner.income.last.year.benefits.income = How much did they get in total?
+cc.partner.income.last.year.income.empty = You must give an answer for income from employment
+cc.partner.income.last.year.other.income.empty = You must give an answer for other income
+cc.partner.income.last.year.benefits.empty = You must tell us the total amount of benefits
+cc.partner.income.last.year.pension.higher = Their pension payments cannot be more than their income from employment
+
+###### START INCOME CURRENT YEAR ######
+cc.claimant.income.current.year.sub.heading = 6 April {0} to 5 April {1}
+cc.claimant.income.current.year.change.question = Which of these is likely to change?
+cc.claimant.income.current.year.select.all.hint = Select all that apply
+cc.claimant.income.current.year.no.selection = You must answer this question
+cc.claimant.income.current.year.income.empty = You must tell us which income is likely to change
+cc.claimant.income.current.year.error = You must enter numbers only
+cc.claimant.income.current.year.income.incorrect = You must enter a number between 0 and 999999.99
+cc.claimant.income.current.year.pension.incorrect = You must enter a number between 0 and 9999.99
+cc.claimant.income.current.year.other.income.incorrect = You must enter a number between 0 and 999999.99
+cc.claimant.income.current.year.benefits.incorrect = You must enter a number between 0 and 9999.99
+cc.claimant.income.current.year.benefits.incorrect.carers.allowance.selected = You must enter a number greater than 0 and less than 10000.00
+cc.claimant.income.current.year.employment = Employment
+cc.claimant.income.current.year.employment.empty = You must give an answer for income from employment
+cc.claimant.income.current.year.other = Other income
+cc.claimant.income.current.year.other.income.hint = This could be from investments, rental income, interest on savings or foreign income
+cc.claimant.income.current.year.other.empty = You must give an answer for other income
+cc.claimant.income.current.year.benefits = Benefits
+cc.claimant.income.current.year.benefits.empty = You must tell us the total amount of benefits
+
+######### PARENT #########
+cc.claimant.income.current.year.parent.heading = Is your income likely to change this year?
+cc.claimant.income.current.year.employment.parent.income = What will your income be?
+cc.claimant.income.current.year.employment.parent.pension = If your pension contributions are likely to change, tell us how much you''ll pay.
+cc.claimant.income.current.year.employment.pension.parent.hint = Optional, only include if through your payroll
+cc.claimant.income.current.year.other.parent.income = How much will your other income be?
+cc.claimant.income.current.year.benefits.parent.income = What''s the total amount you''ll get?
+cc.claimant.income.current.year.parent.pension.higher = Your pension payments cannot be more than your income from employment
+cc.claimant.income.current.year.parent.benefits.carers.selected = As you get Carer’s Allowance, you must enter a number greater than 0 and less than 10000.00
+
+######### PARTNER ##########
+cc.claimant.income.current.year.partner.heading = Is your partner''s income likely to change this year?
+cc.claimant.income.current.year.employment.partner.income = What will their income be?
+cc.claimant.income.current.year.employment.partner.pension = If their pension contributions are likely to change, tell us how much they''ll pay.
+cc.claimant.income.current.year.employment.pension.partner.hint = Optional, only include if through their payroll
+cc.claimant.income.current.year.other.partner.income = How much will their other income be?
+cc.claimant.income.current.year.benefits.partner.income = What''s the total amount they''ll get?
+cc.claimant.income.current.year.partner.pension.higher = Their pension payments cannot be more than their income from employment
+cc.claimant.income.current.year.partner.benefits.carers.selected = As they get Carer’s Allowance, you must enter a number greater than 0 and less than 10000.00
+###### END INCOME CURRENT YEAR ######
+
+###### CLAIMANT HOURS ######
+cc.claimant.hours.incorrect = You must enter a number between 0 and 99.5
+cc.claimant.hours.parent.empty = You must tell us the average number of hours a week you work
+cc.claimant.hours.partner.empty = You must tell us the average number of hours a week they work
+cc.claimant.hours.error.not.a.number = You must enter numbers and 1 decimal point only
+cc.claimant.hours.error.one.decimal.place = You must enter a number with no more than 2 digits and 1 decimal place
+cc.claimant.hours.parent.heading = On average, how many hours a week do you work?
+cc.claimant.hours.partner.heading = On average, how many hours a week do they work?
+cc.claimant.hours.parent.hint.text = If you''re on maternity, paternity, adoption or sick leave, tell us how many hours you''d usually work or enter ''0'' if you don''t work
+cc.claimant.hours.partner.hint.text = If they''re on maternity, paternity, adoption or sick leave, tell us how many hours they''d usually work or enter ''0'' if they don''t work
+cc.claimant.hours.hoursText = hours
+cc.claimant.hours.employment.income.entered.must.have.hours = As you have an income from employment you must enter a number greater than 0 for your average working hours
+
+########## Do You Get Vouchers Parent ##############
+cc.do.you.get.vouchers.selection = You must select Yes, No or Not sure
+cc.do.you.get.vouchers.title = Does your employer offer childcare vouchers?
+cc.do.you.get.vouchers.not.sure = Not sure
+
+########## Do You Get Vouchers Partner ##############
+cc.do.they.get.vouchers.selection = You must select Yes, No or Not sure
+cc.do.they.get.vouchers.title = Does your partner''s employer offer childcare vouchers?
+
+########## WHERE DO YOU LIVE ###############
+cc.claimant.where.do.you.live.heading = Where do you live?
+cc.claimant.where.do.you.live.england = England
+cc.claimant.where.do.you.live.scotland = Scotland
+cc.claimant.where.do.you.live.wales = Wales
+cc.claimant.where.do.you.live.northern.ireland = Northern Ireland
+
+######  RESULTS ######
+cc.results.page.heading = Compare support options for your family
+cc.results.page.annual.cost = Your childcare costs are: £{0} a year.
+cc.results.page.entitlement.heading = Based on the answers you gave us, you could be entitled to:
+cc.results.page.tfc = Tax-Free Childcare
+cc.results.page.available2017 = Available in 2017
+cc.results.page.esc = Childcare vouchers
+cc.results.page.tc = Tax credits
+cc.results.page.additional.support.tfc.message = You can''t get childcare vouchers, tax credits or Universal Credit if you join this scheme.
+cc.results.page.additional.support.tfc.message.tc.specific = You can''t get childcare vouchers, tax credits or Universal Credit if you join this scheme.
+cc.results.page.additional.support.tfc.message.uc.specific = You can''t get childcare vouchers or Universal Credit if you join this scheme.
+cc.results.page.additional.support.esc.message = You can''t get Tax-Free Childcare and childcare vouchers at the same time. You''d get less in tax credits if you also get childcare vouchers.
+cc.results.page.additional.support.esc.message.uc.specific = You can''t get Tax-Free Childcare and childcare vouchers at the same time. You''d get less in Universal Credit if you also get childcare vouchers.
+cc.results.page.additional.support.tc.message = in other tax credit support
+cc.results.page.how.it.works = How it works
+cc.results.page.tfc.how.it.works.1 = you can get up to £2,000 a year for each child (up to £4,000 if they''re disabled) through a newly-created childcare account
+cc.results.page.tfc.how.it.works.2 = for every 80p paid into the account the government will contribute 20p, meaning you have £1 available for childcare
+cc.results.page.tfc.how.it.works.3 = your weekly earnings (or profit if you''re self-employed) must be 16 times the
+cc.results.page.tfc.how.it.works.3.link.url = https://www.gov.uk/national-minimum-wage-rates
+cc.results.page.tfc.how.it.works.3.link.text = National Minimum Wage for your age
+cc.results.page.tfc.how.it.works.4.start = read
+cc.results.page.tfc.how.it.works.4.link.url = https://www.gov.uk/government/news/tax-free-childcare-10-things-parents-should-know
+cc.results.page.tfc.how.it.works.4.link.text = more detailed information on Tax-Free Childcare
+cc.results.page.esc.how.it.works.1 = each parent can save up to £933 a year on Income Tax and National Insurance
+cc.results.page.esc.how.it.works.2 = it works if your employer offers childcare vouchers
+cc.results.page.esc.how.it.works.3 = your taxable pay is adjusted when you buy them
+cc.results.page.esc.how.it.works.4 = If your employer offers vouchers on top of your normal salary (salary plus) the above saving does not apply
+cc.results.page.esc.how.it.works.5 = you can''t get childcare vouchers at the same time as Tax-Free Childcare
+cc.results.page.tc.how.it.works.1 = you can get up to 70% of your childcare costs paid
+cc.results.page.tc.how.it.works.2 = you''ll need to report any changes, eg pay, which will affect your entitlement
+cc.results.page.tc.how.it.works.3 = you can be paid weekly or every 4 weeks
+cc.results.page.tc.how.it.works.4 = you can also get {0}, eg prescription costs
+cc.results.page.tc.how.it.works.4.before.link = you can also get
+cc.results.page.tc.how.it.works.4.link.text = other help
+cc.results.page.tc.how.it.works.4.link.text.comma = ,
+cc.results.page.tc.how.it.works.4.link.url = https://www.gov.uk/government/publications/tax-credits-other-types-of-help-you-could-get-wtc6
+cc.results.page.tc.how.it.works.4.after.link = eg prescription costs
+cc.results.page.how.to.apply = How to apply
+cc.results.page.keep.me.updated.tfc.link.text = Keep me updated
+cc.results.page.how.to.apply.esc = Talk to your employers about getting childcare vouchers.
+cc.results.page.tc.universal.credit.before.link = You might be entitled to Universal Credit instead. You can
+cc.results.page.tc.universal.credit.link.text = work out how much you''d get
+cc.results.page.tc.universal.credit.link.url = https://www.gov.uk/benefits-calculators
+cc.results.page.how.to.apply.tc.before.link = You can find out
+cc.results.page.how.to.apply.tc.link.text = how to apply for tax credits.
+cc.results.page.how.to.apply.tc.link.url = https://www.gov.uk/claim-tax-credits
+cc.results.page.amounts.are.guidelines = The amounts are a guideline to show you how much you could get or save. You can get an exact figure by applying for your chosen scheme.
+cc.results.page.esc.eligible.without.childcare.cost = You wouldn’'t make a saving from childcare vouchers as you don’'t have any childcare costs.
+cc.results.page.tfc.eligible.without.childcare.cost = You wouldn’'t make a saving from Tax-Free Childcare as you don’'t have any childcare costs.
+cc.results.page.free.entitlement.england.header = Free childcare in England
+cc.results.page.free.entitlement.scotland.header = Free childcare in Scotland
+cc.results.page.free.entitlement.wales.header = Free childcare in Wales
+cc.results.page.free.entitlement.northern.ireland.header = Free childcare in Northern Ireland
+cc.results.page.free.entitlement.3.and.4.years.eligible.now.england = 3 and 4-year-olds in England are entitled to 15 hours of free early education a week in term time (570 hours a year).
+cc.results.page.free.entitlement.3.and.4.years.eligible.Sept2017.england = Based on the information you gave us, you''d be eligible to double your free hours to 30 a week in term time from September 2017 (giving you 1140 hours in total a year). You can
+cc.results.page.free.entitlement.3.and.4.years.eligible.Sept2017.england.linkText = get an email when the additional free hours are available.
+cc.results.page.free.entitlement.2.years.england = Some 2-year-olds may be entitled to free early education.
+cc.results.page.free.entitlement.2.years.link.text = You can see if you''re eligible.
+cc.results.page.free.entitlement.3.and.4.years.scotland = 3 and 4-year-olds in Scotland are entitled to 16 hours of early learning and childcare a week in term time (600 hours a year).
+cc.results.page.free.entitlement.2.years.scotland = Some 2-year-olds may be entitled to free early learning and childcare.
+cc.results.page.free.entitlement.3.years.northern.ireland = Children in Northern Ireland can get funded pre-school education in the year immediately before they enter Primary One.
+cc.results.page.free.entitlement.3.years.northern.ireland.how.to.apply.beforeLinkText = You can
+cc.results.page.free.entitlement.3.years.northern.ireland.how.to.apply.linkText = find out how to apply
+cc.results.page.free.entitlement.3.years.northern.ireland.how.to.apply.url = https://www.nidirect.gov.uk/articles/funded-pre-school-education
+cc.results.page.free.entitlement.2.years.benefits.receiving = You must be getting one of the following:
+cc.results.page.free.entitlement.2.years.benefits.receiving.en.income.support = Income Support
+cc.results.page.free.entitlement.2.years.benefits.receiving.en.jsa = income-based Jobseeker''s Allowance (JSA)
+cc.results.page.free.entitlement.2.years.benefits.receiving.en.esa = income-related Employment and Support Allowance (ESA)
+cc.results.page.free.entitlement.2.years.benefits.receiving.en.immigration.act = support through part 6 of the Immigration and Asylum Act
+cc.results.page.free.entitlement.2.years.benefits.receiving.en.annual.income.limit = tax credits and have an annual income under £16,190 before tax
+cc.results.page.free.entitlement.2.years.benefits.receiving.en.state.pension = the guaranteed element of State Pension Credit
+cc.results.page.free.entitlement.2.years.benefits.receiving.en.working.tax.credit = the Working Tax Credit 4-week run on (the payment you get when you stop qualifying for Working Tax Credit)
+cc.results.page.free.entitlement.2.years.benefits.receiving.en.uc = Universal Credit
+cc.results.page.free.entitlement.2.years.benefits.receiving.free.childcare = Children are also entitled to free childcare if:
+cc.results.page.free.entitlement.2.years.benefits.receiving.free.childcare.local.council = they''re looked after by a local council
+cc.results.page.free.entitlement.2.years.benefits.receiving.free.childcare.sen.beforeLinkText = they have a current statement of
+cc.results.page.free.entitlement.2.years.benefits.receiving.free.childcare.sen.url = https://www.gov.uk/children-with-special-educational-needs
+cc.results.page.free.entitlement.2.years.benefits.receiving.free.childcare.sen.linkText = special education needs (SEN)
+cc.results.page.free.entitlement.2.years.benefits.receiving.free.childcare.sen.afterLinkText = or an education health and care plan
+cc.results.page.free.entitlement.2.years.benefits.receiving.free.childcare.disability.living.allowance.beforeLinkText = they get
+cc.results.page.free.entitlement.2.years.benefits.receiving.free.childcare.disability.living.allowance.linkText = Disability Living Allowance
+cc.results.page.free.entitlement.2.years.benefits.receiving.free.childcare.disability.living.allowance.url = https://www.gov.uk/disability-living-allowance-children
+cc.results.page.free.entitlement.2.years.benefits.receiving.free.childcare.special.order = they''ve left care under a special guardianship order, child arrangements order or adoption order
+cc.results.page.free.entitlement.2.years.benefits.receiving.sct.is = Income Support
+cc.results.page.free.entitlement.2.years.benefits.receiving.sct.jsa = income-based Jobseeker’s Allowance (JSA)
+cc.results.page.free.entitlement.2.years.benefits.receiving.sct.esa = income-related Employment and Support Allowance (ESA)
+cc.results.page.free.entitlement.2.years.benefits.receiving.sct.incapacity.or.disability = Incapacity or Severe Disablement Allowance
+cc.results.page.free.entitlement.2.years.benefits.receiving.sct.state.pension = State Pension Credit
+cc.results.page.free.entitlement.2.years.benefits.receiving.sct.august.2015 = From August 2015, children are also entitled to free childcare if they turned 2 on or after 1 March 2015, and you receive one of the following benefits:
+cc.results.page.free.entitlement.2.years.benefits.receiving.sct.ctc = Child Tax Credit, and have an annual income under £16,105 before tax
+cc.results.page.free.entitlement.2.years.benefits.receiving.sct.ctc.wtc = both maximum Child Tax Credit and maximum Working Tax Credit and your income is under £6,420; or, the Working Tax Credit 4-week run on (the payment you get when you stop qualifying for Working Tax Credit)
+cc.results.page.free.entitlement.2.years.benefits.receiving.sct.immigration.act = support through part 6 of the Immigration and Asylum Act
+cc.results.page.free.entitlement.2.years.benefits.receiving.sct.uc = Universal Credit
+cc.results.page.free.entitlement.2.years.benefits.receiving.sct.children.eligible.additional.info = Additionally, the free early learning and childcare is available for 2-year-olds who are, or have been at any point since their second birthday they''ve been looked after under a:
+cc.results.page.free.entitlement.2.years.benefits.receiving.sct.children.eligible.kinship.care = kinship care order
+cc.results.page.free.entitlement.2.years.benefits.receiving.sct.children.eligible.guardianship.order = guardianship order
+cc.results.page.free.entitlement.2.years.link.text.england = you can see if they''re eligible.
+cc.results.page.free.entitlement.2.years.link.url.england = https://www.gov.uk/help-with-childcare-costs/free-childcare-and-education-for-2-to-4-year-olds
+cc.results.page.free.entitlement.2.years.link.text.scotland = you can see if they''re eligible.
+cc.results.page.free.entitlement.2.years.link.url.scotland = http://www.earlylearningandchildcare.scot/who-qualifies/
+cc.results.page.free.entitlement.3.years.northern.ireland = Children in Northern Ireland can get funded pre-school education in the year immediately before they enter Primary One.
+cc.results.page.free.entitlement.3.years.wales = 3-year-olds in Wales are entitled to 10 hours of free childcare a week in term time (390 hours a year).
+cc.results.page.free.entitlement.2.and.3.years.wales.before.link = 2 and 3-year-olds in
+cc.results.page.free.entitlement.2.and.3.years.link.text.wales = Flying Start areas
+cc.results.page.free.entitlement.2.and.3.years.link.url.wales = http://www.nptfamily.com/default.aspx?page=10072
+cc.results.page.free.entitlement.2.and.3.years.wales.after.link = can get 12 and a half hours of free childcare a week plus an extra 15 hours free cover for holiday periods (525 hours a year).
+cc.results.page.entitlements.amount = £{0}
+cc.results.page.feedback.survey.link.text = Give us your feedback
+cc.results.page.feedback.survey.link.url = https://goo.gl/YQeGFu
+cc.results.page.feedback.survey.text.after.link = . It takes no more than 30 seconds to complete.
+cc.results.page.you.could.get = You could get
+cc.results.page.a.year = a year
+cc.results.page.you.entitlement.text.after = in tax and National Insurance savings through salary sacrifice
+cc.results.page.how.to.apply.tfc.before.link = You can get an update on when to apply for Tax-Free childcare.
+cc.results.page.you.entitlement.tc.text.after = towards your household costs
+cc.results.page.you.entitlement.tfc.text.after = towards your childcare costs
+cc.results.page.not.eligible = You are not eligible for this scheme.
+cc.results.page.currently.on.this.scheme = You are currently on this scheme
+cc.results.page.you.currently.get = You currently get
+cc.results.page.uc = Universal Credit
+cc.results.page.tc.warning.message = You can''t get Tax-Free Childcare and tax credits at the same time. You''d get less in tax credits if you also get childcare vouchers.
+cc.results.page.tc.warning.message.tc.specific = You can''t get Tax-Free Childcare while you''re on this scheme. You''d get less in tax credits if you also get childcare vouchers.
+cc.results.page.tc.warning.message.uc.specific = You can''t get Tax-Free Childcare while you''re on this scheme. You''d get less in Universal Credit if you also get childcare vouchers.
+cc.results.page.both.get.esc = If you and your partner can both get vouchers, you could get up to:
+cc.results.page.one.person.get.esc = Based on one person being able to get childcare vouchers, you could get up to:
+
+###### DO YOU LIVE WITH YOUR PARTNER ######
+cc.do.you.have.partner.heading = Do you live with a partner?
+cc.do.you.live.with.partner.no.selection = You must select Yes or No
+cc.claimant.where.do.you.live.no.selection = You must select an answer for where you live
+
+
+###### HOUSEHOLD BENEFITS ######
+cc.claimant.tc.uc.title = Do you get tax credits or Universal Credit?
+cc.household.benefits.error.not.a.number = You must only enter numbers between 1 and 9999.99
+cc.household.benefits.benefit.question = How much do you get?
+cc.household.benefits.no.selection = You must select an answer
+cc.household.benefits.invalid.selection = You can select only "Tax credits" or "Universal Credit" or "I don''t get either"
+cc.household.benefits.tc.amount.empty = You must tell us how much you get in Tax credits
+cc.household.benefits.uc.amount.empty = You must tell us how much you get in Universal Credit
+cc.household.benefits.amount.range = You must enter a number between 1 and 9999.99
+cc.household.benefits.tc.cost.every.4.weeks = every 4 weeks
+cc.household.benefits.tc.hint.text = This will be on your award letter or a bank statement - use approximate figures if you''re unsure
+cc.claimant.tc.uc.tax.credits = Tax credits
+cc.claimant.tc.uc.universal.credit = Universal Credit
+cc.claimant.tc.uc.neither = I don''t get either
+cc.claimant.uc.cost.a.month = a month
+cc.household.benefits.uc.hint.text = This will be on your award letter or a bank statement - use approximate figures if you''re unsure
+
+
+
+###### EMAIL REGISTRATION FREE ENTITLEMENT######
+cc.keep.me.updated.interest.1 = Thanks for your interest in Tax-Free Childcare.
+cc.email.registration.free.entitlement.1 = By giving us your email address you''ll get an alert when Tax-Free Childcare and the additional free childcare hours become available with details of how to apply.
+cc.email.registration.free.entitlement.2 = Both schemes will be introduced based upon children''s ages.
+cc.email.registration.free.entitlement.child.dob.question = Would you like us to save the date of birth information you gave us and email as soon as you can apply?
+
+###### EMAIL REGISTRATION ######
+cc.email.register.dob.not.selected = You must select Yes or No
+cc.email.register.email.address.invalid = You must enter a valid email address
+cc.email.register.email.address.empty = You must enter an email address
+cc.email.register.email.max.length = You must enter an email address no greater than 100 characters
+cc.keep.me.updated.title = Keep me updated
+cc.keep.me.updated.interest.1 = Thanks for your interest in Tax-Free Childcare.
+cc.keep.me.updated.interest.2 = By giving us your email address you’ll get an alert when Tax-Free Childcare becomes available with details of how to apply.
+cc.keep.me.updated.email.address = Email address
+cc.keep.me.updated.interest.3 = Tax-Free Childcare will be introduced based upon children''s ages.
+cc.keep.me.updated.child.dob.question = Would you like us to save the date of birth information you gave us and email as soon as you can apply?
+cc.keep.me.updated.interest.4 = Your details won''t be shared with anyone and are completely secure.
+cc.keep.me.updated.error.required.no.selection = You must select Yes or No
+
+
+##### EMAIL CONFIRMATION ######
+cc.email.confirmation.heading = Thank you!
+cc.email.confirmation.next = What happens next?
+cc.email.confirmation.paragraph.before  = An email acknowledging your interest in Tax-Free Childcare will be sent to
+cc.email.confirmation.paragraph.after  = from noreply@tax.service.gov.uk within 24 hours.
+cc.email.confirmation.paragraph.with.extended.hours.before  = An email acknowledging your interest in Tax-Free Childcare and extended free entitlement will be sent to
+cc.email.confirmation.paragraph.check.spam  = If it doesn''t appear in your inbox, please check your spam or junk folder.
+cc.email.confirmation.return.link = Return to view your results.

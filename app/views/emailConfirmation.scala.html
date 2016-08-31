@@ -1,0 +1,18 @@
+@(emailAddress : String, freeEntitlement : Boolean = false)(implicit request:Request[_])
+@import play.api.i18n._
+@import uk.gov.hmrc.play.views.html._
+@import views.html.helpers._
+
+@cccommon.ccMain(
+    pageTitle = Messages("cc.email.confirmation.heading"),
+    heading = Messages("cc.email.confirmation.heading")
+) {
+    <h2>@Messages("cc.email.confirmation.next")</h2>
+    <p>@if(freeEntitlement){@Messages("cc.email.confirmation.paragraph.with.extended.hours.before")} else {@Messages("cc.email.confirmation.paragraph.before")} <span id="emailAddress"><strong>@emailAddress</strong></span> @Messages("cc.email.confirmation.paragraph.after")</p>
+
+    <p>@Messages("cc.email.confirmation.paragraph.check.spam")</p>
+    <div class="form-field confirmationBackLink">
+        <a id="returnToResultsLink" href="@(controllers.routes.ResultsController.onPageLoad())">@Messages("cc.email.confirmation.return.link")</a>
+    </div>
+
+}

@@ -1,0 +1,41 @@
+fieldset legend {
+    float: left;
+    margin-bottom: 5px;
+}
+
+.date-of-birth, .touchevents .date-of-birth {
+    display: block;
+    visibility: visible;
+    width: 100%;
+    height: auto;
+}
+
+@include media(mobile) {
+
+    .date-of-birth, .touchevents .date-of-birth {
+        display: block;
+        visibility: visible;
+        width: 100%;
+        height: auto;
+    }
+
+}
+
+.bullets-child {
+  display: block;
+
+  .list-child-bullet {
+    display: list-item;
+    list-style-position: inside;
+  }
+}
+
+.form {
+  .button {
+    width: auto;
+  }
+}
+
+span.bold-small {
+  display: block;
+}

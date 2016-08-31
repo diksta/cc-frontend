@@ -1,0 +1,226 @@
+@import "cc";
+@import './node_modules/govuk_frontend_toolkit/govuk_frontend_toolkit/stylesheets/colours';
+
+/*Show/hide operators*/
+
+/*
+.print-shown {
+    display: block;
+}
+
+.print-hidden {
+    @extend .visuallyhidden;
+    display: none;
+    speak: none;
+}
+*/
+
+/* Print overrides */
+
+@page {
+    margin: 4em 0.5em !important;
+}
+
+.header__menu__proposition-name {
+    color: #000;
+}
+
+* {
+    // ensures background images get printed etc
+    -webkit-print-color-adjust: exact;
+    color: $text-colour;
+}
+
+.button--link-style, .button--link-style:active, .button--link-style:hover, .button--link-style:visited, .link-style, .link-style:active, .link-style:hover, .link-style:visited, a, a:active, a:hover, a:visited {
+    color: $text-colour;
+}
+
+.button--get-started:focus, .button--get-started:hover, .button--get-started:link, .button--get-started:visited, .button:focus, .button:hover, .button:link, .button:visited, button:focus, button:hover, button:link, button:visited {
+    background: none;
+    border: none;
+    color: #000;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    padding: 0;
+    display: inline;
+    text-decoration: underline;
+}
+
+.bold-large {
+    font-size: 36px !important;
+    line-height: 1.1111111 !important;
+}
+
+.menu {
+    display: none;
+}
+
+.results {
+    .page-header h1 {
+        display: none;
+    }
+
+    .heading-xlarge {
+        margin-top: 5px;
+    }
+
+    .align-text--right {
+        text-align: left !important;
+    }
+
+    .beta-banner .phase-tag {
+        color: $page-colour;
+        background-color: $text-colour;
+    }
+
+    /* Columns */
+
+    .column-two-thirds {
+        width: 100%;
+        padding: 0;
+    }
+
+    .column-third {
+        width: 100%;
+        padding: 0;
+    }
+
+    .column-third.compare-aside {
+        width: 100%;
+        padding: 0;
+    }
+
+    .column-two-thirds.column-two-thirds__no_padding.compare-main {
+        padding-right: 0;
+    }
+
+    /* Service */
+
+    .service-highlight .service-highlight__content, .service-highlight .service-information
+    {
+        padding: 0;
+    }
+
+    .service-highlight .service-highlight-right, .service-highlight .service-information {
+        margin: 0;
+    }
+
+    .service-highlight .column-third .government-contribution {
+        margin: 0;
+    }
+
+    .service-highlight, .service-information {
+        background: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .service-container {
+        border-bottom: none;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .service-info {
+        border-top: none;
+    }
+
+    .service-information {
+        margin: 20px 0;
+    }
+
+    .service-information--monthly {
+        display: none;
+    }
+
+    .service-information--3-monthly {
+        border-bottom: 1px solid #bfc1c3;
+        padding-bottom: 1em;
+    }
+
+    .small-blue-top-border {
+        border: none;
+    }
+
+    .blue--emphasis {
+        color: $text-colour;
+    }
+
+    .government-contribution, .parent-contribution {
+        width: 50%;
+        text-align: left !important;
+        float: left;
+        margin: 0;
+        padding: 0;
+
+        span {
+            text-align: left !important;
+        }
+    }
+
+    /* Tabs */
+
+    .compare-tabs {
+        border-bottom: none;
+        margin: 20px 0 0 0 !important;
+
+        a {
+            padding-bottom: 0 !important;
+            margin: 0;
+        }
+    }
+
+    .compare-tabs--monthly--print {
+        border-top: 1px solid #bfc1c3;
+    }
+
+    .compare-tabs .tab-option {
+        display: none;
+    }
+
+    .compare-tabs .tab-option, .compare-tabs .tab-option.active {
+        border: none;
+        padding-left: 0;
+        padding-right: 0;
+        margin: 0;
+        text-decoration: none;
+        font-size: 19px;
+        font-weight: bold;
+        width: 100%;
+        text-align: left;
+        float: none;
+        clear: both;
+
+        &:after {
+            content: "";
+        }
+    }
+
+    .compare-tabs .tab-option.active {
+        display: block;
+    }
+
+    .compare-tabs--print {
+        border-top: none;
+    }
+
+    /* Aside */
+
+    .compare-aside-email {
+        margin: 15px 0;
+        padding: 0;
+    }
+
+    .compare-aside-children {
+        padding: 20px 0;
+    }
+    .compare-aside-children-table {
+        width: 66.6%;
+    }
+
+}
+
+a[rel~="remove"] {
+    background: none;
+}

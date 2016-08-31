@@ -1,0 +1,113 @@
+@(form : Form[_root_.models.pages.HouseholdBenefitsPageModel], backUrl : Call)(implicit request:Request[_])
+
+@import play.api.i18n._
+@import uk.gov.hmrc.play.views.html._
+@import views.html.helpers._
+@import utils.HasError._
+@import views.html.helpers.checkbox._
+
+@tcSelection = @{ form("benefits.tcBenefitSelection").value match { case Some(x) => x case None => "false"}}
+@ucSelection = @{ form("benefits.ucBenefitSelection").value match { case Some(x) => x case None => "false"}}
+
+@tcInput = {
+    <div id = "benefits" class ="data-tc-nested panel-indent panel-indent--gutter
+        @if((tcSelection == "false")
+        && (!form("benefits.tcBenefitAmount").hasErrors
+        && !hasError(form, Messages("cc.household.benefits.tc.amount.empty")))){ js-hidden } panel-indent panel-indent--gutter">
+                @ccInput(
+                    field = form("benefits.tcBenefitAmount"),
+                    fieldForm = form,
+                    args = '_inputClass -> "input--small form-field--inline-spaced-left form-field--inline-spaced-right",
+                    '_label -> Messages("cc.household.benefits.benefit.question"),
+                    '_labelDataAttributes -> "aria-hidden=false",
+                    '_errorDataAttributes -> "data-input-name=tax-credits",
+                    '_error_id -> "tcAmount-error-summary",
+                    '_inputHint -> Messages("cc.household.benefits.tc.hint.text"),
+                    '_autoComplete -> "off",
+                    '_labelTextClass -> "bold-small",
+                    '_symbolBefore -> Messages("cc.currency.pound"),
+                    '_symbolAfter -> Messages("cc.household.benefits.tc.cost.every.4.weeks"),
+                    '_symbolBeforeId -> "tc-poundSymbol",
+                    '_symbolAfterId -> "tc-month",
+                    '_form -> form,
+                    '_globalErrorKey ->List(Messages("cc.household.benefits.tc.amount.empty"), Messages("cc.household.benefits.amount.range"))
+                )
+    </div>
+}
+
+@ucInput = {
+    <div class ="data-uc-nested panel-indent panel-indent--gutter
+        @if((ucSelection == "false")
+        && (!form("benefits.ucBenefitAmount").hasErrors
+        && !hasError(form, Messages("cc.household.benefits.uc.amount.empty")))){ js-hidden } panel-indent panel-indent--gutter">
+                @ccInput(
+                    field = form("benefits.ucBenefitAmount"),
+                    fieldForm = form,
+                    args = '_inputClass -> "input--small form-field--inline-spaced-left form-field--inline-spaced-right",
+                    '_label -> Messages("cc.household.benefits.benefit.question"),
+                    '_labelDataAttributes -> "aria-hidden=false",
+                    '_errorDataAttributes -> "data-input-name=universal-credits",
+                    '_error_id -> "ucAmount-error-summary",
+                    '_autoComplete -> "off",
+                    '_inputHint -> Messages("cc.household.benefits.uc.hint.text"),
+                    '_labelTextClass -> "bold-small",
+                    '_symbolBefore -> Messages("cc.currency.pound"),
+                    '_symbolAfter -> Messages("cc.claimant.uc.cost.a.month"),
+                    '_symbolBeforeId -> "uc-poundSymbol",
+                    '_symbolAfterId -> "uc-month",
+                    '_form -> form,
+                    '_globalErrorKey -> List(Messages("cc.household.benefits.uc.amount.empty"), Messages("cc.household.benefits.amount.range"))
+                )
+</div>
+}
+
+@cccommon.ccMain(
+    pageTitle = Messages("cc.claimant.tc.uc.title"),
+    heading = Messages("cc.claimant.tc.uc.title")
+) {
+    @helpers.form(
+    action = controllers.routes.HouseholdBenefitsController.onSubmit,
+    args = 'class -> "form", 'autocomplete -> "off", 'novalidate -> "", Symbol("data-dynamic-form") -> "true") {
+@error.ccErrorSummary(Messages("cc.error.title"), form)
+
+<fieldset id="householdBenefits" class='form-group @globalErrors.ccGlobalErrorHelper(form, "form-field--error", Some("some.custom.global.constraint"), null) @if(form.hasErrors) {form-field--error}'>
+
+
+        @if(form("householdBenefits").errors.nonEmpty) {
+        @form("householdBenefits").errors.map { error =>
+        @helpers.errorInline("householdBenefits", Messages(error.message))
+        }
+        }
+
+            @ccSingleCheckbox(form("benefits.tcBenefitSelection"),
+            '_label -> Messages("cc.claimant.tc.uc.tax.credits"),
+            '_labelClass -> "tcCheckbox",
+            '_nestedContent -> tcInput,
+            '_jsNestedTarget -> "tc-nested",
+            '_jsHideNestedOnCheckbox -> "false",
+            '_globalErrorKey -> Seq(Messages("cc.household.benefits.no.selection"))
+            )
+
+
+            @ccSingleCheckbox(form("benefits.ucBenefitSelection"),
+            '_label -> Messages("cc.claimant.tc.uc.universal.credit"),
+            '_labelClass -> "ucCheckbox",
+            '_nestedContent -> ucInput,
+            '_jsNestedTarget -> "uc-nested",
+            '_jsHideNestedOnCheckbox -> "false",
+            '_globalErrorKey -> Seq(Messages("cc.household.benefits.no.selection"))
+            )
+
+        @ccSingleCheckbox(form("benefits.noBenefitSelection"),
+        '_label -> Messages("cc.claimant.tc.uc.neither"))
+
+    </fieldset>
+
+    @buttons.nextButton(
+    title = "",
+    label = Some(Messages("childcare.button.continue")),
+    hrefMethod = Some(backUrl)
+    )
+
+  }
+}

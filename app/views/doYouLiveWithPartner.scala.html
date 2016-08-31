@@ -1,0 +1,35 @@
+@(form : Form[Option[Boolean]], backUrl : Call)(implicit request:Request[_])
+
+@import play.api.i18n._
+@import uk.gov.hmrc.play.views.html._
+@import views.html.helpers._
+
+@cccommon.ccMain(
+pageTitle = Messages("cc.do.you.have.partner.heading"),
+heading = Messages("cc.do.you.have.partner.heading")
+) {
+    @helpers.form(
+        action = controllers.routes.DoYouLiveWithPartnerController.onSubmit,
+        args = 'class -> "form", 'autocomplete -> "off", 'novalidate -> "") {
+        @helpers.errorSummary(Messages("cc.error.title"), form)
+
+        @radio.ccRadioOptions(
+        field = form("doYouLiveWithYourPartner"),
+        fieldForm = form,
+        radioOptions = Seq(
+        ("true", Messages("cc.radio.yes")),
+        ("false", Messages("cc.radio.no"))
+        ),
+        args = '_groupClass -> "form-group inline",
+        '_radioClass -> "block-label",
+        '_legendClass -> "visuallyhidden",
+        '_legend -> Messages("cc.do.you.have.partner.heading"),
+        '_globalErrorKey -> Messages("cc.do.you.live.with.partner.no.selection")
+        )
+        @buttons.nextButton(
+        title = "",
+        label = Some(Messages("childcare.button.continue")),
+        hrefMethod = Some(backUrl)
+        )
+    }
+}

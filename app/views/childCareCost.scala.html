@@ -1,0 +1,71 @@
+@(form : Form[_root_.models.pages.ChildCarePageModel], showCost: Boolean, index: Int)(implicit request:Request[_])
+
+@import play.api.i18n._
+@import uk.gov.hmrc.play.views.html._
+@import views.html.helpers._
+@import views.html.helpers.radio._
+
+@titlePage = {
+    @if(showCost) {
+        @Messages("cc.childcare.cost.heading", index)
+    } else {
+        @Messages("cc.childcare.education.heading", index)
+    }
+}
+
+@cccommon.ccMain(
+    pageTitle = titlePage.toString,
+    heading = titlePage.toString
+) {
+    @helpers.form(
+        action = controllers.routes.ChildCareCostController.onSubmit(index),
+        args = 'class -> "form", 'autocomplete -> "off", 'novalidate -> "") {
+
+        @helpers.errorSummary(Messages("cc.error.title"), form)
+
+        @if(showCost) {
+            <input type="hidden" name="@form("childEducation").name" id="@form("childEducation").id" value="false" />
+    <div class="form-group">
+            <p id="childcareCost-lede" class="font-medium">@Messages("cc.childcare.cost.lede.text.before.link") <a rel="external" target="_blank" id="approvedChildcareLink" href="@Messages("cc.childcare.cost.lede.text.link.url")">@Messages("cc.childcare.cost.lede.text.link.text")</a> @Messages("cc.childcare.cost.lede.text.after.link")</p>
+    </div>
+            @ccInput(
+                field = form("childCareCost"),
+                fieldForm = form,
+                args = '_inputClass -> "form-field--inline-spaced-right form-field--inline-spaced-left input--small",
+                    '_label -> Messages("cc.childcare.cost.heading", index),
+                    '_labelTextClass -> "visuallyhidden",
+                    '_labelDataAttributes -> "aria-hidden=false",
+                    '_errorDataAttributes -> "data-input-name=childCareCost",
+                    '_error_id -> "childCareCost-error-summary",
+                    '_autoComplete -> "off",
+                    '_symbolBeforeId -> "poundSymbol",
+                    '_symbolAfterId -> "month",
+                    '_symbolBefore -> Messages("cc.currency.pound"),
+                    '_symbolAfter -> Messages("cc.childcare.cost.a.month"),
+                    '_inputHint -> Messages("cc.childcare.cost.hint.text"))
+        } else {
+            <input type="hidden" name="@form("childCareCost").name" id="@form("childCareCost").id" value="0.00" />
+            @ccRadioOptions(
+                field = form("childEducation"),
+                fieldForm = form,
+                Seq(("true", Messages("cc.radio.yes")),("false", Messages("cc.radio.no"))),
+                '_legend -> Messages("cc.childcare.education.heading", index),
+                '_legendSpanClass -> "visuallyhidden",
+                '_legendSpanAttributes -> "aria-hidden=false",
+                '_fieldsetWrapperDiv -> true,
+                '_radioClass -> "block-label",
+                '_formHint -> Messages("cc.childcare.education.hint.text"),
+                '_groupClass -> "inline",
+                '_error_id -> "childEducation-error-summary",
+                '_errorDataAttributes -> "data-input-name=childEducation"
+            )
+        }
+
+        @buttons.nextButton(
+            title = "",
+            label = Some(Messages("childcare.button.continue")),
+            hrefMethod = Some(controllers.routes.ChildDetailsController.onPageLoad(index))
+        )
+
+    }
+}

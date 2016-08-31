@@ -1,0 +1,48 @@
+@import './node_modules/govuk_frontend_toolkit/govuk_frontend_toolkit/stylesheets/typography';
+@import './node_modules/govuk_frontend_toolkit/govuk_frontend_toolkit/stylesheets/conditionals';
+@import './node_modules/govuk_frontend_toolkit/govuk_frontend_toolkit/stylesheets/colours';
+@import './node_modules/govuk_frontend_toolkit/govuk_frontend_toolkit/stylesheets/measurements';
+
+// Validation summary box
+.validation-summary {
+  border: 3px solid $error-colour;
+  padding: 0;
+  margin-bottom: $gutter;
+  @include ie-lte(6){
+    zoom: 1;
+  }
+
+  .heading-small {
+    margin: 0 0;
+  }
+
+}
+
+.validation-summary ul {
+  margin: 10px 0 $gutter-half 0;
+  float: left;
+}
+
+.validation-summary li,
+.validation-summary p {
+  @include core-16;
+}
+
+.validation-summary p {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.validation-summary .validation-message a {
+  color: $error-colour;
+  @include ie-lte(6) {
+    color: $error-colour !important;
+  }
+}
+
+// Validation message
+.validation-message {
+  display: block;
+  @include core-16;
+  color: $error-colour;
+}

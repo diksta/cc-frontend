@@ -1,0 +1,103 @@
+@(freeEntitlement : Option[_root_.models.pages.results.FreeEntitlementPageModel] = None)(implicit request:Request[_])
+
+
+@if(freeEntitlement.get.region == "england" && (freeEntitlement.get.twoYearOld || freeEntitlement.get.threeYearOld || freeEntitlement.get.fourYearOld || freeEntitlement.get.threeFourYearOldSep2017)) {
+    <div id="free-entitlement">
+        <h2 id = "free-entitlement-england">@Messages("cc.results.page.free.entitlement.england.header")</h2>
+        <div id="free-entitlement-content">
+            @if(freeEntitlement.get.twoYearOld || freeEntitlement.get.threeYearOld || freeEntitlement.get.fourYearOld) {
+                <p class="font-small" id="englandThreeFourYearsOld">@Messages("cc.results.page.free.entitlement.3.and.4.years.eligible.now.england")</p>
+            }
+            @if(freeEntitlement.get.threeFourYearOldSep2017 && freeEntitlement.get.tfcEligibility) {
+                <p class="font-small panel-indent" id="englandThreeFourYearsOldSept2017">@Messages("cc.results.page.free.entitlement.3.and.4.years.eligible.Sept2017.england") <a id="freeEntitlementHowToApplyLink" href=@(controllers.routes.EmailRegistrationController.onPageLoadFreeEntitlement) >@Messages("cc.results.page.free.entitlement.3.and.4.years.eligible.Sept2017.england.linkText")</a></p>
+            }
+            @if(freeEntitlement.get.twoYearOld) {
+                <div id="englandTwoYearsOld">
+                    <p class="font-small">@Messages("cc.results.page.free.entitlement.2.years.england")</p>
+                    <details>
+                        <summary id="englandTwoYearOldMoreDetailsLink">@Messages("cc.results.page.free.entitlement.2.years.link.text")</summary>
+                        <div>
+                            <p class="freeEntitlementText">@Messages("cc.results.page.free.entitlement.2.years.benefits.receiving")</p>
+                            <ul>
+                                <li>@Messages("cc.results.page.free.entitlement.2.years.benefits.receiving.en.income.support")</li>
+                                <li>@Messages("cc.results.page.free.entitlement.2.years.benefits.receiving.en.jsa")</li>
+                                <li>@Messages("cc.results.page.free.entitlement.2.years.benefits.receiving.en.esa")</li>
+                                <li>@Messages("cc.results.page.free.entitlement.2.years.benefits.receiving.en.immigration.act")</li>
+                                <li>@Messages("cc.results.page.free.entitlement.2.years.benefits.receiving.en.annual.income.limit")</li>
+                                <li>@Messages("cc.results.page.free.entitlement.2.years.benefits.receiving.en.state.pension")</li>
+                                <li>@Messages("cc.results.page.free.entitlement.2.years.benefits.receiving.en.working.tax.credit")</li>
+                                <li>@Messages("cc.results.page.free.entitlement.2.years.benefits.receiving.en.uc")</li>
+                            </ul>
+                            <p class="freeEntitlementText">@Messages("cc.results.page.free.entitlement.2.years.benefits.receiving.free.childcare")</p>
+                            <ul>
+                                <li>@Messages("cc.results.page.free.entitlement.2.years.benefits.receiving.free.childcare.local.council")</li>
+                                <li>@Messages("cc.results.page.free.entitlement.2.years.benefits.receiving.free.childcare.sen.beforeLinkText") <a href="@Messages("cc.results.page.free.entitlement.2.years.benefits.receiving.free.childcare.sen.url")" rel="external" id="specialEducationNeedsLink" target="_blank">@Messages("cc.results.page.free.entitlement.2.years.benefits.receiving.free.childcare.sen.linkText")</a> @Messages("cc.results.page.free.entitlement.2.years.benefits.receiving.free.childcare.sen.afterLinkText")</li>
+                                <li>@Messages("cc.results.page.free.entitlement.2.years.benefits.receiving.free.childcare.disability.living.allowance.beforeLinkText") <a href="@Messages("cc.results.page.free.entitlement.2.years.benefits.receiving.free.childcare.disability.living.allowance.url")" rel="external" id="disabilityLivingAllowanceLink" target="_blank">@Messages("cc.results.page.free.entitlement.2.years.benefits.receiving.free.childcare.disability.living.allowance.linkText")</a></li>
+                                <li>@Messages("cc.results.page.free.entitlement.2.years.benefits.receiving.free.childcare.special.order")</li>
+                            </ul>
+                        </div>
+                    </details>
+                </div>
+            }
+        </div>
+    </div>
+}
+
+@if(freeEntitlement.get.region == "scotland" && (freeEntitlement.get.twoYearOld || freeEntitlement.get.threeYearOld || freeEntitlement.get.fourYearOld)) {
+    <div id="free-entitlement">
+        <h2 id = "free-entitlement-scotland">@Messages("cc.results.page.free.entitlement.scotland.header")</h2>
+        <p class="font-small" id="scotlandThreeFourYearsOld">@Messages("cc.results.page.free.entitlement.3.and.4.years.scotland")</p>
+        @if(freeEntitlement.get.twoYearOld) {
+            <div id="scotlandTwoYearsOld">
+                <p class="font-small">@Messages("cc.results.page.free.entitlement.2.years.scotland")</p>
+                <details>
+                    <summary id="scotlandTwoYearOldMoreDetailsLink">@Messages("cc.results.page.free.entitlement.2.years.link.text")</summary>
+                    <div>
+                        <p class="freeEntitlementText">@Messages("cc.results.page.free.entitlement.2.years.benefits.receiving")</p>
+                        <ul>
+                            <li>@Messages("cc.results.page.free.entitlement.2.years.benefits.receiving.sct.is")</li>
+                            <li>@Messages("cc.results.page.free.entitlement.2.years.benefits.receiving.sct.jsa")</li>
+                            <li>@Messages("cc.results.page.free.entitlement.2.years.benefits.receiving.sct.esa")</li>
+                            <li>@Messages("cc.results.page.free.entitlement.2.years.benefits.receiving.sct.incapacity.or.disability")</li>
+                            <li>@Messages("cc.results.page.free.entitlement.2.years.benefits.receiving.sct.state.pension")</li>
+                            <li>@Messages("cc.results.page.free.entitlement.2.years.benefits.receiving.sct.ctc")</li>
+                            <li>@Messages("cc.results.page.free.entitlement.2.years.benefits.receiving.sct.ctc.wtc")</li>
+                            <li>@Messages("cc.results.page.free.entitlement.2.years.benefits.receiving.sct.immigration.act")</li>
+                            <li>@Messages("cc.results.page.free.entitlement.2.years.benefits.receiving.sct.uc")</li>
+                        </ul>
+                        <p class="freeEntitlementText">@Messages("cc.results.page.free.entitlement.2.years.benefits.receiving.sct.children.eligible.additional.info")</p>
+                        <ul>
+                            <li>@Messages("cc.results.page.free.entitlement.2.years.benefits.receiving.sct.children.eligible.kinship.care")</li>
+                            <li>@Messages("cc.results.page.free.entitlement.2.years.benefits.receiving.sct.children.eligible.guardianship.order")</li>
+                        </ul>
+                        <p class="freeEntitlementText">@Messages("cc.results.page.free.entitlement.2.years.benefits.receiving.free.childcare")</p>
+                        <ul>
+                            <li>@Messages("cc.results.page.free.entitlement.2.years.benefits.receiving.free.childcare.local.council")</li>
+                            <li>@Messages("cc.results.page.free.entitlement.2.years.benefits.receiving.free.childcare.sen.beforeLinkText") <a href="@Messages("cc.results.page.free.entitlement.2.years.benefits.receiving.free.childcare.sen.url")" rel="external" id="specialEducationNeedsLink" target="_blank">@Messages("cc.results.page.free.entitlement.2.years.benefits.receiving.free.childcare.sen.linkText")</a> @Messages("cc.results.page.free.entitlement.2.years.benefits.receiving.free.childcare.sen.afterLinkText")</li>
+                            <li>@Messages("cc.results.page.free.entitlement.2.years.benefits.receiving.free.childcare.disability.living.allowance.beforeLinkText") <a href="@Messages("cc.results.page.free.entitlement.2.years.benefits.receiving.free.childcare.disability.living.allowance.url")" rel="external" id="disabilityLivingAllowanceLink" target="_blank">@Messages("cc.results.page.free.entitlement.2.years.benefits.receiving.free.childcare.disability.living.allowance.linkText")</a></li>
+                            <li>@Messages("cc.results.page.free.entitlement.2.years.benefits.receiving.free.childcare.special.order")</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+        }
+    </div>
+}
+@if(freeEntitlement.get.region == "northern-ireland" && (freeEntitlement.get.threeYearOld)) {
+    <div id="free-entitlement">
+        <h2 id = "free-entitlement-northern-ireland">@Messages("cc.results.page.free.entitlement.northern.ireland.header")</h2>
+        <div id="northernIrelandThreeYearsOld">
+            <p class="font-small">@Messages("cc.results.page.free.entitlement.3.years.northern.ireland")</p>
+            <p>@Messages("cc.results.page.free.entitlement.3.years.northern.ireland.how.to.apply.beforeLinkText") <a href="@Messages("cc.results.page.free.entitlement.3.years.northern.ireland.how.to.apply.url")" id="preSchoolEducationLink" rel="external" target="_blank">@Messages("cc.results.page.free.entitlement.3.years.northern.ireland.how.to.apply.linkText")</a>.</p>
+        </div>
+    </div>
+}
+@if(freeEntitlement.get.region == "wales" && (freeEntitlement.get.twoYearOld || freeEntitlement.get.threeYearOld)) {
+    <div id="free-entitlement">
+        <h2 id = "free-entitlement-wales">@Messages("cc.results.page.free.entitlement.wales.header")</h2>
+        <div id="walesTwoThreeYearsOld">
+            <p class="font-small">@Messages("cc.results.page.free.entitlement.3.years.wales")</p>
+            <p class="font-small">@Messages("cc.results.page.free.entitlement.2.and.3.years.wales.before.link") <a rel="external" target="_blank" id="flyingStartAreaLink" href="@Messages("cc.results.page.free.entitlement.2.and.3.years.link.url.wales")">@Messages("cc.results.page.free.entitlement.2.and.3.years.link.text.wales")</a> @Messages("cc.results.page.free.entitlement.2.and.3.years.wales.after.link")</p>
+        </div>
+    </div>
+}

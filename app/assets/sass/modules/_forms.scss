@@ -1,0 +1,109 @@
+@import './node_modules/govuk_frontend_toolkit/govuk_frontend_toolkit/stylesheets/colours';
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
+}
+
+.inline-fields {
+	display: inline-block;
+	margin: 0 10px 0 0;
+	width: auto;
+}
+
+.inline-fields {
+	.drop-down {
+		font-family: "nta", Arial, sans-serif;
+		font-size: 19px;
+		line-height: 1.31579;
+		font-weight: 400;
+		text-transform: none;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+		padding: 4px;
+		background-color: #fff;
+		border: 1px solid #bfc1c3;
+		// -webkit-appearance: none;
+		border-radius: 0;
+		-webkit-border-radius: 0;
+		-moz-border-radius: 0;
+	}
+
+	select {
+	    vertical-align: 0;
+	    margin: 0;
+	}
+
+    @include media(mobile) {
+        .drop-down {
+            font-size: 16px;
+        }
+    }
+}
+
+.inline {
+
+    @include media(mobile) {
+            .block-label {
+                clear: both;
+            }
+    }
+
+}
+
+@include media(mobile) {
+    .form-field--error {
+        margin-left: -1em;
+    }
+}
+
+.reasons-container > li {
+        padding: $gutter-half 0;
+        border-bottom: 1px solid $border-colour;
+}
+
+.reasons-container li ul li {
+    list-style: disc;
+}
+
+.reasons-container li ul {
+    margin: 0 0 0 20px;
+}
+
+.reasons-container > li:last-child {
+    border-bottom: none;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.td-width--20 {
+    width: 20%;
+}
+
+.td-width--25 {
+    width: 25%;
+}
+
+.td-width-30 {
+    width: 30%;
+}
+
+.td-width-40 {
+    width: 40%;
+}
+
+@if $is-ie and $ie-version == 7 {
+    .error, .form-field--error {
+        input.form-control {
+            margin-left: 1em !important;
+        }
+    }
+}   

@@ -1,0 +1,99 @@
+@(form : Form[_root_.models.pages.ClaimantBenefitsPageModel], index: Short, backUrl : Call)(implicit request:Request[_])
+
+@import play.api.i18n._
+@import uk.gov.hmrc.play.views.html._
+@import views.html.helpers._
+@import views.html.helpers.checkbox._
+
+
+@incomeBenefitsNested = {
+<span class='bullets-child'>
+    <span class="list-child-bullet">@Messages("cc.claimant.benefit.income.benefit.support")</span>
+    <span class="list-child-bullet">@Messages("cc.claimant.benefit.income.benefit.allowance")</span>
+    <span class="list-child-bullet">@Messages("cc.claimant.benefit.income.benefit.support.allowance")</span>
+    <span class="list-child-bullet">@Messages("cc.claimant.benefit.income.benefit.pension.credit")</span>
+</span>
+}
+@disabilityBenefitsNested = {
+<span class='bullets-child'>
+    <span class="list-child-bullet">@Messages("cc.claimant.benefit.disability.benefit.living.allowance")</span>
+    <span class="list-child-bullet">@Messages("cc.claimant.benefit.disability.benefit.attendance.allowance")</span>
+    <span class="list-child-bullet">@Messages("cc.claimant.benefit.disability.benefit.personal.allowance")</span>
+</span>
+}
+@severeDisabilityBenefitsNested = {
+<span class='bullets-child'>
+    <span class="list-child-bullet">@Messages("cc.claimant.benefit.severe.disability.benefit.living.allowance")</span>
+    <span class="list-child-bullet">@Messages("cc.claimant.benefit.severe.disability.benefit.attendance.allowance")</span>
+    <span class="list-child-bullet">@Messages("cc.claimant.benefit.severe.disability.benefit.personal.payment")</span>
+    <span class="list-child-bullet">@Messages("cc.claimant.benefit.severe.disability.benefit.independent.payment")</span>
+</span>
+}
+
+@pageTitle = {
+    @if(index == 1) {
+        @Messages("cc.claimant.benefit.parent.heading")
+    } else {
+        @Messages("cc.claimant.benefit.partner.heading")
+    }
+}
+
+@noBenefit = {
+    @if(index == 1) {
+        @Messages("cc.claimant.benefit.no.parent.benefit")
+    } else {
+        @Messages("cc.claimant.benefit.no.partner.benefit")
+    }
+}
+
+@cccommon.ccMain(
+pageTitle = pageTitle.toString,
+heading = pageTitle.toString
+) {
+    @helpers.form(
+
+        action =  if(index == 1) {controllers.routes.ClaimantBenefitsController.onSubmitParent} else {controllers.routes.ClaimantBenefitsController.onSubmitPartner},
+        args = 'class -> "form", 'autocomplete -> "off", 'novalidate -> "") {
+
+        @helpers.errorSummary(Messages("cc.error.title"), form)
+
+        <fieldset id="claimantBenefits" class='form-group @globalErrors.ccGlobalErrorHelper(form, "form-field--error", Some("some.custom.global.constraint"), null) @if(form.hasErrors) {form-field--error}'>
+
+            <span class="form-hint" id="selectAll-lede">@Messages("cc.select.all.that.apply")</span>
+
+            @if(form("claimantBenefits").errors.nonEmpty) {
+                @form("claimantBenefits").errors.map { error =>
+                @helpers.errorInline("claimantBenefits", Messages(error.message))
+                }
+            }
+            @ccSingleCheckbox(
+                form("incomeBenefit"),
+                '_label -> Messages("cc.claimant.benefit.income.benefit.group"),
+                '_nested -> incomeBenefitsNested,
+                '_multiLine -> true
+            )
+            @ccSingleCheckbox(
+            form("disabilityBenefit"),
+                '_label -> Messages("cc.claimant.benefit.disability.benefit.group"),
+                '_nested -> disabilityBenefitsNested,
+                '_multiLine -> true
+            )
+            @ccSingleCheckbox(
+            form("severeDisabilityBenefit"),
+            '_label -> Messages("cc.claimant.benefit.severe.disability.benefit.group"),
+            '_nested -> severeDisabilityBenefitsNested,
+            '_multiLine -> true
+            )
+            @ccSingleCheckbox(form("carerAllowanceBenefit"), '_label -> Messages("cc.claimant.benefit.carer.benefit"))
+            <p class="form-block">@Messages("cc.or")</p>
+            @ccSingleCheckbox(form("noBenefit"), '_label -> noBenefit.toString.replaceAll("""&#x27;""", "'"))
+        </fieldset>
+
+        @buttons.nextButton(
+        title = "",
+        label = Some(Messages("childcare.button.continue")),
+        hrefMethod = Some(backUrl)
+        )
+
+    }
+}

@@ -1,0 +1,24 @@
+$is-ie: true;
+$ie-version: 8;
+
+@import "cc";
+
+
+.startPage #content .grid-layout__column--2-3 h2 {
+    margin: 1.875em 0 0.8333333333em !important;
+}
+
+.startPage #content .panel-indent {
+    margin: 30px 15px 45px 0;
+}
+
+.startPage #content article.content__body {
+    width: 100%;
+}
+
+.multi-line-checkbox {
+ top: 20px !important;
+}
+.schemeName, .entitlement {
+  border-right: 0.15em solid #fff;
+}

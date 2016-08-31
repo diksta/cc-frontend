@@ -1,0 +1,274 @@
+@(form : Form[_root_.models.pages.income.ClaimantIncomeCurrentYearPageModel], index:Short, taxYearFrom : String, taxYearTo: String, carersAllowance: Boolean = false)(implicit request:Request[_])
+
+@import views.html.helpers.checkbox._
+@import play.api.i18n._
+@import uk.gov.hmrc.play.views.html._
+@import views.html.helpers._
+@import utils.HasError._
+
+@employmentSelection = @{ form("employment.selection").value match { case Some(x) => x case None => "false"}}
+@otherSelection = @{ form("other.selection").value match { case Some(x) => x case None => "false"}}
+@benefitSelection = @{ form("benefits.selection").value match { case Some(x) => x case None => "false"}}
+
+@employmentLabel = {
+    @if(index == 1) {
+        @Messages("cc.claimant.income.current.year.employment.parent.income")
+    } else {
+        @Messages("cc.claimant.income.current.year.employment.partner.income")
+    }
+}
+
+@pensionLabel = {
+    @if(index == 1) {
+        @Messages("cc.claimant.income.current.year.employment.parent.pension")
+    } else {
+        @Messages("cc.claimant.income.current.year.employment.partner.pension")
+    }
+}
+
+@otherLabel = {
+    @if(index == 1) {
+        @Messages("cc.claimant.income.current.year.other.parent.income")
+    } else {
+        @Messages("cc.claimant.income.current.year.other.partner.income")
+    }
+}
+
+@benefitLabel = {
+    @if(index == 1) {
+        @Messages("cc.claimant.income.current.year.benefits.parent.income")
+    } else {
+        @Messages("cc.claimant.income.current.year.benefits.partner.income")
+    }
+}
+
+@incomeOptionsNested = {
+    <div class="data-income-options-nested panel-indent form-group
+        @if(form("selection").value.toString == "None" || (form("selection").value.toString == "false" && !hasError(form, Messages("cc.claimant.income.current.year.partner.benefits.carers.selected")) && !hasError(form, Messages("cc.claimant.income.current.year.parent.benefits.carers.selected")))
+            && (!form("employment.income").hasErrors
+            && !form("employment.pension").hasErrors
+            && !form("other.income").hasErrors
+            && !form("benefits.income").hasErrors
+            && !hasError(form, Messages("cc.claimant.income.current.year.partner.benefits.carers.selected"))
+            && !hasError(form, Messages("cc.claimant.income.current.year.parent.benefits.carers.selected"))
+            && !hasError(form, Messages("cc.claimant.income.current.year.benefits.empty"))
+            && !hasError(form, Messages("cc.claimant.income.current.year.other.empty"))
+            && !hasError(form, Messages("cc.claimant.income.current.year.employment.empty")))){ js-hidden } ">
+
+        <fieldset id="dataIncome" class='form-group @globalErrors.ccGlobalErrorHelper(form, "form-field--error", Some("some.custom.global.constraint"), null)
+            @if(hasError(form, Messages("cc.claimant.income.current.year.income.empty"))) {form-field--error}'>
+                <fieldset class="inline">
+                    <legend class="bold-small">
+                        @Messages("cc.claimant.income.current.year.change.question")
+                    </legend>
+                    <span class="form-hint">
+                        @Messages("cc.claimant.income.current.year.select.all.hint")
+                    </span>
+                </fieldset>
+
+                <div class="data-income-options-nested-children">
+                    @ccSingleCheckbox(form("employment.selection"),
+                    '_label -> Messages("cc.claimant.income.current.year.employment"),
+                    '_labelClass -> "incomeCheckbox",
+                    '_nestedContent -> employmentNested,
+                    '_jsNestedTarget -> "employment-nested",
+                    '_jsHideNestedOnCheckbox -> "false",
+                    '_globalErrorKey -> Seq(Messages("cc.claimant.income.current.year.no.selection"))
+                    )
+                </div>
+
+                <div class="data-income-options-nested-children">
+                    @ccSingleCheckbox(form("other.selection"),
+                    '_label -> Messages("cc.claimant.income.current.year.other"),
+                    '_labelClass -> "incomeCheckbox",
+                    '_nestedContent -> otherNested,
+                    '_jsNestedTarget -> "other-nested",
+                    '_jsHideNestedOnCheckbox -> "false",
+                    '_globalErrorKey -> Seq(Messages("cc.claimant.income.current.year.no.selection"))
+                    )
+                </div>
+
+                <div class="data-income-options-nested-children">
+                    @ccSingleCheckbox(form("benefits.selection"),
+                    '_label -> Messages("cc.claimant.income.current.year.benefits"),
+                    '_labelClass -> "incomeCheckbox",
+                    '_nestedContent -> benefitsNested,
+                    '_jsNestedTarget -> "benefits-nested",
+                    '_jsHideNestedOnCheckbox -> "false",
+                    '_globalErrorKey -> Seq(Messages("cc.claimant.income.current.year.no.selection"))
+                    )
+                </div>
+        </fieldset>
+    </div>
+}
+
+@employmentNested = {
+    <div id="employment" class="data-employment-nested
+             @if((employmentSelection == "false")
+            && (!form("employment.income").hasErrors
+            && !form("employment.pension").hasErrors
+            && !hasError(form, Messages("cc.claimant.income.current.year.employment.empty")))){ js-hidden } panel-indent panel-indent--gutter">
+
+        @ccInput(
+            field = form("employment.income"),
+            fieldForm = form,
+            args = '_inputClass -> "input--small form-field--inline-spaced-left form-field--inline-spaced-right",
+                '_label -> employmentLabel.toString.replaceAll("""&#x27;""", "'"),
+                '_labelDataAttributes -> "aria-hidden=false",
+                '_errorDataAttributes -> "data-input-name=employment-income",
+                '_error_id -> "employment-error-summary",
+                '_autoComplete -> "off",
+                '_labelTextClass -> "bold-small",
+                '_symbolBefore -> Messages("cc.currency.pound"),
+                '_symbolBeforeId -> "income-poundSymbol",
+                '_symbolAfterId -> "income-year",
+                '_symbolAfter -> Messages("cc.childcare.cost.a.year"),
+                '_containerClass -> "form-field",
+                '_globalErrorKey -> Messages("cc.claimant.income.current.year.employment.empty"),
+                '_form -> form
+        )
+
+        @if(index == 1) {
+            @ccInput(
+                field = form("employment.pension"),
+                fieldForm = form,
+                args = '_inputClass -> "input--small form-field--inline-spaced-left form-field--inline-spaced-right",
+                    '_label -> pensionLabel.toString.replaceAll("""&#x27;""", "'"),
+                    '_labelDataAttributes -> "aria-hidden=false",
+                    '_errorDataAttributes -> "data-input-name=employment-pension",
+                    '_error_id -> "employment-pension-error-summary",
+                    '_autoComplete -> "off",
+                    '_symbolBeforeId -> "pension-poundSymbol",
+                    '_symbolAfterId -> "pension-month",
+                    '_symbolBefore -> Messages("cc.currency.pound"),
+                    '_symbolAfter -> Messages("cc.childcare.cost.a.month"),
+                    '_containerClass -> "form-field",
+                    '_globalErrorKey -> Messages("cc.claimant.income.current.year.parent.pension.higher"),
+                    '_labelTextClass -> "bold-small",
+                    '_form -> form
+            )
+
+        } else {
+            @ccInput(
+                field = form("employment.pension"),
+                fieldForm = form,
+                args = '_inputClass -> "input--small form-field--inline-spaced-left form-field--inline-spaced-right",
+                    '_label -> pensionLabel.toString.replaceAll("""&#x27;""", "'"),
+                    '_labelDataAttributes -> "aria-hidden=false",
+                    '_errorDataAttributes -> "data-input-name=employment-pension",
+                    '_error_id -> "employment-pension-error-summary",
+                    '_autoComplete -> "off",
+                    '_symbolBeforeId -> "pension-poundSymbol",
+                    '_symbolAfterId -> "pension-month",
+                    '_symbolBefore -> Messages("cc.currency.pound"),
+                    '_symbolAfter -> Messages("cc.childcare.cost.a.month"),
+                    '_containerClass -> "form-field",
+                    '_globalErrorKey -> Messages("cc.claimant.income.current.year.partner.pension.higher"),
+                    '_labelTextClass -> "bold-small",
+                    '_form -> form
+            )
+        }
+    </div>
+}
+
+@otherNested = {
+    <div id="other" class="data-other-nested
+            @if((otherSelection == "false")
+            && (!form("other.income").hasErrors
+            && (hasError(form, Messages("cc.claimant.income.current.year.other.empty")).isEmpty))){ js-hidden } panel-indent panel-indent--gutter">
+
+        @ccInput(
+        field = form("other.income"),
+        fieldForm = form,
+        args = '_inputClass -> "input--small form-field--inline-spaced-left",
+            '_label -> otherLabel.toString.replaceAll("""&#x27;""", "'"),
+            '_labelDataAttributes -> "aria-hidden=false",
+            '_errorDataAttributes -> "data-input-name=other-income",
+            '_error_id -> "other-error-summary",
+            '_autoComplete -> "off",
+            '_inputHint -> Messages("cc.claimant.income.current.year.other.income.hint"),
+            '_labelTextClass -> "bold-small",
+            '_symbolBeforeId -> "other-poundSymbol",
+            '_symbolBefore -> Messages("cc.currency.pound"),
+            '_globalErrorKey -> Messages("cc.claimant.income.current.year.other.empty"),
+            '_form -> form
+        )
+    </div>
+}
+
+@benefitsNested = {
+
+    <div id="benefits" class="data-benefits-nested
+         @if((benefitSelection == "false")
+            && (hasError(form, Messages("cc.claimant.income.current.year.partner.benefits.carers.selected")).isEmpty)
+            && (hasError(form, Messages("cc.claimant.income.current.year.parent.benefits.carers.selected")).isEmpty)
+            && (hasError(form, Messages("cc.claimant.income.current.year.parent.benefits.carers.selected")).isEmpty)
+            && !((form("benefits.amount").hasErrors)
+            && (hasError(form, Messages("cc.claimant.income.current.year.benefits.empty")).isEmpty))){ js-hidden } panel-indent panel-indent--gutter">
+        @ccInput(
+        field = form("benefits.amount"),
+        fieldForm = form,
+        args = '_inputClass -> "input--small form-field--inline-spaced-left form-field--inline-spaced-right",
+            '_label -> benefitLabel.toString.replaceAll("""&#x27;""", "'"),
+            '_labelDataAttributes -> "aria-hidden=false",
+            '_errorDataAttributes -> "data-input-name=benefits-amount",
+            '_error_id -> "benefits-error-summary",
+            '_autoComplete -> "off",
+            '_symbolBeforeId -> "benefits-poundSymbol",
+            '_symbolAfterId -> "benefits-month",
+            '_symbolBefore -> Messages("cc.currency.pound"),
+            '_symbolAfter -> Messages("cc.childcare.cost.a.month"),
+            '_labelTextClass -> "bold-small",
+            '_globalErrorKey -> List(Messages("cc.claimant.income.current.year.parent.benefits.carers.selected"),Messages("cc.claimant.income.current.year.partner.benefits.carers.selected"), Messages("cc.claimant.income.current.year.benefits.empty")),
+            '_form -> form
+        )
+    </div>
+}
+
+@titlePage = {
+    @if(index == 1) {
+        @Messages("cc.claimant.income.current.year.parent.heading")
+    } else {
+        @Messages("cc.claimant.income.current.year.partner.heading")
+    }
+}
+
+@cccommon.ccMain(
+    pageTitle = titlePage.toString.replaceAll("""&#x27;""", "'"),
+    heading = titlePage.toString.replaceAll("""&#x27;""", "'"),
+    isBefore = true,
+    subHeading = Some(Messages("cc.claimant.income.current.year.sub.heading", taxYearFrom, taxYearTo))
+) {
+
+    @helpers.form(
+        action = if(index == 1) {controllers.routes.ClaimantIncomeCurrentYearController.onSubmitParent} else {controllers.routes.ClaimantIncomeCurrentYearController.onSubmitPartner},
+        args = 'class -> "form",
+        'autocomplete -> "off",
+        'novalidate -> "",
+        Symbol("data-ccalc-form") -> "true") {
+            @error.ccErrorSummary(Messages("cc.error.title"), form)
+
+            @radio.ccRadioOptions(
+                field = form("selection"),
+                fieldForm = form,
+                radioOptions = Seq(
+                ("true", Messages("cc.radio.yes")),
+                ("false", Messages("cc.radio.no"))),
+                args = '_groupClass -> "form-group inline",
+                    '_radioClass -> "block-label",
+                    '_legendClass -> "visuallyhidden",
+                    '_legend -> Messages("cc.claimant.income.current.year.parent.heading"),
+                    '_nestedContent -> incomeOptionsNested,
+                    '_jsNestedTarget -> "income-options-nested",
+                    '_jsHideNestedOnRadioOption -> "false",
+                    '_dataAttributes -> "data-nested-children=income-options-nested-children",
+                    '_globalErrorKey -> Seq(Messages("cc.claimant.income.current.year.no.selection")))
+
+            @buttons.nextButton(
+                title = "",
+                label = Some(Messages("childcare.button.continue")),
+                hrefMethod = if(index == 1) {Some(controllers.routes.ClaimantIncomeLastYearController.onPageLoadParent)} else {Some(controllers.routes.ClaimantIncomeLastYearController.onPageLoadPartner)}
+            )
+        }
+
+}

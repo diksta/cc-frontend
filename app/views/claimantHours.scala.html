@@ -1,0 +1,55 @@
+@(form : Form[_root_.models.pages.ClaimantHoursPageModel], index: Short)(implicit request:Request[_])
+
+@import play.api.i18n._
+@import uk.gov.hmrc.play.views.html._
+@import views.html.helpers._
+
+@pageTitle = {
+    @if(index == 1) {
+        @Messages("cc.claimant.hours.parent.heading")
+    } else {
+        @Messages("cc.claimant.hours.partner.heading")
+    }
+}
+
+@hoursHint = {
+    @if(index == 1) {
+        @Messages("cc.claimant.hours.parent.hint.text")
+    } else {
+        @Messages("cc.claimant.hours.partner.hint.text")
+    }
+}
+
+@cccommon.ccMain(
+    pageTitle = pageTitle.toString,
+    heading = pageTitle.toString
+) {
+    @helpers.form(
+        action = if(index == 1 ) {controllers.routes.ClaimantHoursController.onSubmitParent} else {controllers.routes.ClaimantHoursController.onSubmitPartner},
+        args = 'class -> "form", 'autocomplete -> "off", 'novalidate -> "") {
+
+        @helpers.errorSummary(Messages("cc.error.title"), form)
+        @ccInput(
+            field = form("hours"),
+            fieldForm = form,
+            args = '_inputClass -> "form-field--inline-spaced-right input--xsmall",
+                '_inputHint -> hoursHint.toString.replaceAll("""&#x27;""", "'"),
+                '_label -> pageTitle.toString,
+                '_labelTextClass -> "visuallyhidden",
+                '_labelDataAttributes -> "aria-hidden=false",
+                '_errorDataAttributes -> "data-input-name=hours",
+                '_error_id -> "hours-error-summary",
+                '_autoComplete -> "off",
+                '_form -> form,
+                '_symbolAfter -> Messages("cc.claimant.hours.hoursText")
+            )
+
+        @buttons.nextButton(
+            title = "",
+            label = Some(Messages("childcare.button.continue")),
+            hrefMethod = if(index == 1) {Some(controllers.routes.ClaimantIncomeCurrentYearController.onPageLoadParent)} else {Some(controllers.routes.ClaimantIncomeCurrentYearController.onPageLoadPartner)}
+        )
+
+    }
+}
+

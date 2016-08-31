@@ -1,0 +1,30 @@
+@(form : Form[_], inputClass : String, errorKey : Option[String], elements : views.html.helper.FieldElements)
+
+@import utils.HasError._
+
+
+@globalErrorConstraint(form : Form[_], inputClass : String, errorKey : Option[String], elements : views.html.helper.FieldElements) = {
+    @{errorKey match {
+        case Some(x) => { if((form.hasGlobalErrors || form.hasErrors) && hasError(form, x)){ inputClass } }
+        case _ => {
+            if(elements.args.get('_globalErrorKey).isDefined) {
+                elements.args.get('_globalErrorKey).map {
+                    case x : List[_] =>
+                    val errorList = x.filter(_.isInstanceOf[String])
+                    if(!errorList.isEmpty) {
+                        val errorOccured = !errorList.map(_.toString).filter(y => hasError(form, y)).isEmpty
+                        if((form.hasGlobalErrors || form.hasErrors) && errorOccured)
+                        inputClass
+                    }
+
+                    case value : String =>
+                        if((form.hasGlobalErrors || form.hasErrors) && hasError(form, value)){
+                            inputClass
+                        }
+                    case _ =>
+                }
+            }
+        }
+    }}
+}
+@globalErrorConstraint(form, inputClass, errorKey, elements)

@@ -1,0 +1,17 @@
+$is-ie: true;
+$ie-version: 6;
+$mobile-ie6: false;
+
+@import "cc";
+
+.grid-row .column-third.compare-sidebar {
+	width: 31% !important;
+}
+
+.no-float {
+	float: none !important;
+}
+
+.button {
+	margin-top: 20px;
+}

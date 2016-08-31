@@ -1,0 +1,80 @@
+@(form : Form[_root_.models.pages.ChildDetailsPageModel], index:Int, ordinalNumber:String, backUrl : Call)(implicit request:Request[_])
+
+@import play.api.i18n._
+@import uk.gov.hmrc.play.views.html._
+@import views.html.helpers._
+@import views.html.helpers.checkbox._
+
+
+@disabledNested = {
+<span class='bullets-child'>
+    <span class="list-child-bullet">@Messages("cc.child.details.benefits.disability.allowance")</span>
+    <span class="list-child-bullet">@Messages("cc.child.details.benefits.disability.payment")</span>
+</span>
+}
+@severeDisabledNested = {
+<span class='bullets-child'>
+    <span class="list-child-bullet">@Messages("cc.child.details.benefits.severely.disability.allowance")</span>
+    <span class="list-child-bullet">@Messages("cc.child.details.benefits.severely.disability.payment")</span>
+</span>
+}
+
+
+@cccommon.ccMain(
+    pageTitle = Messages("cc.child.details.heading",index.toString),
+    heading = Messages("cc.child.details.heading", index.toString)
+) {
+    @helpers.form(
+    action = controllers.routes.ChildDetailsController.onSubmit(index),
+    args = 'class -> "form", 'autocomplete -> "off", 'novalidate -> "") {
+        @helpers.errorSummary(Messages("cc.error.title"), form)
+
+        @date.dateFieldsFree(
+            formItem = form,
+            fieldName = "dateOfBirth",
+            label = Html(Messages("cc.child.details.date.of.birth",ordinalNumber)),
+            isNested = false,
+            '_groupClass -> "form-date form-group dateOfBirth",
+            '_idName -> "dateOfBirth",
+            '_hintText -> Messages("cc.date.child.example"),
+            '_hintId -> "dateOfBirth-hint",
+            '_legendClass -> "bold-small"
+        )
+
+    <fieldset id="@{form("disability").id}" class='form-group @globalErrors.ccGlobalErrorHelper(form, "form-field--error", Some("some.custom.global.constraint"), null) @if(form("disability").hasErrors) {form-field--error}'>
+        <legend class="bold-small">
+            @Messages("cc.child.details.benefits", index.toString)
+        </legend>
+        <span class="form-hint">@Messages("cc.select.all.that.apply")</span>
+
+        @if(form("disability").errors.nonEmpty) {
+            @form("disability").errors.map { error =>
+                @helpers.errorInline("disability", Messages(error.message))
+            }
+        }
+
+        @ccSingleCheckbox(
+            form("disability.benefitDisabled"),
+            '_label -> Messages("cc.child.details.benefits.disability.group"),
+            '_nested -> disabledNested,
+            '_multiLine -> true
+        )
+        @ccSingleCheckbox(
+            form("disability.benefitSevereDisabled"),
+            '_label -> Messages("cc.child.details.benefits.severely.disability.group"),
+            '_nested -> severeDisabledNested,
+            '_multiLine -> true
+        )
+        @ccSingleCheckbox(form("disability.benefitBlind"), '_label -> Messages("cc.child.details.benefits.blind"))
+        <p class="form-block">@Messages("cc.or")</p>
+        @ccSingleCheckbox(form("disability.benefitNone"), '_label -> Messages("cc.child.details.benefits.none"))
+    </fieldset>
+
+        @buttons.nextButton(
+            title = "",
+            label = Some(Messages("childcare.button.continue")),
+            hrefMethod = Some(backUrl)
+        )
+
+    }
+}

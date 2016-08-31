@@ -1,0 +1,38 @@
+@(form : Form[Option[String]], backUrl : Call)(implicit request:Request[_])
+
+@import play.api.i18n._
+@import uk.gov.hmrc.play.views.html._
+@import views.html.helpers._
+
+@cccommon.ccMain(
+    pageTitle = Messages("cc.claimant.where.do.you.live.heading"),
+    heading = Messages("cc.claimant.where.do.you.live.heading")
+) {
+    @helpers.form(
+    action = controllers.routes.ClaimantLocationController.onSubmit,
+    args = 'class -> "form", 'autocomplete -> "off", 'novalidate -> "") {
+
+    @helpers.errorSummary(Messages("cc.error.title"), form)
+
+    @radio.ccRadioOptions(
+    field = form("whereDoYouLive"),
+    fieldForm = form,
+    radioOptions = Seq(
+        ("england", Messages("cc.claimant.where.do.you.live.england")),
+        ("scotland", Messages("cc.claimant.where.do.you.live.scotland")),
+        ("wales", Messages("cc.claimant.where.do.you.live.wales")),
+        ("northern-ireland", Messages("cc.claimant.where.do.you.live.northern.ireland"))),
+            args = '_groupClass -> "form-group",
+            '_radioClass -> "block-label",
+            '_legendClass -> "visuallyhidden",
+            '_legend -> Messages("cc.claimant.where.do.you.live.heading"),
+            '_globalErrorKey -> Messages("cc.claimant.where.do.you.live.no.selection")
+            )
+
+    @buttons.nextButton(
+    title = "",
+    label = Some(Messages("childcare.button.continue")),
+    hrefMethod = Some(backUrl)
+    )
+  }
+}

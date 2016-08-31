@@ -1,0 +1,35 @@
+@(field: play.api.data.Field, args: (Symbol,Any)*)(implicit lang: play.api.i18n.Lang)
+
+@import play.api.i18n._
+@import views.html.helper._
+@import uk.gov.hmrc.play.views.html._
+
+@elements = @{ new FieldElements(field.id, field, null, args.toMap, lang) }
+@value = @{ field.value match { case Some(x) => x case None => "false" case x => x }}
+@carersAllowance = @{elements.args.get('_customCheckboxCheck)}
+
+<label for="@elements.id" id="label@elements.id"
+        @if(value=="true"){ class="@if(elements.args.contains('_labelClass)){@elements.args.get('_labelClass)} block-label selected"} else { class="@if(elements.args.contains('_labelClass)){@elements.args.get('_labelClass)} block-label"}
+>
+    @elements.errors(elements.lang).map { error =>
+    @helpers.errorInline({elements.field.name.replaceAll("""[\.\[\]]""", "-")}, Messages(error))
+    }
+
+    <span class="@if(elements.args.contains('_nested)){bold-small}">@elements.label</span>
+
+    @if(elements.args.contains('_nested)) {
+        @elements.args.get('_nested)
+    }
+
+    <input type="checkbox" id="@elements.id" name="@elements.field.name" value="true"
+           @if(elements.args.get('_multiLine)){class = "vertically-aligned-input top-aligned-input multi-line-checkbox @if(elements.args.get('_inputClass)){@elements.args.get('_inputClass)}"}
+           @if(elements.args.contains('_jsHideNestedOnCheckbox)){ data-dynamic-fields-hide="@elements.args.get('_jsHideNestedOnCheckbox)"}
+            @if(elements.args.contains('_dataAttributes) ){@elements.args.get('_dataAttributes)}
+            @if(elements.args.contains('_jsNestedTarget)) { data-dynamic-fields="@elements.args.get('_jsNestedTarget)"}
+            @if((value.toString=="true") || (carersAllowance)){checked="checked"}" aria-labelledby="label@elements.id" />
+
+</label>
+@*Nested content, js panel indent *@
+@if(elements.args.get('_nestedContent)) {
+    @elements.args.get('_nestedContent)
+}

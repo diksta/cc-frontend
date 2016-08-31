@@ -1,0 +1,61 @@
+GET    	    /                	                        controllers.CCController.onPageLoad
+GET         /error                                      controllers.CCController.loadDifficulties
+
+GET         /children/number                            controllers.HowManyChildrenController.onPageLoad
+POST        /children/number                            controllers.HowManyChildrenController.onSubmit
+
+GET         /children/details/:index                    controllers.ChildDetailsController.onPageLoad(index: Int)
+POST        /children/details/:index                    controllers.ChildDetailsController.onSubmit(index: Int)
+
+GET         /children/cost/:index                       controllers.ChildCareCostController.onPageLoad(index: Int)
+POST        /children/cost/:index                       controllers.ChildCareCostController.onSubmit(index: Int)
+
+GET         /parent/benefits                            controllers.ClaimantBenefitsController.onPageLoadParent
+POST        /parent/benefits                            controllers.ClaimantBenefitsController.onSubmitParent
+
+GET         /parent/income/last                         controllers.ClaimantIncomeLastYearController.onPageLoadParent
+POST        /parent/income/last                         controllers.ClaimantIncomeLastYearController.onSubmitParent
+
+GET         /parent/income/current                      controllers.ClaimantIncomeCurrentYearController.onPageLoadParent
+POST        /parent/income/current                      controllers.ClaimantIncomeCurrentYearController.onSubmitParent
+
+GET         /parent/hours                               controllers.ClaimantHoursController.onPageLoadParent
+POST        /parent/hours                               controllers.ClaimantHoursController.onSubmitParent
+
+GET         /parent/location                            controllers.ClaimantLocationController.onPageLoad
+POST        /parent/location                            controllers.ClaimantLocationController.onSubmit
+
+GET         /parent/liveWithPartner                     controllers.DoYouLiveWithPartnerController.onPageLoad
+POST        /parent/liveWithPartner                     controllers.DoYouLiveWithPartnerController.onSubmit
+
+GET         /parent/escVouchers                         controllers.ESCVouchersController.onPageLoadParent
+POST        /parent/escVouchers                         controllers.ESCVouchersController.onSubmitParent
+
+GET         /partner/benefits                           controllers.ClaimantBenefitsController.onPageLoadPartner
+POST        /partner/benefits                           controllers.ClaimantBenefitsController.onSubmitPartner
+
+GET         /partner/income/current                      controllers.ClaimantIncomeCurrentYearController.onPageLoadPartner
+POST        /partner/income/current                      controllers.ClaimantIncomeCurrentYearController.onSubmitPartner
+
+GET         /partner/income/last                        controllers.ClaimantIncomeLastYearController.onPageLoadPartner
+POST        /partner/income/last                        controllers.ClaimantIncomeLastYearController.onSubmitPartner
+
+GET         /partner/hours                              controllers.ClaimantHoursController.onPageLoadPartner
+POST        /partner/hours                              controllers.ClaimantHoursController.onSubmitPartner
+
+GET         /partner/escVouchers                        controllers.ESCVouchersController.onPageLoadPartner
+POST        /partner/escVouchers                        controllers.ESCVouchersController.onSubmitPartner
+
+GET         /household/benefits                         controllers.HouseholdBenefitsController.onPageLoad
+POST        /household/benefits                         controllers.HouseholdBenefitsController.onSubmit
+
+GET         /schemes/result                             controllers.ResultsController.onPageLoad
+
+GET         /emailRegistration/keep-me-updated          controllers.EmailRegistrationController.onPageLoad
+POST        /emailRegistration/keep-me-updated          controllers.EmailRegistrationController.onSubmit
+
+GET         /emailRegistration/freeEntitlement          controllers.EmailRegistrationController.onPageLoadFreeEntitlement
+POST        /emailRegistration/freeEntitlement          controllers.EmailRegistrationController.onSubmitFreeEntitlement
+
+GET         /public/assets/*file                        controllers.Public.at(path="/public", file)
+GET         /assets/*file                               controllers.DevAssets.at(path="app/assets", file)

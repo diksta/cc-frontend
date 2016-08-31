@@ -1,0 +1,22 @@
+@if $is-ie and ($ie-version == 7 or $ie-version == 6) {
+
+	.clearfix {
+		display: block;
+		height: 1px;
+		visibility: hidden;
+		width: 100%;
+		clear: both;
+	}
+
+} @else {
+	
+	.clearfix:after {
+		visibility: hidden;
+		display: block;
+		font-size: 0;
+		content: " ";
+		clear: both;
+		height: 0;
+	}
+	
+}

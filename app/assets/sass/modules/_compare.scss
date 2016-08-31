@@ -1,0 +1,269 @@
+.service-highlight {
+    background: $panel-colour;
+    padding: $gutter-half;
+
+
+    .service-highlight-right {
+        margin-top: 12px;
+    }
+
+    .service-highlight__content {
+        padding: 0 1%;
+    }
+
+    @include media(mobile) {
+        .service-highlight-right {
+            margin-top: 20px;
+        }
+    }
+
+    .column-third {
+
+        span {
+            display: block;
+        }
+
+        .government-contribution {
+            margin-bottom: $gutter-half;
+
+        }
+
+        @media (max-width: 830px) {
+            .scaling-cost {
+                font-size: 22px;
+            }
+        }
+
+        @include media(mobile) {
+
+            span {
+                text-align: left;
+            }
+
+            .parent-contribution span {
+                text-align: right;
+            }
+
+            .government-contribution {
+                width: 50%;
+                float: left;
+            }
+
+            .parent-contribution {
+                width: 49%;
+                float: left;
+            }
+
+        }
+
+    }
+}
+
+.compare-main .compare-main__eligibility {
+    margin-bottom: 25px;
+}
+.column-two-thirds.column-two-thirds__no_padding.compare-main {
+    padding-right: $gutter-half;
+
+    @include media(mobile) {
+        padding-right: 0;
+    }
+}
+
+.service-information {
+    @extend .service-highlight;
+    background: $highlight-colour;
+    padding: 25px $gutter-half $gutter-half $gutter-half;
+
+    .no-margin__bottom {
+        margin-bottom: 0;
+    }
+}
+
+.service-highlight-left, .service-highlight-right {
+    box-sizing: initial;
+}
+
+.align-text--right {
+    text-align: right;
+}
+
+.blue--emphasis {
+    color: $hm-government;
+}
+
+.service-container {
+    border-bottom: 1px solid $link-colour;
+    margin-bottom: $gutter-half;
+    @include media(mobile) {
+        border-bottom: none;
+    }
+}
+
+.information-warning {
+    margin: $gutter-half 0;
+    position: relative;
+    display: table;
+    width: 100%;
+}
+
+.information-warning__detail {
+    display: block;
+    float: left;
+
+    p {
+        margin-top: 0;
+    }
+
+    p:last-child {
+        margin-bottom: 0;
+    }
+}
+
+@if $is-ie and ($ie-version == 6 or $ie-version == 7) {
+    .icon-information, .icon-warning {
+        display: block;
+        width: 5%;
+        height: 27px;
+        float: left;
+        padding-right: 2%;
+        min-height: $gutter;
+    }
+
+    .information-warning__detail {
+        width: 93%;
+        float: left;
+    }
+}
+
+.small-blue-top-border {
+    border-top: 3px solid $hm-government;
+}
+
+.border-none {
+    border-bottom: none;
+}
+
+.compare-tabs {
+    height: 41px;
+    width: 100%;
+    border-bottom: 1px solid $border-colour;
+    margin: 20px 0 10px 0;
+
+    .tab-option {
+        width: auto;
+        display: block;
+        float: left;
+        padding: 10px;
+    }
+
+    .tab-option.active {
+        border: 1px solid $border-colour;
+        border-bottom: 1px solid $white;
+        text-decoration: none;
+        color: #000;
+    }
+
+    @include media(mobile) {
+        .tab-option {
+            width: 49%;
+            text-align: center;
+            padding: 10px 0;
+        }
+    }
+}
+
+@include media(mobile) {
+    .compare-tabs {
+        height: 37px;
+    }
+
+    .compare-sidebar {
+        padding: 0;
+    }
+}
+
+.panel-indent__warning {
+    margin: $gutter-half 0;
+    position: relative;
+    display: table;
+    width: 100%;
+    color: $error-colour;
+
+    p {
+        margin-top: 0;
+    }
+
+    p:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.panel-indent__warning:first-child, .panel-indent__warning #child-qualification-over-12 {
+    margin-top: 0;
+}
+
+.panel-indent__warning p {
+    padding-right: $gutter-half;
+}
+.service-information .panel-indent__warning p {
+    padding-right: 0;
+}
+
+// Remove bottom margin on last paragraph
+.panel-indent__warning p:only-child,
+.panel-indent__warning p:last-child {
+  margin-bottom: 0;
+}
+
+.panel-indent__warning .form-group:last-child {
+  margin-bottom: 0;
+}
+
+.tfc-how-could-it-help {
+    margin: 0 0 $gutter-half $gutter-half;
+    list-style-type: disc;
+    list-style-position: inside;
+}
+
+.compare-aside-children, .compare-aside-email {
+    padding: $gutter-half 0 45px 0;
+
+    .compare-aside-children-table {
+        margin-bottom: $gutter-half;
+
+        td {
+            word-break: normal;
+        }
+    }
+}
+
+.service-highlight-left, .service-highlight-right {
+    padding: 0 1%;
+}
+
+.service-highlight-left {
+    width: 100%;
+}
+
+.service-highlight-right {
+    width: 100%;
+}
+
+@include media(tablet) {
+    .service-highlight-left, .service-highlight-right {
+        padding: 0 1%;
+    }
+
+    .service-highlight-left {
+        width: 59%;
+    }
+
+    .service-highlight-right {
+        width: 36%;
+    }
+}
+
+aside {
+    border-top: none;
+}

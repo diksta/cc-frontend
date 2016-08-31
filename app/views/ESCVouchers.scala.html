@@ -1,0 +1,44 @@
+@(form : Form[Option[String]], index: Short)(implicit request:Request[_])
+
+@import play.api.i18n._
+@import uk.gov.hmrc.play.views.html._
+@import views.html.helpers._
+
+@pageTitle = {
+    @if(index == 1) {
+        @Messages("cc.do.you.get.vouchers.title")
+    } else {
+        @Messages("cc.do.they.get.vouchers.title")
+    }
+}
+
+@cccommon.ccMain(
+    pageTitle = pageTitle.toString.replaceAll("""&#x27;""", "'"),
+    heading = pageTitle.toString.replaceAll("""&#x27;""", "'")
+) {
+    @helpers.form(
+    action = if(index == 1 ) {controllers.routes.ESCVouchersController.onSubmitParent} else {controllers.routes.ESCVouchersController.onSubmitPartner},
+    args = 'class -> "form", 'autocomplete -> "off", 'novalidate -> "") {
+
+    @helpers.errorSummary(Messages("cc.error.title"), form)
+
+    @radio.ccRadioOptions(
+        field = form("doYouGetVouchers"),
+        fieldForm = form,
+        radioOptions = Seq(
+            ("Yes", Messages("cc.radio.yes")),
+            ("No", Messages("cc.radio.no")),
+            ("notSure", Messages("cc.do.you.get.vouchers.not.sure"))),
+                args = '_groupClass -> "form-group",
+                '_radioClass -> "block-label",
+                '_globalErrorKey -> Messages("cc.do.you.get.vouchers.selection")
+    )
+
+    @buttons.nextButton(
+        title = "",
+        label = Some(Messages("childcare.button.continue")),
+        hrefMethod = if(index ==1) {Some(controllers.routes.ClaimantHoursController.onPageLoadParent)} else {Some(controllers.routes.ClaimantHoursController.onPageLoadPartner)}
+    )
+
+}
+}
