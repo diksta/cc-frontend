@@ -7,7 +7,6 @@ import scala.util.Properties.envOrElse
 object FrontendBuild extends Build with MicroService {
 
   val appName = "cc-frontend"
-  val appVersion = envOrElse("CC_FRONTEND_VERSION", "999-SNAPSHOT")
 
   override lazy val appDependencies: Seq[ModuleID] = AppDependencies()
 
