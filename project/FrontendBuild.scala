@@ -7,7 +7,6 @@ import scala.util.Properties.envOrElse
 object FrontendBuild extends Build with MicroService {
 
   val appName = "cc-frontend"
-
   override lazy val appDependencies: Seq[ModuleID] = AppDependencies()
 
   // play settings
