@@ -1,4 +1,7 @@
 cc-frontend
+[![Build Status](https://travis-ci.org/hmrc/cc-frontend.svg)](https://travis-ci.org/hmrc/cc-frontend) 
+[ ![Download](https://api.bintray.com/packages/hmrc/releases/cc-frontend/images/download.svg) ]
+(https://bintray.com/hmrc/releases/cc-frontend/_latestVersion)
 =============
 Childcare Calculator Frontend Micro-service.
 
