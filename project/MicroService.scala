@@ -15,7 +15,6 @@ trait MicroService {
   import TestPhases._
 
   val appName: String
-  val appVersion: String
 
   lazy val appDependencies : Seq[ModuleID] = ???
   lazy val plugins : Seq[Plugins] = Seq(play.PlayScala)
@@ -58,22 +57,21 @@ trait MicroService {
     )
   }
 
+
   lazy val microservice = Project(appName, file("."))
     .enablePlugins(plugins : _*)
-    .settings(playSettings ++ scoverageSettings : _*)
-    .settings(version := appVersion)
-    .settings(scalaSettings: _*)
+    .settings(playSettings : _*)
+    .settings(scoverageSettings : _*)
     .settings(publishingSettings: _*)
+    .settings(scalaSettings: _*)
     .settings(defaultSettings(): _*)
     .settings(
       targetJvm := "jvm-1.8",
-      shellPrompt := ShellPrompt(appVersion),
       libraryDependencies ++= appDependencies,
       parallelExecution in Test := false,
       fork in Test := false,
       retrieveManaged := true
     )
-    .settings(publishingSettings: _*)
     .settings(inConfig(TemplateTest)(Defaults.testSettings): _*)
     .configs(IntegrationTest)
     .settings(inConfig(TemplateItTest)(Defaults.itSettings): _*)
@@ -83,7 +81,6 @@ trait MicroService {
       addTestReportOption(IntegrationTest, "int-test-reports"),
       testGrouping in IntegrationTest := oneForkedJvmPerTest((definedTests in IntegrationTest).value),
       parallelExecution in IntegrationTest := false)
-    .disablePlugins(sbt.plugins.JUnitXmlReportPlugin)
     .settings(resolvers += Resolver.bintrayRepo("hmrc", "releases"))
     .enablePlugins(SbtDistributablesPlugin, SbtAutoBuildPlugin, SbtGitVersioning)
 }
