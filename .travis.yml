@@ -1,5 +1,4 @@
 sudo: false
-install: ./setupgrunt.sh
 language: scala
 scala:
 - 2.11.6
