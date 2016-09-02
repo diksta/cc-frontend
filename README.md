@@ -27,7 +27,7 @@ Calculator Frontend service to display to the user.
 
 
 cc-frontend - getting started
------------------------------
+------------------------------
 The application uses [Grunt](http://gruntjs.com/) to manage the assets and perform pre-deployment compilation of custom stylesheets/javascript files etc.
 
 ### Configuring Grunt + NodeJS + NPM (Node package manager)
