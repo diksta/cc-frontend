@@ -18,13 +18,14 @@
         @ccInput(
             field = form("numberOfChildren"),
             fieldForm = form,
-            args = '_inputClass -> "input--xxsmall",
+            args = '_inputClass -> "input--xxsmall input--no-spinner",
                 '_label -> Messages("cc.how.many.children.heading"),
                 '_labelTextClass -> "visuallyhidden",
                 '_labelDataAttributes -> "aria-hidden=false",
                 '_errorDataAttributes -> "data-input-name=numberOfChildren",
                 '_error_id -> "numberOfChildren-error-summary",
                 '_autoComplete -> "off",
+                '_type -> "number",
                 '_form -> form
             )
 

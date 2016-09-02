@@ -112,7 +112,7 @@
         @ccInput(
             field = form("employment.income"),
             fieldForm = form,
-            args = '_inputClass -> "input--small form-field--inline-spaced-left form-field--inline-spaced-right",
+            args = '_inputClass -> "input--small form-field--inline-spaced-left form-field--inline-spaced-right input--no-spinner",
                 '_label -> employmentLabel.toString.replaceAll("""&#x27;""", "'"),
                 '_labelDataAttributes -> "aria-hidden=false",
                 '_errorDataAttributes -> "data-input-name=employment-income",
@@ -124,6 +124,7 @@
                 '_symbolAfterId -> "income-year",
                 '_symbolAfter -> Messages("cc.childcare.cost.a.year"),
                 '_containerClass -> "form-field",
+                '_type -> "number",
                 '_globalErrorKey -> Messages("cc.claimant.income.current.year.employment.empty"),
                 '_form -> form
         )
@@ -132,7 +133,7 @@
             @ccInput(
                 field = form("employment.pension"),
                 fieldForm = form,
-                args = '_inputClass -> "input--small form-field--inline-spaced-left form-field--inline-spaced-right",
+                args = '_inputClass -> "input--small form-field--inline-spaced-left form-field--inline-spaced-right input--no-spinner",
                     '_label -> pensionLabel.toString.replaceAll("""&#x27;""", "'"),
                     '_labelDataAttributes -> "aria-hidden=false",
                     '_errorDataAttributes -> "data-input-name=employment-pension",
@@ -143,6 +144,7 @@
                     '_symbolBefore -> Messages("cc.currency.pound"),
                     '_symbolAfter -> Messages("cc.childcare.cost.a.month"),
                     '_containerClass -> "form-field",
+                    '_type -> "number",
                     '_globalErrorKey -> Messages("cc.claimant.income.current.year.parent.pension.higher"),
                     '_labelTextClass -> "bold-small",
                     '_form -> form
@@ -152,7 +154,7 @@
             @ccInput(
                 field = form("employment.pension"),
                 fieldForm = form,
-                args = '_inputClass -> "input--small form-field--inline-spaced-left form-field--inline-spaced-right",
+                args = '_inputClass -> "input--small form-field--inline-spaced-left form-field--inline-spaced-right input--no-spinner",
                     '_label -> pensionLabel.toString.replaceAll("""&#x27;""", "'"),
                     '_labelDataAttributes -> "aria-hidden=false",
                     '_errorDataAttributes -> "data-input-name=employment-pension",
@@ -165,6 +167,7 @@
                     '_containerClass -> "form-field",
                     '_globalErrorKey -> Messages("cc.claimant.income.current.year.partner.pension.higher"),
                     '_labelTextClass -> "bold-small",
+                    '_type -> "number",
                     '_form -> form
             )
         }
@@ -180,7 +183,7 @@
         @ccInput(
         field = form("other.income"),
         fieldForm = form,
-        args = '_inputClass -> "input--small form-field--inline-spaced-left",
+        args = '_inputClass -> "input--small form-field--inline-spaced-left input--no-spinner",
             '_label -> otherLabel.toString.replaceAll("""&#x27;""", "'"),
             '_labelDataAttributes -> "aria-hidden=false",
             '_errorDataAttributes -> "data-input-name=other-income",
@@ -190,6 +193,7 @@
             '_labelTextClass -> "bold-small",
             '_symbolBeforeId -> "other-poundSymbol",
             '_symbolBefore -> Messages("cc.currency.pound"),
+            '_type -> "number",
             '_globalErrorKey -> Messages("cc.claimant.income.current.year.other.empty"),
             '_form -> form
         )
@@ -208,7 +212,7 @@
         @ccInput(
         field = form("benefits.amount"),
         fieldForm = form,
-        args = '_inputClass -> "input--small form-field--inline-spaced-left form-field--inline-spaced-right",
+        args = '_inputClass -> "input--small form-field--inline-spaced-left form-field--inline-spaced-right input--no-spinner",
             '_label -> benefitLabel.toString.replaceAll("""&#x27;""", "'"),
             '_labelDataAttributes -> "aria-hidden=false",
             '_errorDataAttributes -> "data-input-name=benefits-amount",
@@ -219,6 +223,7 @@
             '_symbolBefore -> Messages("cc.currency.pound"),
             '_symbolAfter -> Messages("cc.childcare.cost.a.month"),
             '_labelTextClass -> "bold-small",
+            '_type -> "number",
             '_globalErrorKey -> List(Messages("cc.claimant.income.current.year.parent.benefits.carers.selected"),Messages("cc.claimant.income.current.year.partner.benefits.carers.selected"), Messages("cc.claimant.income.current.year.benefits.empty")),
             '_form -> form
         )

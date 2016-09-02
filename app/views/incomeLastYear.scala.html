@@ -78,7 +78,7 @@
 }
 
 @ccInputDynamic(field: play.api.data.Field,
-        inputClass : Option[String] = Some("input--small form-field--inline-spaced-left"),
+        inputClass : Option[String] = Some("input--small form-field--inline-spaced-left input--no-spinner"),
         label: String,
         errorAttr: String,
         errorID: String,
@@ -98,6 +98,7 @@
         '_labelTextClass -> "bold-small",
         '_symbolBefore -> Messages("cc.currency.pound"),
         '_symbolBeforeId -> symbolBeforeID,
+        '_type -> "number",
         '_symbolAfterId -> symbolAfterID,
         '_symbolAfter -> symbolAfterText,
         '_globalErrorKey -> globalError,
