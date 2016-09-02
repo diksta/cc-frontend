@@ -143,16 +143,16 @@ class ChildDetailsControllerSpec extends UnitSpec with MockitoSugar with FakeCCA
     "load template when there is child object is present in keystore - child list has 2 children - child 1 age is between 15 and 16" in {
       val currentCalendar = Calendar.getInstance()
       currentCalendar.clear()
-      currentCalendar.setTime(LocalDate.now().minusYears(16).toDate)
+      currentCalendar.setTime(LocalDate.now().minusYears(15).toDate)
       val periodYear = currentCalendar.get(Calendar.YEAR)
 
-      val juneCalendar = Calendar.getInstance()
-      juneCalendar.clear()
-      juneCalendar.set(Calendar.YEAR, periodYear)
-      juneCalendar.set(Calendar.MONTH, Calendar.JUNE)
-      juneCalendar.set(Calendar.DAY_OF_MONTH, 20)
+      val octoberCalendar = Calendar.getInstance()
+      octoberCalendar.clear()
+      octoberCalendar.set(Calendar.YEAR, periodYear)
+      octoberCalendar.set(Calendar.MONTH, Calendar.OCTOBER)
+      octoberCalendar.set(Calendar.DAY_OF_MONTH, 20)
 
-      val dateString = juneCalendar.get(Calendar.YEAR).toString+"-04-14"
+      val dateString = octoberCalendar.get(Calendar.YEAR).toString+"-04-14"
       val formatter = DateTimeFormat.forPattern("yyyy-MM-dd")
       val dateOfBirth = LocalDate.parse(dateString, formatter)
 

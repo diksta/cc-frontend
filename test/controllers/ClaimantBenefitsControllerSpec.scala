@@ -178,16 +178,16 @@ class ClaimantBenefitsControllerSpec extends UnitSpec with MockitoSugar with Fak
       "load the template(claimant benefits) when there is Some(value) for claimant in keystore - child age is between 15 and 16" in {
         val currentCalendar = Calendar.getInstance()
         currentCalendar.clear()
-        currentCalendar.setTime(LocalDate.now().minusYears(16).toDate)
+        currentCalendar.setTime(LocalDate.now().minusYears(15).toDate)
         val periodYear = currentCalendar.get(Calendar.YEAR)
 
-        val juneCalendar = Calendar.getInstance()
-        juneCalendar.clear()
-        juneCalendar.set(Calendar.YEAR, periodYear)
-        juneCalendar.set(Calendar.MONTH, Calendar.JUNE)
-        juneCalendar.set(Calendar.DAY_OF_MONTH, 20)
+        val octoberCalendar = Calendar.getInstance()
+        octoberCalendar.clear()
+        octoberCalendar.set(Calendar.YEAR, periodYear)
+        octoberCalendar.set(Calendar.MONTH, Calendar.OCTOBER)
+        octoberCalendar.set(Calendar.DAY_OF_MONTH, 20)
 
-        val dateString = juneCalendar.get(Calendar.YEAR).toString+"-04-14T00:00:00"
+        val dateString = octoberCalendar.get(Calendar.YEAR).toString+"-04-14T00:00:00"
         val formatter = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss")
         val dateOfBirth = LocalDate.parse(dateString, formatter)
 
