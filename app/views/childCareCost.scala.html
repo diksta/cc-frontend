@@ -31,7 +31,7 @@
             @ccInput(
                 field = form("childCareCost"),
                 fieldForm = form,
-                args = '_inputClass -> "form-field--inline-spaced-right form-field--inline-spaced-left input--small",
+                args = '_inputClass -> "form-field--inline-spaced-right form-field--inline-spaced-left input--small input--no-scroll",
                     '_label -> Messages("cc.childcare.cost.heading", index),
                     '_labelTextClass -> "visuallyhidden",
                     '_labelDataAttributes -> "aria-hidden=false",
@@ -40,6 +40,7 @@
                     '_autoComplete -> "off",
                     '_symbolBeforeId -> "poundSymbol",
                     '_symbolAfterId -> "month",
+                    '_type -> "number",
                     '_symbolBefore -> Messages("cc.currency.pound"),
                     '_symbolAfter -> Messages("cc.childcare.cost.a.month"),
                     '_inputHint -> Messages("cc.childcare.cost.hint.text"))
