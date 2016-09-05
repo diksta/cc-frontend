@@ -49,7 +49,7 @@ class ClaimantHoursControllerSpec extends UnitSpec with MockitoSugar with FakeCC
     "GET" should {
 
       "not respond with NOT_FOUND" in {
-        val result = route(FakeRequest(GET, "/childcare-calculator/parent/hours"))
+        val result = route(FakeRequest(GET, "/childcare-calculator-qa/parent/hours"))
         result.isDefined shouldBe true
         status(result.get) should not be NOT_FOUND
     }
@@ -75,7 +75,7 @@ class ClaimantHoursControllerSpec extends UnitSpec with MockitoSugar with FakeCC
         when(mockController.cacheClient.loadClaimants()(any(), any())).thenReturn(Future.successful(None))
         val result = await(mockController.onPageLoadParent()(request))
         status(result) shouldBe Status.SEE_OTHER
-        result.header.headers.get("Location").get shouldBe "/childcare-calculator/parent/benefits"
+        result.header.headers.get("Location").get shouldBe "/childcare-calculator-qa/parent/benefits"
       }
 
       "load template when there is claimant object is present and hours is None in keystore" in {
@@ -222,13 +222,13 @@ class ClaimantHoursControllerSpec extends UnitSpec with MockitoSugar with FakeCC
     "POST" should {
 
       "not respond with NOT_FOUND (Parent)" in {
-        val result = route(FakeRequest(POST, "/childcare-calculator/parent/hours"))
+        val result = route(FakeRequest(POST, "/childcare-calculator-qa/parent/hours"))
         result.isDefined shouldBe true
         status(result.get) should not be NOT_FOUND
       }
 
       "not respond with NOT_FOUND (Partner)" in {
-        val result = route(FakeRequest(POST, "/childcare-calculator/partner/hours"))
+        val result = route(FakeRequest(POST, "/childcare-calculator-qa/partner/hours"))
         result.isDefined shouldBe true
         status(result.get) should not be NOT_FOUND
       }
@@ -310,7 +310,7 @@ class ClaimantHoursControllerSpec extends UnitSpec with MockitoSugar with FakeCC
         val request = FakeRequest("POST", "").withFormUrlEncodedBody(form.data.toSeq: _*) .withSession(mockController.sessionProvider.generateSessionId())
         val result = await(mockController.onSubmitParent(request))
         status(result) shouldBe Status.SEE_OTHER
-        result.header.headers.get("Location").get shouldBe "/childcare-calculator/parent/location"
+        result.header.headers.get("Location").get shouldBe "/childcare-calculator-qa/parent/location"
       }
 
       "redirect to do you live with a partner template where parent hours is 0 and children do not qualify for free entitlement" in {
@@ -389,7 +389,7 @@ class ClaimantHoursControllerSpec extends UnitSpec with MockitoSugar with FakeCC
         val request = FakeRequest("POST", "").withFormUrlEncodedBody(form.data.toSeq: _*) .withSession(mockController.sessionProvider.generateSessionId())
         val result = await(mockController.onSubmitParent(request))
         status(result) shouldBe Status.SEE_OTHER
-        result.header.headers.get("Location").get shouldBe "/childcare-calculator/parent/liveWithPartner"
+        result.header.headers.get("Location").get shouldBe "/childcare-calculator-qa/parent/liveWithPartner"
       }
 
       "redirect to household benefits template where partner hours is 0 and children do not qualify for free entitlement" in {
@@ -512,7 +512,7 @@ class ClaimantHoursControllerSpec extends UnitSpec with MockitoSugar with FakeCC
         val request = FakeRequest("POST", "").withFormUrlEncodedBody(form.data.toSeq: _*) .withSession(mockController.sessionProvider.generateSessionId())
         val result = await(mockController.onSubmitPartner(request))
         status(result) shouldBe Status.SEE_OTHER
-        result.header.headers.get("Location").get shouldBe "/childcare-calculator/household/benefits"
+        result.header.headers.get("Location").get shouldBe "/childcare-calculator-qa/household/benefits"
       }
 
       "redirect to parent voucher template where parent hours is present and children qualify for free entitlement" in {
@@ -626,7 +626,7 @@ class ClaimantHoursControllerSpec extends UnitSpec with MockitoSugar with FakeCC
         val request = FakeRequest("POST", "").withFormUrlEncodedBody(form.data.toSeq: _*) .withSession(mockController.sessionProvider.generateSessionId())
         val result = await(mockController.onSubmitParent(request))
         status(result) shouldBe Status.SEE_OTHER
-        result.header.headers.get("Location").get shouldBe "/childcare-calculator/parent/escVouchers"
+        result.header.headers.get("Location").get shouldBe "/childcare-calculator-qa/parent/escVouchers"
       }
 
       "redirect to vouchers template where parent hours is present and children don't qualify for free entitlement" in {
@@ -740,7 +740,7 @@ class ClaimantHoursControllerSpec extends UnitSpec with MockitoSugar with FakeCC
         val request = FakeRequest("POST", "").withFormUrlEncodedBody(form.data.toSeq: _*) .withSession(mockController.sessionProvider.generateSessionId())
         val result = await(mockController.onSubmitParent(request))
         status(result) shouldBe Status.SEE_OTHER
-        result.header.headers.get("Location").get shouldBe "/childcare-calculator/parent/escVouchers"
+        result.header.headers.get("Location").get shouldBe "/childcare-calculator-qa/parent/escVouchers"
       }
 
       "redirect to number of children template where there is no children in the keystore" in {
@@ -826,7 +826,7 @@ class ClaimantHoursControllerSpec extends UnitSpec with MockitoSugar with FakeCC
         val request = FakeRequest("POST", "").withFormUrlEncodedBody(form.data.toSeq: _*) .withSession(mockController.sessionProvider.generateSessionId())
         val result = await(mockController.onSubmitParent(request))
         status(result) shouldBe Status.SEE_OTHER
-        result.header.headers.get("Location").get shouldBe "/childcare-calculator/children/number"
+        result.header.headers.get("Location").get shouldBe "/childcare-calculator-qa/children/number"
       }
 
 
@@ -1030,7 +1030,7 @@ class ClaimantHoursControllerSpec extends UnitSpec with MockitoSugar with FakeCC
         val request = FakeRequest("POST", "").withFormUrlEncodedBody(form.data.toSeq: _*) .withSession(mockController.sessionProvider.generateSessionId())
         val result = await(mockController.onSubmitPartner(request))
         status(result) shouldBe Status.SEE_OTHER
-        result.header.headers.get("Location").get shouldBe "/childcare-calculator/partner/escVouchers"
+        result.header.headers.get("Location").get shouldBe "/childcare-calculator-qa/partner/escVouchers"
       }
 
       "redirect to technical difficulties when keystore is down" in {

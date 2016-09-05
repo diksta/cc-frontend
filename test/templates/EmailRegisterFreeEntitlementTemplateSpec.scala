@@ -35,7 +35,7 @@ class EmailRegisterFreeEntitlementTemplateSpec extends UnitSpec with FakeCCAppli
       val form = EmailRegistrationForm.form
       val template = views.html.emailRegistrationFreeEntitlement(form)(request)
       val doc = Jsoup.parse(contentAsString(template))
-      doc.getElementsByTag("form").first().attr("action") shouldBe "/childcare-calculator/emailRegistration/freeEntitlement"
+      doc.getElementsByTag("form").first().attr("action") shouldBe "/childcare-calculator-qa/emailRegistration/freeEntitlement"
 
     }
 
@@ -50,7 +50,7 @@ class EmailRegisterFreeEntitlementTemplateSpec extends UnitSpec with FakeCCAppli
       val form = EmailRegistrationForm.form
       val template = views.html.emailRegistrationFreeEntitlement(form)(request)
       val doc = Jsoup.parse(contentAsString(template))
-      doc.getElementById("back-button").attr("href") shouldBe "/childcare-calculator/schemes/result"
+      doc.getElementById("back-button").attr("href") shouldBe "/childcare-calculator-qa/schemes/result"
     }
 
     "display the input field" in {

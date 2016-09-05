@@ -34,14 +34,14 @@ class ESCVouchersTemplateSpec extends UnitSpec with FakeCCApplication with CCSes
       val form = new ESCVouchersFormInstance(parent = true).form
       val template = views.html.ESCVouchers(form, 1)(request)
       val doc = Jsoup.parse(contentAsString(template))
-      doc.getElementsByTag("form").first().attr("action") shouldBe "/childcare-calculator/parent/escVouchers"
+      doc.getElementsByTag("form").first().attr("action") shouldBe "/childcare-calculator-qa/parent/escVouchers"
     }
 
     "POST to /Partner/ESCVoucher" in {
       val form = new ESCVouchersFormInstance(parent = false).form
       val template = views.html.ESCVouchers(form, 2)(request)
       val doc = Jsoup.parse(contentAsString(template))
-      doc.getElementsByTag("form").first().attr("action") shouldBe "/childcare-calculator/partner/escVouchers"
+      doc.getElementsByTag("form").first().attr("action") shouldBe "/childcare-calculator-qa/partner/escVouchers"
     }
 
     "display the title (Parent)" in {
@@ -76,14 +76,14 @@ class ESCVouchersTemplateSpec extends UnitSpec with FakeCCApplication with CCSes
       val form = new ESCVouchersFormInstance(parent = true).form
       val template = views.html.ESCVouchers(form, 1)(request)
       val doc = Jsoup.parse(contentAsString(template))
-      doc.getElementById("back-button").attr("href") shouldBe "/childcare-calculator/parent/hours"
+      doc.getElementById("back-button").attr("href") shouldBe "/childcare-calculator-qa/parent/hours"
     }
 
     "display the back button (partner)" in {
       val form = new ESCVouchersFormInstance(parent = false).form
       val template = views.html.ESCVouchers(form, 2)(request)
       val doc = Jsoup.parse(contentAsString(template))
-      doc.getElementById("back-button").attr("href") shouldBe "/childcare-calculator/partner/hours"
+      doc.getElementById("back-button").attr("href") shouldBe "/childcare-calculator-qa/partner/hours"
     }
 
   }

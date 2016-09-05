@@ -1,4 +1,4 @@
 # Add all the application routes to the app.routes file
 ->         /template                  template.Routes
 ->         /                          health.Routes
-->		   /childcare-calculator/     cc.Routes
+->		   /childcare-calculator-qa/     cc.Routes

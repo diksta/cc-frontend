@@ -51,7 +51,7 @@ class ChildCareCostControllerSpec extends UnitSpec with FakeCCApplication with M
     "GET" should {
 
       "not respond with NOT_FOUND through GET method" in {
-        val result = route(FakeRequest(GET, "/childcare-calculator/children/cost/1"))
+        val result = route(FakeRequest(GET, "/childcare-calculator-qa/children/cost/1"))
         result.isDefined shouldBe true
         status(result.get) should not be NOT_FOUND
       }
@@ -246,7 +246,7 @@ class ChildCareCostControllerSpec extends UnitSpec with FakeCCApplication with M
         when(mockController.cacheClient.loadChildren()(any(), any())).thenReturn(Future.successful(children))
         val result = await(mockController.onPageLoad(1)(request))
         status(result) shouldBe Status.SEE_OTHER
-        result.header.headers.get("Location").get shouldBe "/childcare-calculator/parent/benefits"
+        result.header.headers.get("Location").get shouldBe "/childcare-calculator-qa/parent/benefits"
       }
 
 
@@ -308,7 +308,7 @@ class ChildCareCostControllerSpec extends UnitSpec with FakeCCApplication with M
         when(mockController.cacheClient.loadChildren()(any(), any())).thenReturn(Future.successful(children))
         val result = await(mockController.onPageLoad(1)(request))
         status(result) shouldBe Status.SEE_OTHER
-        result.header.headers.get("Location").get shouldBe "/childcare-calculator/children/details/2"
+        result.header.headers.get("Location").get shouldBe "/childcare-calculator-qa/children/details/2"
       }
 
       "return 200 if their age is in future (-1 year)" in {
@@ -410,7 +410,7 @@ class ChildCareCostControllerSpec extends UnitSpec with FakeCCApplication with M
         when(mockController.cacheClient.saveChildren(mockEq(modifiedChildrenList.get))(any(), any())).thenReturn(Future.successful(modifiedChildrenList))
         val result = await(mockController.onPageLoad(1)(request))
         status(result) shouldBe Status.SEE_OTHER
-        result.header.headers.get("Location").get shouldBe "/childcare-calculator/parent/benefits"
+        result.header.headers.get("Location").get shouldBe "/childcare-calculator-qa/parent/benefits"
       }
 
       "redirect to technical difficulties when save children throw exception" in {
@@ -461,7 +461,7 @@ class ChildCareCostControllerSpec extends UnitSpec with FakeCCApplication with M
     "POST" should {
 
       "not respond with NOT_FOUND through POST method" in {
-        val result = route(FakeRequest(POST, "/childcare-calculator/children/cost/1"))
+        val result = route(FakeRequest(POST, "/childcare-calculator-qa/children/cost/1"))
         result.isDefined shouldBe true
         status(result.get) should not be NOT_FOUND
       }
@@ -488,7 +488,7 @@ class ChildCareCostControllerSpec extends UnitSpec with FakeCCApplication with M
         when(mockController.cacheClient.saveChildren(mockEq(children.get))(any(), any())).thenReturn(Future.successful(children))
         val result = await(mockController.onSubmit(2)(request))
         status(result) shouldBe SEE_OTHER
-        result.header.headers.get("Location").get shouldBe "/childcare-calculator/children/number"
+        result.header.headers.get("Location").get shouldBe "/childcare-calculator-qa/children/number"
       }
 
       "redirect to /parent/benefits when POST is successful with value already in keyStore (modifying) (no remaining children)" in {
@@ -557,12 +557,12 @@ class ChildCareCostControllerSpec extends UnitSpec with FakeCCApplication with M
 
         val childCareModel = ChildCarePageModel(Some(childCareCost), Some(true))
         val form = ChildCareCostForm.form.fill(childCareModel)
-        val request = FakeRequest("POST", "/childcare-calculator/children/cost/2").withFormUrlEncodedBody(form.data.toSeq: _*).withSession(mockController.sessionProvider.generateSessionId())
+        val request = FakeRequest("POST", "/childcare-calculator-qa/children/cost/2").withFormUrlEncodedBody(form.data.toSeq: _*).withSession(mockController.sessionProvider.generateSessionId())
         when(mockController.cacheClient.loadChildren()(any(), any())).thenReturn(Future.successful(children))
         when(mockController.cacheClient.saveChildren(mockEq(modifiedList.get))(any(), any())).thenReturn(Future.successful(modifiedList))
         val result = await(mockController.onSubmit(index = 2)(request))
         status(result) shouldBe Status.SEE_OTHER
-        result.header.headers.get("Location").get shouldBe "/childcare-calculator/parent/benefits"
+        result.header.headers.get("Location").get shouldBe "/childcare-calculator-qa/parent/benefits"
       }
 
       "redirect to /children/details/2 when POST is successful with value already in keyStore (modifying) (remaining children)" in {
@@ -634,7 +634,7 @@ class ChildCareCostControllerSpec extends UnitSpec with FakeCCApplication with M
         when(mockController.cacheClient.saveChildren(mockEq(modifiedList.get))(any(), any())).thenReturn(Future.successful(modifiedList))
         val result = await(mockController.onSubmit(1)(request))
         status(result) shouldBe Status.SEE_OTHER
-        result.header.headers.get("Location").get shouldBe "/childcare-calculator/children/details/2"
+        result.header.headers.get("Location").get shouldBe "/childcare-calculator-qa/children/details/2"
       }
 
       "redirect to /parent/benefits when POST is successful with value already in keyStore (modifying) when child is not in education (last child)" in {
@@ -884,7 +884,7 @@ class ChildCareCostControllerSpec extends UnitSpec with FakeCCApplication with M
         when(mockController.cacheClient.saveChildren(mockEq(modified.get))(any(), any())).thenReturn(Future.successful(modified))
         val result = await(mockController.onSubmit(1)(request))
         status(result) shouldBe Status.SEE_OTHER
-        result.header.headers.get("Location").get shouldBe "/childcare-calculator/parent/benefits"
+        result.header.headers.get("Location").get shouldBe "/childcare-calculator-qa/parent/benefits"
       }
 
       "submit and redirect to details page if their age is equal or greater than 20" in {
@@ -984,7 +984,7 @@ class ChildCareCostControllerSpec extends UnitSpec with FakeCCApplication with M
         when(mockController.cacheClient.saveChildren(mockEq(modified.get))(any(), any())).thenReturn(Future.successful(modified))
         val result = await(mockController.onSubmit(1)(request))
         status(result) shouldBe Status.SEE_OTHER
-        result.header.headers.get("Location").get shouldBe "/childcare-calculator/parent/benefits"
+        result.header.headers.get("Location").get shouldBe "/childcare-calculator-qa/parent/benefits"
       }
 
     }

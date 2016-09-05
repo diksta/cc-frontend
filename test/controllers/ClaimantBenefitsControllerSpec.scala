@@ -49,7 +49,7 @@ class ClaimantBenefitsControllerSpec extends UnitSpec with MockitoSugar with Fak
     "GET" should {
 
       "not respond with NOT_FOUND" in {
-        val result = route(FakeRequest(GET, "/childcare-calculator/parent/benefits"))
+        val result = route(FakeRequest(GET, "/childcare-calculator-qa/parent/benefits"))
         result.isDefined shouldBe true
         status(result.get) should not be NOT_FOUND
       }
@@ -277,7 +277,7 @@ class ClaimantBenefitsControllerSpec extends UnitSpec with MockitoSugar with Fak
         val request = FakeRequest("GET", "").withSession(mockController.sessionProvider.generateSessionId())
         val result = await(mockController.onPageLoadParent()(request))
         status(result) shouldBe Status.SEE_OTHER
-        result.header.headers.get("Location").get shouldBe "/childcare-calculator/children/number"
+        result.header.headers.get("Location").get shouldBe "/childcare-calculator-qa/children/number"
       }
 
       "redirect to technical difficulties  when there is no value for claimant in keystore, exception while loading children" in {
@@ -322,7 +322,7 @@ class ClaimantBenefitsControllerSpec extends UnitSpec with MockitoSugar with Fak
     "POST" should {
 
       "not respond with NOT_FOUND" in {
-        val result = route(FakeRequest(POST, "/childcare-calculator/parent/benefits"))
+        val result = route(FakeRequest(POST, "/childcare-calculator-qa/parent/benefits"))
         result.isDefined shouldBe true
         status(result.get) should not be NOT_FOUND
       }
@@ -426,7 +426,7 @@ class ClaimantBenefitsControllerSpec extends UnitSpec with MockitoSugar with Fak
         val request = FakeRequest("POST", "").withFormUrlEncodedBody(form.data.toSeq: _*) .withSession(mockController.sessionProvider.generateSessionId())
         val result = await(mockController.onSubmitParent(request))
         status(result) shouldBe Status.SEE_OTHER
-        result.header.headers.get("Location").get shouldBe "/childcare-calculator/parent/income/last"
+        result.header.headers.get("Location").get shouldBe "/childcare-calculator-qa/parent/income/last"
       }
 
       "redirect to last years income on submit (Partner)" in {

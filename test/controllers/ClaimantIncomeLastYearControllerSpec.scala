@@ -46,7 +46,7 @@ class ClaimantIncomeLastYearControllerSpec extends UnitSpec with MockitoSugar wi
 
        "GET" should {
          "not respond with NOT_FOUND" in {
-           val result = route(FakeRequest(GET, "/childcare-calculator/parent/income/last"))
+           val result = route(FakeRequest(GET, "/childcare-calculator-qa/parent/income/last"))
            result.isDefined shouldBe true
            status(result.get) should not be NOT_FOUND
          }
@@ -64,7 +64,7 @@ class ClaimantIncomeLastYearControllerSpec extends UnitSpec with MockitoSugar wi
            when(mockController.cacheClient.loadClaimants()(any(), any())).thenReturn(Future.successful(None))
            val result = await(mockController.onPageLoadParent()(request))
            status(result) shouldBe Status.SEE_OTHER
-           result.header.headers.get("Location").get shouldBe "/childcare-calculator/parent/benefits"
+           result.header.headers.get("Location").get shouldBe "/childcare-calculator-qa/parent/benefits"
          }
 
          "load template when there is claimant object is present and previousIncome is None in keystore" in {
@@ -155,7 +155,7 @@ class ClaimantIncomeLastYearControllerSpec extends UnitSpec with MockitoSugar wi
        "POST" should {
 
          "not respond with NOT_FOUND" in {
-           val result = route(FakeRequest(POST, "/childcare-calculator/parent/income/last"))
+           val result = route(FakeRequest(POST, "/childcare-calculator-qa/parent/income/last"))
            result.isDefined shouldBe true
            status(result.get) should not be NOT_FOUND
          }
@@ -700,7 +700,7 @@ class ClaimantIncomeLastYearControllerSpec extends UnitSpec with MockitoSugar wi
 
        "GET" should {
          "not respond with NOT_FOUND" in {
-           val result = route(FakeRequest(GET, "/childcare-calculator/partner/income/last"))
+           val result = route(FakeRequest(GET, "/childcare-calculator-qa/partner/income/last"))
            result.isDefined shouldBe true
            status(result.get) should not be NOT_FOUND
          }
@@ -718,7 +718,7 @@ class ClaimantIncomeLastYearControllerSpec extends UnitSpec with MockitoSugar wi
            when(mockController.cacheClient.loadClaimants()(any(), any())).thenReturn(Future.successful(None))
            val result = await(mockController.onPageLoadPartner()(request))
            status(result) shouldBe Status.SEE_OTHER
-           result.header.headers.get("Location").get shouldBe "/childcare-calculator/partner/benefits"
+           result.header.headers.get("Location").get shouldBe "/childcare-calculator-qa/partner/benefits"
          }
 
          "load template when there is claimant object and previousIncome is None in keystore" in {
@@ -809,7 +809,7 @@ class ClaimantIncomeLastYearControllerSpec extends UnitSpec with MockitoSugar wi
        "POST" should {
 
          "not respond with NOT_FOUND" in {
-           val result = route(FakeRequest(POST, "/childcare-calculator/partner/income/last"))
+           val result = route(FakeRequest(POST, "/childcare-calculator-qa/partner/income/last"))
            result.isDefined shouldBe true
            status(result.get) should not be NOT_FOUND
          }

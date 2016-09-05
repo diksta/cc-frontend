@@ -52,7 +52,7 @@ class ChildDetailsControllerSpec extends UnitSpec with MockitoSugar with FakeCCA
     "GET" should {
 
       "not respond with NOT_FOUND" in {
-        val result = route(FakeRequest(GET, "/childcare-calculator/children/details/1"))
+        val result = route(FakeRequest(GET, "/childcare-calculator-qa/children/details/1"))
         result.isDefined shouldBe true
         status(result.get) should not be NOT_FOUND
       }
@@ -78,7 +78,7 @@ class ChildDetailsControllerSpec extends UnitSpec with MockitoSugar with FakeCCA
         when(mockController.cacheClient.loadChildren()(any(), any())).thenReturn(Future.successful(None))
         val result = await(mockController.onPageLoad(1)(request))
         status(result) shouldBe SEE_OTHER
-        result.header.headers.get("Location").get shouldBe "/childcare-calculator/children/number"
+        result.header.headers.get("Location").get shouldBe "/childcare-calculator-qa/children/number"
       }
 
       "load template when there is child object is present in keystore" in {
@@ -192,7 +192,7 @@ class ChildDetailsControllerSpec extends UnitSpec with MockitoSugar with FakeCCA
     "post" should {
 
       "not respond with NOT_FOUND" in {
-        val result = route(FakeRequest(POST, "/childcare-calculator/children/details/1"))
+        val result = route(FakeRequest(POST, "/childcare-calculator-qa/children/details/1"))
         result.isDefined shouldBe true
         status(result.get) should not be NOT_FOUND
       }
@@ -243,7 +243,7 @@ class ChildDetailsControllerSpec extends UnitSpec with MockitoSugar with FakeCCA
         val result = await(mockController.onSubmit(1)(request))
 
         status(result) shouldBe SEE_OTHER
-        result.header.headers.get("Location").get shouldBe "/childcare-calculator/children/cost/1"
+        result.header.headers.get("Location").get shouldBe "/childcare-calculator-qa/children/cost/1"
 
       }
 
@@ -320,7 +320,7 @@ class ChildDetailsControllerSpec extends UnitSpec with MockitoSugar with FakeCCA
         val result = await(mockController.onSubmit(3)(request))
 
         status(result) shouldBe SEE_OTHER
-        result.header.headers.get("Location").get shouldBe "/childcare-calculator/children/cost/3"
+        result.header.headers.get("Location").get shouldBe "/childcare-calculator-qa/children/cost/3"
       }
 
 
@@ -345,7 +345,7 @@ class ChildDetailsControllerSpec extends UnitSpec with MockitoSugar with FakeCCA
         val result = await(mockController.onSubmit(1)(request))
 
         status(result) shouldBe SEE_OTHER
-        result.header.headers.get("Location").get shouldBe "/childcare-calculator/children/number"
+        result.header.headers.get("Location").get shouldBe "/childcare-calculator-qa/children/number"
       }
 
       "redirect to how many children template when negative value is passed as an argument in onSubmit" in {
@@ -368,7 +368,7 @@ class ChildDetailsControllerSpec extends UnitSpec with MockitoSugar with FakeCCA
         val result = await(mockController.onSubmit(-1)(request))
 
         status(result) shouldBe SEE_OTHER
-        result.header.headers.get("Location").get shouldBe "/childcare-calculator/children/number"
+        result.header.headers.get("Location").get shouldBe "/childcare-calculator-qa/children/number"
       }
 
       "redirect to technical difficulties when keystore is down " in {

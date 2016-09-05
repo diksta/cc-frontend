@@ -63,7 +63,7 @@ class EmailRegistrationControllerSpec extends UnitSpec with MockitoSugar with Fa
     "GET" should {
 
       "not respond with NOT_FOUND" in {
-        val result = route(FakeRequest(GET, "/childcare-calculator/emailRegistration/keep-me-updated"))
+        val result = route(FakeRequest(GET, "/childcare-calculator-qa/emailRegistration/keep-me-updated"))
         result.isDefined shouldBe true
         status(result.get) should not be NOT_FOUND
       }
@@ -79,7 +79,7 @@ class EmailRegistrationControllerSpec extends UnitSpec with MockitoSugar with Fa
     "GET Free Entitlement" should {
 
       "not respond with NOT_FOUND - freeEntitlement" in {
-        val result = route(FakeRequest(GET, "/childcare-calculator/emailRegistration/freeEntitlement"))
+        val result = route(FakeRequest(GET, "/childcare-calculator-qa/emailRegistration/freeEntitlement"))
         result.isDefined shouldBe true
         status(result.get) should not be NOT_FOUND
       }
@@ -95,7 +95,7 @@ class EmailRegistrationControllerSpec extends UnitSpec with MockitoSugar with Fa
     "POST" should {
 
       "not respond with NOT_FOUND" in {
-        val result = route(FakeRequest(POST, "/childcare-calculator/children/number"))
+        val result = route(FakeRequest(POST, "/childcare-calculator-qa/children/number"))
         result.isDefined shouldBe true
         status(result.get) should not be NOT_FOUND
       }
@@ -126,7 +126,7 @@ class EmailRegistrationControllerSpec extends UnitSpec with MockitoSugar with Fa
         val request = FakeRequest("POST", "").withFormUrlEncodedBody(form.data.toSeq: _*) .withSession(mockController.sessionProvider.generateSessionId())
         val result = await(mockController.onSubmit()(request))
         status(result) shouldBe Status.SEE_OTHER
-        result.header.headers.get("Location").get shouldBe "/childcare-calculator/children/number"
+        result.header.headers.get("Location").get shouldBe "/childcare-calculator-qa/children/number"
       }
 
       "load email unavailable template - for a valid email address and dob - email capture returns unsuccessful response" in {
@@ -306,7 +306,7 @@ class EmailRegistrationControllerSpec extends UnitSpec with MockitoSugar with Fa
     "POST Free Entitlement" should {
 
       "not respond with NOT_FOUND - freeEntitlement" in {
-        val result = route(FakeRequest(POST, "/childcare-calculator/emailRegistration/freeEntitlement"))
+        val result = route(FakeRequest(POST, "/childcare-calculator-qa/emailRegistration/freeEntitlement"))
         result.isDefined shouldBe true
         status(result.get) should not be NOT_FOUND
       }

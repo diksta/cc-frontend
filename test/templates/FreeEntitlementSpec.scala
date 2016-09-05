@@ -441,7 +441,7 @@ class FreeEntitlementSpec extends UnitSpec with CCSession with FakeCCApplication
         ))(request)
         val doc = Jsoup.parse(contentAsString(template))
 
-        doc.getElementById("tfcHowToApplyLink").attr("href") shouldBe "/childcare-calculator/emailRegistration/freeEntitlement"
+        doc.getElementById("tfcHowToApplyLink").attr("href") shouldBe "/childcare-calculator-qa/emailRegistration/freeEntitlement"
       }
   }
 }

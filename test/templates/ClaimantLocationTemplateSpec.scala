@@ -36,7 +36,7 @@ class ClaimantLocationTemplateSpec extends UnitSpec with FakeCCApplication with 
       val form = ClaimantLocationForm.form
       val template = views.html.claimantLocation(form, backUrl)(request)
       val doc = Jsoup.parse(contentAsString(template))
-      doc.getElementsByTag("form").first().attr("action") shouldBe "/childcare-calculator/parent/location"
+      doc.getElementsByTag("form").first().attr("action") shouldBe "/childcare-calculator-qa/parent/location"
     }
 
     "display the title" in {
@@ -65,7 +65,7 @@ class ClaimantLocationTemplateSpec extends UnitSpec with FakeCCApplication with 
       val form = ClaimantLocationForm.form
       val template = views.html.claimantLocation(form, backUrl)(request)
       val doc = Jsoup.parse(contentAsString(template))
-      doc.getElementById("back-button").attr("href") shouldBe "/childcare-calculator/parent/hours"
+      doc.getElementById("back-button").attr("href") shouldBe "/childcare-calculator-qa/parent/hours"
     }
 
     "display errors when the form has errors" in {

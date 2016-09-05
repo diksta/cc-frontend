@@ -42,14 +42,14 @@ class IncomeCurrentYearTemplateSpec extends UnitSpec with FakeCCApplication with
         val form = (new ClaimantIncomeCurrentYearFormInstance).form
         val template = views.html.incomeCurrentYear(form, 1, taxYearFrom, taxYearTo)(request)
         val doc = Jsoup.parse(contentAsString(template))
-        doc.getElementsByTag("form").first().attr("action") shouldBe "/childcare-calculator/parent/income/current"
+        doc.getElementsByTag("form").first().attr("action") shouldBe "/childcare-calculator-qa/parent/income/current"
       }
 
       "POST to /claimant/income/current (Partner)" in {
         val form = (new ClaimantIncomeCurrentYearFormInstance).form
         val template = views.html.incomeCurrentYear(form, 2, taxYearFrom, taxYearTo)(request)
         val doc = Jsoup.parse(contentAsString(template))
-        doc.getElementsByTag("form").first().attr("action") shouldBe "/childcare-calculator/partner/income/current"
+        doc.getElementsByTag("form").first().attr("action") shouldBe "/childcare-calculator-qa/partner/income/current"
       }
 
       "display the title (Parent)" in {
@@ -204,7 +204,7 @@ class IncomeCurrentYearTemplateSpec extends UnitSpec with FakeCCApplication with
         val form = (new ClaimantIncomeCurrentYearFormInstance).form
         val template = views.html.incomeCurrentYear(form, 1, taxYearFrom, taxYearTo)(request)
         val doc = Jsoup.parse(contentAsString(template))
-        doc.getElementById("back-button").attr("href") shouldBe "/childcare-calculator/parent/income/last"
+        doc.getElementById("back-button").attr("href") shouldBe "/childcare-calculator-qa/parent/income/last"
       }
     }
 

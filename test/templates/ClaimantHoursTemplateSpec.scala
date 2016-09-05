@@ -37,7 +37,7 @@ class ClaimantHoursTemplateSpec extends UnitSpec with CCSession with FakeCCAppli
         val form = new ClaimantHoursFormInstance(parent = true, previousIncome, currentIncome).form
         val template = views.html.claimantHours(form, 1)(request)
         val doc = Jsoup.parse(contentAsString(template))
-        doc.getElementsByTag("form").first().attr("action") shouldBe "/childcare-calculator/parent/hours"
+        doc.getElementsByTag("form").first().attr("action") shouldBe "/childcare-calculator-qa/parent/hours"
       }
 
     "POST to /partner/hours" in {
@@ -46,7 +46,7 @@ class ClaimantHoursTemplateSpec extends UnitSpec with CCSession with FakeCCAppli
       val form = new ClaimantHoursFormInstance(parent = false, previousIncome, currentIncome).form
       val template = views.html.claimantHours(form, 2)(request)
       val doc = Jsoup.parse(contentAsString(template))
-      doc.getElementsByTag("form").first().attr("action") shouldBe "/childcare-calculator/partner/hours"
+      doc.getElementsByTag("form").first().attr("action") shouldBe "/childcare-calculator-qa/partner/hours"
     }
 
       "display the title (Parent)" in {
@@ -100,7 +100,7 @@ class ClaimantHoursTemplateSpec extends UnitSpec with CCSession with FakeCCAppli
         val form = new ClaimantHoursFormInstance(parent = true, previousIncome, currentIncome).form
         val template = views.html.claimantHours(form, 1)(request)
         val doc = Jsoup.parse(contentAsString(template))
-        doc.getElementById("back-button").attr("href") shouldBe "/childcare-calculator/parent/income/current"
+        doc.getElementById("back-button").attr("href") shouldBe "/childcare-calculator-qa/parent/income/current"
       }
 
       "display the continue button" in {

@@ -49,7 +49,7 @@ class ESCVouchersControllerSpec extends UnitSpec with MockitoSugar with FakeCCAp
     "GET" should {
 
       "not respond with NOT_FOUND for parent" in {
-        val result = route(FakeRequest(GET, "/childcare-calculator/parent/escVouchers"))
+        val result = route(FakeRequest(GET, "/childcare-calculator-qa/parent/escVouchers"))
         result.isDefined shouldBe true
         status(result.get) should not be NOT_FOUND
       }
@@ -67,7 +67,7 @@ class ESCVouchersControllerSpec extends UnitSpec with MockitoSugar with FakeCCAp
         when(mockController.cacheClient.loadClaimants()(any(), any())).thenReturn(Future.successful(None))
         val result = await(mockController.onPageLoadPartner(request))
         status(result) shouldBe Status.SEE_OTHER
-        result.header.headers.get("Location").get shouldBe "/childcare-calculator/parent/benefits"
+        result.header.headers.get("Location").get shouldBe "/childcare-calculator-qa/parent/benefits"
       }
 
 
@@ -234,13 +234,13 @@ class ESCVouchersControllerSpec extends UnitSpec with MockitoSugar with FakeCCAp
     "POST" should {
 
       "not respond with NOT_FOUND (Parent)" in {
-        val result = route(FakeRequest(POST, "/childcare-calculator/parent/escVouchers"))
+        val result = route(FakeRequest(POST, "/childcare-calculator-qa/parent/escVouchers"))
         result.isDefined shouldBe true
         status(result.get) should not be NOT_FOUND
       }
 
       "not respond with NOT_FOUND (Partner)" in {
-        val result = route(FakeRequest(POST, "/childcare-calculator/partner/escVouchers"))
+        val result = route(FakeRequest(POST, "/childcare-calculator-qa/partner/escVouchers"))
         result.isDefined shouldBe true
         status(result.get) should not be NOT_FOUND
       }
@@ -312,7 +312,7 @@ class ESCVouchersControllerSpec extends UnitSpec with MockitoSugar with FakeCCAp
         val request = FakeRequest("POST", "").withFormUrlEncodedBody(form.data.toSeq: _*) .withSession(mockController.sessionProvider.generateSessionId())
         val result = await(mockController.onSubmitParent(request))
         status(result) shouldBe Status.SEE_OTHER
-        result.header.headers.get("Location").get shouldBe "/childcare-calculator/parent/location"
+        result.header.headers.get("Location").get shouldBe "/childcare-calculator-qa/parent/location"
       }
 
       "redirect to do you live with you partner" in {
@@ -381,7 +381,7 @@ class ESCVouchersControllerSpec extends UnitSpec with MockitoSugar with FakeCCAp
         val request = FakeRequest("POST", "").withFormUrlEncodedBody(form.data.toSeq: _*) .withSession(mockController.sessionProvider.generateSessionId())
         val result = await(mockController.onSubmitParent(request))
         status(result) shouldBe Status.SEE_OTHER
-        result.header.headers.get("Location").get shouldBe "/childcare-calculator/parent/liveWithPartner"
+        result.header.headers.get("Location").get shouldBe "/childcare-calculator-qa/parent/liveWithPartner"
       }
 
       "redirect to household benefits template" in {
@@ -490,7 +490,7 @@ class ESCVouchersControllerSpec extends UnitSpec with MockitoSugar with FakeCCAp
         val request = FakeRequest("POST", "").withFormUrlEncodedBody(form.data.toSeq: _*) .withSession(mockController.sessionProvider.generateSessionId())
         val result = await(mockController.onSubmitPartner(request))
         status(result) shouldBe Status.SEE_OTHER
-        result.header.headers.get("Location").get shouldBe "/childcare-calculator/household/benefits"
+        result.header.headers.get("Location").get shouldBe "/childcare-calculator-qa/household/benefits"
       }
 
       "redirect to technical difficulties when keystore is down" in {

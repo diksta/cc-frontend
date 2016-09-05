@@ -134,7 +134,7 @@ class HouseholdBenefitsControllerSpec extends UnitSpec with FakeCCApplication wi
     "GET" should {
 
       "not respond with NOT_FOUND" in {
-        val result = route(FakeRequest(GET, "/childcare-calculator/household/benefits"))
+        val result = route(FakeRequest(GET, "/childcare-calculator-qa/household/benefits"))
         result.isDefined shouldBe true
         status(result.get) should not be NOT_FOUND
       }
@@ -238,7 +238,7 @@ class HouseholdBenefitsControllerSpec extends UnitSpec with FakeCCApplication wi
     "POST" should {
 
       "not respond with NOT_FOUND" in {
-        val result = route(FakeRequest(POST, "/childcare-calculator/household/benefits"))
+        val result = route(FakeRequest(POST, "/childcare-calculator-qa/household/benefits"))
         result.isDefined shouldBe true
         status(result.get) should not be NOT_FOUND
       }
@@ -272,7 +272,7 @@ class HouseholdBenefitsControllerSpec extends UnitSpec with FakeCCApplication wi
         val request = FakeRequest("POST", "").withFormUrlEncodedBody(form.data.toSeq: _*) .withSession(mockController.sessionProvider.generateSessionId())
         val result = await(mockController.onSubmit(request))
         status(result) shouldBe Status.SEE_OTHER
-        result.header.headers.get("Location").get shouldBe "/childcare-calculator/schemes/result"
+        result.header.headers.get("Location").get shouldBe "/childcare-calculator-qa/schemes/result"
       }
 
       "save ucAmount to Keystore when household object already present" in {
@@ -305,7 +305,7 @@ class HouseholdBenefitsControllerSpec extends UnitSpec with FakeCCApplication wi
         val request = FakeRequest("POST", "").withFormUrlEncodedBody(form.data.toSeq: _*) .withSession(mockController.sessionProvider.generateSessionId())
         val result = await(mockController.onSubmit(request))
         status(result) shouldBe Status.SEE_OTHER
-        result.header.headers.get("Location").get shouldBe "/childcare-calculator/schemes/result"
+        result.header.headers.get("Location").get shouldBe "/childcare-calculator-qa/schemes/result"
       }
 
       "save NoBenfit to Keystore when household object with UC amount already present" in {
@@ -338,7 +338,7 @@ class HouseholdBenefitsControllerSpec extends UnitSpec with FakeCCApplication wi
         val request = FakeRequest("POST", "").withFormUrlEncodedBody(form.data.toSeq: _*) .withSession(mockController.sessionProvider.generateSessionId())
         val result = await(mockController.onSubmit(request))
         status(result) shouldBe Status.SEE_OTHER
-        result.header.headers.get("Location").get shouldBe "/childcare-calculator/schemes/result"
+        result.header.headers.get("Location").get shouldBe "/childcare-calculator-qa/schemes/result"
       }
 
       "save tcAmount to Keystore when household object is None" in {
@@ -364,7 +364,7 @@ class HouseholdBenefitsControllerSpec extends UnitSpec with FakeCCApplication wi
         val request = FakeRequest("POST", "").withFormUrlEncodedBody(form.data.toSeq: _*) .withSession(mockController.sessionProvider.generateSessionId())
         val result = await(mockController.onSubmit(request))
         status(result) shouldBe Status.SEE_OTHER
-        result.header.headers.get("Location").get shouldBe "/childcare-calculator/schemes/result"
+        result.header.headers.get("Location").get shouldBe "/childcare-calculator-qa/schemes/result"
       }
 
       "save ucAmount to Keystore when household object is None" in {
@@ -391,7 +391,7 @@ class HouseholdBenefitsControllerSpec extends UnitSpec with FakeCCApplication wi
         val request = FakeRequest("POST", "").withFormUrlEncodedBody(form.data.toSeq: _*) .withSession(mockController.sessionProvider.generateSessionId())
         val result = await(mockController.onSubmit(request))
         status(result) shouldBe Status.SEE_OTHER
-        result.header.headers.get("Location").get shouldBe "/childcare-calculator/schemes/result"
+        result.header.headers.get("Location").get shouldBe "/childcare-calculator-qa/schemes/result"
       }
 
       "save noBenefits to Keystore when household object is None" in {
@@ -415,7 +415,7 @@ class HouseholdBenefitsControllerSpec extends UnitSpec with FakeCCApplication wi
         val request = FakeRequest("POST", "").withFormUrlEncodedBody(form.data.toSeq: _*) .withSession(mockController.sessionProvider.generateSessionId())
         val result = await(mockController.onSubmit(request))
         status(result) shouldBe Status.SEE_OTHER
-        result.header.headers.get("Location").get shouldBe "/childcare-calculator/schemes/result"
+        result.header.headers.get("Location").get shouldBe "/childcare-calculator-qa/schemes/result"
       }
 
 

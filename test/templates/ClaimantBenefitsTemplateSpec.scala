@@ -31,18 +31,18 @@ class ClaimantBenefitsTemplateSpec extends UnitSpec with CCSession with FakeCCAp
 
   "ClaimantBenefits template" should {
 
-    "POST to /childcare-calculator/parent/benefits" in {
+    "POST to /childcare-calculator-qa/parent/benefits" in {
       val form = (new ClaimantBenefitsFormInstance).form
       val template = views.html.claimantBenefits(form, 1, routes.ChildDetailsController.onPageLoad(1))(request)
       val doc = Jsoup.parse(contentAsString(template))
-      doc.getElementsByTag("form").first().attr("action") shouldBe "/childcare-calculator/parent/benefits"
+      doc.getElementsByTag("form").first().attr("action") shouldBe "/childcare-calculator-qa/parent/benefits"
     }
 
-    /*"POST to /childcare-calculator/partner/benefits" in {
+    /*"POST to /childcare-calculator-qa/partner/benefits" in {
       val form = (new ClaimantBenefitsFormInstance).form
       val template = views.html.claimantBenefits(form, 2, routes.ChildDetailsController.onPageLoad(2))(request)
       val doc = Jsoup.parse(contentAsString(template))
-      doc.getElementsByTag("form").first().attr("action") shouldBe "/childcare-calculator/partner/benefits"
+      doc.getElementsByTag("form").first().attr("action") shouldBe "/childcare-calculator-qa/partner/benefits"
     }*/
 
     "display the title (Parent)" in {
@@ -77,14 +77,14 @@ class ClaimantBenefitsTemplateSpec extends UnitSpec with CCSession with FakeCCAp
       val form = (new ClaimantBenefitsFormInstance).form
       val template = views.html.claimantBenefits(form, 1, routes.ChildDetailsController.onPageLoad(3))(request)
       val doc = Jsoup.parse(contentAsString(template))
-      doc.getElementById("back-button").attr("href") shouldBe "/childcare-calculator/children/details/3"
+      doc.getElementById("back-button").attr("href") shouldBe "/childcare-calculator-qa/children/details/3"
     }
 
     "display the back button (Partner)" in {
       val form = (new ClaimantBenefitsFormInstance).form
       val template = views.html.claimantBenefits(form, 2, routes.DoYouLiveWithPartnerController.onPageLoad())(request)
       val doc = Jsoup.parse(contentAsString(template))
-      doc.getElementById("back-button").attr("href") shouldBe "/childcare-calculator/parent/liveWithPartner"
+      doc.getElementById("back-button").attr("href") shouldBe "/childcare-calculator-qa/parent/liveWithPartner"
     }
 
     "pre-populate the form" in {

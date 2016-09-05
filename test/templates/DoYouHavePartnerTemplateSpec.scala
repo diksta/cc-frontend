@@ -38,7 +38,7 @@ class DoYouHavePartnerTemplateSpec extends UnitSpec with FakeCCApplication with 
       val form = DoYouLiveWithPartnerForm.form
       val template = views.html.doYouLiveWithPartner(form, backUrl)(request)
       val doc = Jsoup.parse(contentAsString(template))
-      doc.getElementsByTag("form").first().attr("action") shouldBe "/childcare-calculator/parent/liveWithPartner"
+      doc.getElementsByTag("form").first().attr("action") shouldBe "/childcare-calculator-qa/parent/liveWithPartner"
     }
 
     "display the title" in {
@@ -67,14 +67,14 @@ class DoYouHavePartnerTemplateSpec extends UnitSpec with FakeCCApplication with 
       val form = DoYouLiveWithPartnerForm.form
       val template = views.html.doYouLiveWithPartner(form, routes.ClaimantLocationController.onPageLoad())(request)
       val doc = Jsoup.parse(contentAsString(template))
-      doc.getElementById("back-button").attr("href") shouldBe "/childcare-calculator/parent/location"
+      doc.getElementById("back-button").attr("href") shouldBe "/childcare-calculator-qa/parent/location"
     }
 
     "display the back button which goes back to hours" in {
       val form = DoYouLiveWithPartnerForm.form
       val template = views.html.doYouLiveWithPartner(form, routes.ClaimantHoursController.onPageLoadParent())(request)
       val doc = Jsoup.parse(contentAsString(template))
-      doc.getElementById("back-button").attr("href") shouldBe "/childcare-calculator/parent/hours"
+      doc.getElementById("back-button").attr("href") shouldBe "/childcare-calculator-qa/parent/hours"
     }
 
     "display errors when the form has errors" in {

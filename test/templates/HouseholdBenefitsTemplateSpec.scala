@@ -38,19 +38,19 @@ class HouseholdBenefitsTemplateSpec extends UnitSpec with FakeCCApplication with
       "POST to results template" in {
         val template = views.html.householdBenefits(HouseholdBenefitsForm.form, backUrl)(request)
         val doc = Jsoup.parse(contentAsString(template))
-        doc.getElementsByTag("form").first().attr("action") shouldBe "/childcare-calculator/household/benefits"
+        doc.getElementsByTag("form").first().attr("action") shouldBe "/childcare-calculator-qa/household/benefits"
       }
 
       "display DoYouLiveWithPartner page when hit back button" in {
         val template = views.html.householdBenefits(HouseholdBenefitsForm.form, backUrl)(request)
         val doc = Jsoup.parse(contentAsString(template))
-        doc.getElementById("back-button").attr("href") shouldBe "/childcare-calculator/parent/liveWithPartner"
+        doc.getElementById("back-button").attr("href") shouldBe "/childcare-calculator-qa/parent/liveWithPartner"
       }
 
       "display PartnerHours page when hit back button" in {
         val template = views.html.householdBenefits(HouseholdBenefitsForm.form, routes.ClaimantHoursController.onPageLoadPartner())(request)
         val doc = Jsoup.parse(contentAsString(template))
-        doc.getElementById("back-button").attr("href") shouldBe "/childcare-calculator/partner/hours"
+        doc.getElementById("back-button").attr("href") shouldBe "/childcare-calculator-qa/partner/hours"
       }
 
       "display the title" in {

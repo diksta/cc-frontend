@@ -38,14 +38,14 @@ class ChildCareCostTemplateSpec extends UnitSpec with CCSession with FakeCCAppli
       val form = ChildCareCostForm.form
       val template = views.html.childCareCost(form, true, 1)(request)
       val doc = Jsoup.parse(contentAsString(template))
-      doc.getElementsByTag("form").first().attr("action") shouldBe "/childcare-calculator/children/cost/1"
+      doc.getElementsByTag("form").first().attr("action") shouldBe "/childcare-calculator-qa/children/cost/1"
     }
 
     "display previous page when hit back button" in {
       val form = ChildCareCostForm.form
       val template = views.html.childCareCost(form, true, 1)(request)
       val doc = Jsoup.parse(contentAsString(template))
-      doc.getElementById("back-button").attr("href") shouldBe "/childcare-calculator/children/details/1"
+      doc.getElementById("back-button").attr("href") shouldBe "/childcare-calculator-qa/children/details/1"
     }
 
     "display the title" in {
@@ -110,7 +110,7 @@ class ChildCareCostTemplateSpec extends UnitSpec with CCSession with FakeCCAppli
       val form = ChildCareCostForm.form
       val template = views.html.childCareCost(form, false, 1)(request)
       val doc = Jsoup.parse(contentAsString(template))
-      doc.getElementsByTag("form").first().attr("action") shouldBe "/childcare-calculator/children/cost/1"
+      doc.getElementsByTag("form").first().attr("action") shouldBe "/childcare-calculator-qa/children/cost/1"
     }
     //show title
     "display the title" in {
@@ -131,7 +131,7 @@ class ChildCareCostTemplateSpec extends UnitSpec with CCSession with FakeCCAppli
       val form = ChildCareCostForm.form
       val template = views.html.childCareCost(form, false, 1)(request)
       val doc = Jsoup.parse(contentAsString(template))
-      doc.getElementById("back-button").attr("href") shouldBe "/childcare-calculator/children/details/1"
+      doc.getElementById("back-button").attr("href") shouldBe "/childcare-calculator-qa/children/details/1"
     }
 
     //yes option

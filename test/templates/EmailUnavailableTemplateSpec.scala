@@ -38,14 +38,14 @@ class EmailUnavailableTemplateSpec extends UnitSpec with CCSession with FakeCCAp
     "Display retry register (return to email register page)" in {
       val template = views.html.emailUnavailable(request)
       val doc = Jsoup.parse(contentAsString(template))
-      doc.getElementById("emailRegisterLink").attr("href") shouldBe "/childcare-calculator/emailRegistration/keep-me-updated"
+      doc.getElementById("emailRegisterLink").attr("href") shouldBe "/childcare-calculator-qa/emailRegistration/keep-me-updated"
       doc.getElementById("emailRegisterLink").text() shouldBe "try again in a few minutes."
     }
 
     "Display back button (return to results page)" in {
       val template = views.html.emailUnavailable(request)
       val doc = Jsoup.parse(contentAsString(template))
-      doc.getElementById("resultsControllerLink").attr("href") shouldBe "/childcare-calculator/schemes/result"
+      doc.getElementById("resultsControllerLink").attr("href") shouldBe "/childcare-calculator-qa/schemes/result"
     }
 
   }

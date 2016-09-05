@@ -33,11 +33,11 @@ class ChildDetailsTemplateSpec extends UnitSpec with CCSession with FakeCCApplic
 
   "ChildDetailsTemplate template" should {
 
-    "POST to /childcare-calculator/children/details/1" in {
+    "POST to /childcare-calculator-qa/children/details/1" in {
       val form = ChildDetailsForm.form
       val template = views.html.childDetails(form, 1,"first",routes.HowManyChildrenController.onPageLoad())(request)
       val doc = Jsoup.parse(contentAsString(template))
-      doc.getElementsByTag("form").first().attr("action") shouldBe "/childcare-calculator/children/details/1"
+      doc.getElementsByTag("form").first().attr("action") shouldBe "/childcare-calculator-qa/children/details/1"
     }
 
     "display the title" in {
@@ -65,7 +65,7 @@ class ChildDetailsTemplateSpec extends UnitSpec with CCSession with FakeCCApplic
       val form = ChildDetailsForm.form
       val template = views.html.childDetails(form, 1,"first",routes.HowManyChildrenController.onPageLoad())(request)
       val doc = Jsoup.parse(contentAsString(template))
-      doc.getElementById("back-button").attr("href") shouldBe "/childcare-calculator/children/number"
+      doc.getElementById("back-button").attr("href") shouldBe "/childcare-calculator-qa/children/number"
     }
 
     "pre-populate the form" in {

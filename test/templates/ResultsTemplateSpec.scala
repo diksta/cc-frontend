@@ -364,7 +364,7 @@ class ResultsTemplateSpec extends UnitSpec with CCSession with FakeCCApplication
         ))(request)
         val doc = Jsoup.parse(contentAsString(template))
         doc.getElementById("additionalSupportESCMessage") should not be null
-        doc.getElementById("tfcHowToApplyLink").attr("href") shouldBe "/childcare-calculator/emailRegistration/keep-me-updated"
+        doc.getElementById("tfcHowToApplyLink").attr("href") shouldBe "/childcare-calculator-qa/emailRegistration/keep-me-updated"
 
       }
 
@@ -447,7 +447,7 @@ class ResultsTemplateSpec extends UnitSpec with CCSession with FakeCCApplication
     "email registration link when no free entitlement " in {
       val template = views.html.results(resultsPageModel)(request)
       val doc = Jsoup.parse(contentAsString(template))
-      doc.getElementById("tfcHowToApplyLink").attr("href") shouldBe "/childcare-calculator/emailRegistration/keep-me-updated"
+      doc.getElementById("tfcHowToApplyLink").attr("href") shouldBe "/childcare-calculator-qa/emailRegistration/keep-me-updated"
     }
 
     "feedback survey link" in {

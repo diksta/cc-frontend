@@ -37,7 +37,7 @@ class HowManyChildrenTemplateSpec extends UnitSpec with CCSession with FakeCCApp
       val form = HowManyChildrenForm.form
       val template = views.html.howManyChildren(form)(request)
       val doc = Jsoup.parse(contentAsString(template))
-      doc.getElementsByTag("form").first().attr("action") shouldBe "/childcare-calculator/children/number"
+      doc.getElementsByTag("form").first().attr("action") shouldBe "/childcare-calculator-qa/children/number"
     }
 
     "display the title" in {

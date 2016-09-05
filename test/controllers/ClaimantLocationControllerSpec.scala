@@ -45,7 +45,7 @@ class ClaimantLocationControllerSpec extends UnitSpec with MockitoSugar with Fak
 
       "not respond with NOT_FOUND" in {
 
-        val result = route(FakeRequest(GET, "/childcare-calculator/parent/location"))
+        val result = route(FakeRequest(GET, "/childcare-calculator-qa/parent/location"))
         result.isDefined shouldBe true
         status(result.get) should not be NOT_FOUND
       }
@@ -63,7 +63,7 @@ class ClaimantLocationControllerSpec extends UnitSpec with MockitoSugar with Fak
         when(mockController.cacheClient.loadClaimants()(any(), any())).thenReturn(Future.successful(None))
         val result = await(mockController.onPageLoad()(request))
         status(result) shouldBe Status.SEE_OTHER
-        result.header.headers.get("Location").get shouldBe "/childcare-calculator/parent/benefits"
+        result.header.headers.get("Location").get shouldBe "/childcare-calculator-qa/parent/benefits"
       }
 
       "load template when there is claimant object is present and hours is None in keystore" in {
@@ -132,7 +132,7 @@ class ClaimantLocationControllerSpec extends UnitSpec with MockitoSugar with Fak
         when(mockController.cacheClient.loadClaimants()(any(), any())).thenReturn(Future.successful(None))
         val result = await(mockController.onSubmit()(request))
         status(result) shouldBe Status.SEE_OTHER
-        result.header.headers.get("Location").get shouldBe "/childcare-calculator/parent/benefits"
+        result.header.headers.get("Location").get shouldBe "/childcare-calculator-qa/parent/benefits"
       }
 
       "redirect to technical difficulties when claimant list is None and onSubmit throws exception" in {
@@ -144,7 +144,7 @@ class ClaimantLocationControllerSpec extends UnitSpec with MockitoSugar with Fak
       }
 
       "not respond with NOT_FOUND" in {
-        val result = route(FakeRequest(POST, "/childcare-calculator/parent/location"))
+        val result = route(FakeRequest(POST, "/childcare-calculator-qa/parent/location"))
         result.isDefined shouldBe true
         status(result.get) should not be NOT_FOUND
       }
@@ -233,7 +233,7 @@ class ClaimantLocationControllerSpec extends UnitSpec with MockitoSugar with Fak
         when(mockController.cacheClient.saveClaimants(mockEq(modifiedClaimantList.get))(any(), any())).thenReturn(Future.successful(modifiedClaimantList))
         val result = await(mockController.onSubmit(request))
         status(result) shouldBe Status.SEE_OTHER
-        result.header.headers.get("Location").get shouldBe "/childcare-calculator/parent/liveWithPartner"
+        result.header.headers.get("Location").get shouldBe "/childcare-calculator-qa/parent/liveWithPartner"
 
       }
 

@@ -45,13 +45,13 @@ class ClaimantIncomeCurrentYearControllerSpec extends UnitSpec with MockitoSugar
 
     "GET" should {
       "not respond with NOT_FOUND (Parent)" in {
-        val result = route(FakeRequest(GET, "/childcare-calculator/parent/income/current"))
+        val result = route(FakeRequest(GET, "/childcare-calculator-qa/parent/income/current"))
         result.isDefined shouldBe true
         status(result.get) should not be NOT_FOUND
       }
 
       "not respond with NOT_FOUND (Partner)" in {
-        val result = route(FakeRequest(GET, "/childcare-calculator/partner/income/current"))
+        val result = route(FakeRequest(GET, "/childcare-calculator-qa/partner/income/current"))
         result.isDefined shouldBe true
         status(result.get) should not be NOT_FOUND
       }
@@ -77,7 +77,7 @@ class ClaimantIncomeCurrentYearControllerSpec extends UnitSpec with MockitoSugar
         when(mockController.cacheClient.loadClaimants()(any(), any())).thenReturn(Future.successful(None))
         val result = await(mockController.onPageLoadParent()(request))
         status(result) shouldBe Status.SEE_OTHER
-        result.header.headers.get("Location").get shouldBe "/childcare-calculator/parent/benefits"
+        result.header.headers.get("Location").get shouldBe "/childcare-calculator-qa/parent/benefits"
       }
 
       "load template when there is claimant object present and currentIncome is None in keyStore" in {
@@ -227,13 +227,13 @@ class ClaimantIncomeCurrentYearControllerSpec extends UnitSpec with MockitoSugar
     "POST" should {
 
       "not respond with NOT_FOUND (Parent)" in {
-        val result = route(FakeRequest(POST, "/childcare-calculator/parent/income/current"))
+        val result = route(FakeRequest(POST, "/childcare-calculator-qa/parent/income/current"))
         result.isDefined shouldBe true
         status(result.get) should not be NOT_FOUND
       }
 
       "not respond with NOT_FOUND (Partner)" in {
-        val result = route(FakeRequest(POST, "/childcare-calculator/partner/income/current"))
+        val result = route(FakeRequest(POST, "/childcare-calculator-qa/partner/income/current"))
         result.isDefined shouldBe true
         status(result.get) should not be NOT_FOUND
       }

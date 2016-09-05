@@ -45,7 +45,7 @@ class EmailConfirmationSpec extends UnitSpec with CCSession with FakeCCApplicati
     "display the return link" in {
       val template = views.html.emailConfirmation(email)(request)
       val doc = Jsoup.parse(contentAsString(template))
-      doc.getElementById("returnToResultsLink").attr("href") shouldBe "/childcare-calculator/schemes/result"
+      doc.getElementById("returnToResultsLink").attr("href") shouldBe "/childcare-calculator-qa/schemes/result"
     }
 
   }

@@ -42,7 +42,7 @@ class IncomeLastYearTemplateSpec extends UnitSpec with FakeCCApplication with CC
         val form = (new ClaimantIncomeLastYearFormInstance).form
         val template = views.html.incomeLastYear(form, taxYears, 1)(request)
         val doc = Jsoup.parse(contentAsString(template))
-        doc.getElementsByTag("form").first().attr("action") shouldBe "/childcare-calculator/parent/income/last"
+        doc.getElementsByTag("form").first().attr("action") shouldBe "/childcare-calculator-qa/parent/income/last"
       }
 
 
@@ -159,7 +159,7 @@ class IncomeLastYearTemplateSpec extends UnitSpec with FakeCCApplication with CC
         val form = (new ClaimantIncomeLastYearFormInstance).form
         val template = views.html.incomeLastYear(form, taxYears, 1)(request)
         val doc = Jsoup.parse(contentAsString(template))
-        doc.getElementById("back-button").attr("href") shouldBe "/childcare-calculator/parent/benefits"
+        doc.getElementById("back-button").attr("href") shouldBe "/childcare-calculator-qa/parent/benefits"
       }
 
 
@@ -253,7 +253,7 @@ class IncomeLastYearTemplateSpec extends UnitSpec with FakeCCApplication with CC
         val form = (new ClaimantIncomeLastYearFormInstance).form
         val template = views.html.incomeLastYear(form, taxYears, 2)(request)
         val doc = Jsoup.parse(contentAsString(template))
-        doc.getElementsByTag("form").first().attr("action") shouldBe "/childcare-calculator/partner/income/last"
+        doc.getElementsByTag("form").first().attr("action") shouldBe "/childcare-calculator-qa/partner/income/last"
       }
 
       "display the title" in {
@@ -369,7 +369,7 @@ class IncomeLastYearTemplateSpec extends UnitSpec with FakeCCApplication with CC
         val form = (new ClaimantIncomeLastYearFormInstance).form
         val template = views.html.incomeLastYear(form, taxYears, 2)(request)
         val doc = Jsoup.parse(contentAsString(template))
-        doc.getElementById("back-button").attr("href") shouldBe "/childcare-calculator/partner/benefits"
+        doc.getElementById("back-button").attr("href") shouldBe "/childcare-calculator-qa/partner/benefits"
       }
 
     }

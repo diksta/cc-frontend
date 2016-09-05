@@ -49,7 +49,7 @@ class DoYouLiveWithPartnerControllerSpec extends UnitSpec with FakeCCApplication
     "GET" should {
 
       "not respond with NOT_FOUND" in {
-        val result = route(FakeRequest(GET, "/childcare-calculator/parent/liveWithPartner"))
+        val result = route(FakeRequest(GET, "/childcare-calculator-qa/parent/liveWithPartner"))
         result.isDefined shouldBe true
         status(result.get) should not be NOT_FOUND
       }
@@ -68,7 +68,7 @@ class DoYouLiveWithPartnerControllerSpec extends UnitSpec with FakeCCApplication
         when(mockController.cacheClient.loadClaimants()(any(), any())).thenReturn(Future.successful(None))
         val result = await(mockController.onPageLoad()(request))
         status(result) shouldBe Status.SEE_OTHER
-        result.header.headers.get("Location").get shouldBe "/childcare-calculator/parent/benefits"
+        result.header.headers.get("Location").get shouldBe "/childcare-calculator-qa/parent/benefits"
       }
 
 
@@ -149,7 +149,7 @@ class DoYouLiveWithPartnerControllerSpec extends UnitSpec with FakeCCApplication
     "POST" should {
 
       "not respond with NOT_FOUND" in {
-        val result = route(FakeRequest(POST, "/childcare-calculator/parent/liveWithPartner"))
+        val result = route(FakeRequest(POST, "/childcare-calculator-qa/parent/liveWithPartner"))
         result.isDefined shouldBe true
         status(result.get) should not be NOT_FOUND
       }
@@ -169,7 +169,7 @@ class DoYouLiveWithPartnerControllerSpec extends UnitSpec with FakeCCApplication
         when(mockController.cacheClient.loadClaimants()(any(), any())).thenReturn(Future.successful(None))
         val result = await(mockController.onSubmit()(request))
         status(result) shouldBe Status.SEE_OTHER
-        result.header.headers.get("Location").get shouldBe "/childcare-calculator/parent/benefits"
+        result.header.headers.get("Location").get shouldBe "/childcare-calculator-qa/parent/benefits"
       }
 
       "redirect to technical difficulties when claimant list is None and onSubmit throws exception" in {
@@ -353,7 +353,7 @@ class DoYouLiveWithPartnerControllerSpec extends UnitSpec with FakeCCApplication
         val request = FakeRequest("POST", "").withFormUrlEncodedBody(form.data.toSeq: _*) .withSession(mockController.sessionProvider.generateSessionId())
         val result = await(mockController.onSubmit()(request))
         status(result) shouldBe Status.SEE_OTHER
-        result.header.headers.get("Location").get shouldBe "/childcare-calculator/household/benefits"
+        result.header.headers.get("Location").get shouldBe "/childcare-calculator-qa/household/benefits"
       }
 
       "redirect to householdBenefits screen if you select no and initially you had selected yes" in {
@@ -411,7 +411,7 @@ class DoYouLiveWithPartnerControllerSpec extends UnitSpec with FakeCCApplication
         val request = FakeRequest("POST", "").withFormUrlEncodedBody(form.data.toSeq: _*) .withSession(mockController.sessionProvider.generateSessionId())
         val result = await(mockController.onSubmit()(request))
         status(result) shouldBe Status.SEE_OTHER
-        result.header.headers.get("Location").get shouldBe "/childcare-calculator/household/benefits"
+        result.header.headers.get("Location").get shouldBe "/childcare-calculator-qa/household/benefits"
 
       }
 

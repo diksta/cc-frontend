@@ -23,7 +23,7 @@ package routes
  object CCRoutes extends CCRoutes
 
 trait CCRoutes {
-  def rootPath = "/childcare-calculator"
+  def rootPath = "/childcare-calculator-qa"
 
   def errorPath = path("/error")
   def welcomePath = path("welcome")
