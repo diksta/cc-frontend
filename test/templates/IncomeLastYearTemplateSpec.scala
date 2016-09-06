@@ -50,7 +50,7 @@ class IncomeLastYearTemplateSpec extends UnitSpec with FakeCCApplication with CC
         val form = (new ClaimantIncomeLastYearFormInstance).form
         val template = views.html.incomeLastYear(form, taxYears, 1)(request)
         val doc = Jsoup.parse(contentAsString(template))
-        doc.getElementById("page-title").text() shouldBe s"6 April ${taxYears._1} to 5 April ${taxYears._2} Last year's income"
+        doc.getElementById("page-title").text() shouldBe s"6 April ${taxYears._1} to 5 April ${taxYears._2} Your income last year"
       }
 
       "display the previous tax year" in {
