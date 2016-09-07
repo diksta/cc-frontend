@@ -195,38 +195,38 @@ cc.claimant.income.last.year.other.income.incorrect = You must enter a number be
 cc.parent.income.last.year.other.income.empty = You must tell us how much your other income was
 cc.claimant.income.last.year.benefits.incorrect = You must enter a number between 0 and 9999.99
 cc.parent.income.last.year.benefits.empty = You must tell us the total amount of benefits you got
-cc.parent.income.last.year.heading = Last year''s income
+cc.parent.income.last.year.heading = Your income last year
 cc.claimant.income.last.year.sub.heading = 6 April {0} to 5 April {1}
 cc.claimant.income.last.year.lede = If you''re unsure, you can give approximate figures.
-cc.parent.income.last.year.employment = Did you get any income from employment?
+cc.parent.income.last.year.employment = Did you get any income from employment from 6 April {0} to 5 April {1}?
 cc.parent.income.last.year.employment.hint = This is your salary before deductions or your profit if you''re self-employed
 cc.parent.income.last.year.employment.income = How much was your income?
 cc.parent.income.last.year.employment.pension = How much did you pay into your pension?
-cc.parent.income.last.year.employment.pension.hint = Optional, only include if paid through your payroll
-cc.parent.income.last.year.other = Did you get any other income?
+cc.parent.income.last.year.employment.pension.hint = Optional, only include if through your payroll
+cc.parent.income.last.year.other = Did you get any other income from 6 April {0} to 5 April {1}?
 cc.claimant.income.last.year.other.hint = This could be from investments, rental income, interest on savings or foreign income
 cc.parent.income.last.year.other.income = How much was your other income?
-cc.parent.income.last.year.benefits = Did you get any of these benefits?
+cc.parent.income.last.year.benefits = Did you get any of these benefits from 6 April {0} to 5 April {1}?
 cc.claimant.income.last.year.benefits.hint.pension = State Pension
 cc.claimant.income.last.year.benefits.hint.jobseeker = Jobseeker''s Allowance (contribution-based)
 cc.claimant.income.last.year.benefits.hint.carer = Carer''s Allowance
 cc.claimant.income.last.year.benefits.hint.employment = Employment and Support Allowance (contribution-based)
 cc.claimant.income.last.year.benefits.hint.incapacity = Incapacity Benefit
 cc.claimant.income.last.year.benefits.hint.widowed = Widowed Parent''s Allowance
-cc.parent.income.last.year.benefits.income = How much did you get in total?
+cc.parent.income.last.year.benefits.income = How much was the total amount you got?
 cc.parent.income.last.year.pension.higher = Your pension payments cannot be more than your income from employment
 
 ###### PARTNER INCOME LAST YEAR ######
 cc.partner.income.last.year.heading = Your partner''s income last year
-cc.partner.income.last.year.employment = Did they get any income from employment?
-cc.partner.income.last.year.employment.hint = This is their salary before deductions or their profit if they''re self-employed
+cc.partner.income.last.year.employment = Did your partner get any income from employment from 6 April {0} to 5 April {1}?
+cc.partner.income.last.year.employment.hint = This is their salary, or their profit if they''re self-employed
 cc.partner.income.last.year.employment.income = How much was their income?
 cc.partner.income.last.year.employment.pension = How much did they pay into their pension?
-cc.partner.income.last.year.employment.pension.hint = Optional, only include if paid through their payroll
-cc.partner.income.last.year.other = Did they get any other income?
+cc.partner.income.last.year.employment.pension.hint = Optional, only include if through their payroll
+cc.partner.income.last.year.other = Did your partner get any other income from 6 April {0} to 5 April {1}?
 cc.partner.income.last.year.other.income = How much was their other income?
-cc.partner.income.last.year.benefits = Did they get any of these benefits?
-cc.partner.income.last.year.benefits.income = How much did they get in total?
+cc.partner.income.last.year.benefits = Did your partner get any of these benefits from 6 April {0} to 5 April {1}?
+cc.partner.income.last.year.benefits.income = How much was the total amount they got?
 cc.partner.income.last.year.income.empty = You must give an answer for income from employment
 cc.partner.income.last.year.other.income.empty = You must give an answer for other income
 cc.partner.income.last.year.benefits.empty = You must tell us the total amount of benefits
@@ -234,7 +234,7 @@ cc.partner.income.last.year.pension.higher = Their pension payments cannot be mo
 
 ###### START INCOME CURRENT YEAR ######
 cc.claimant.income.current.year.sub.heading = 6 April {0} to 5 April {1}
-cc.claimant.income.current.year.change.question = Which of these is likely to change?
+cc.claimant.income.current.year.change.question = Which of these is likely to change from 6 April {0} to 5 April {1}?
 cc.claimant.income.current.year.select.all.hint = Select all that apply
 cc.claimant.income.current.year.no.selection = You must answer this question
 cc.claimant.income.current.year.income.empty = You must tell us which income is likely to change
@@ -254,21 +254,21 @@ cc.claimant.income.current.year.benefits.empty = You must tell us the total amou
 
 ######### PARENT #########
 cc.claimant.income.current.year.parent.heading = Is your income likely to change this year?
-cc.claimant.income.current.year.employment.parent.income = What will your income be?
-cc.claimant.income.current.year.employment.parent.pension = If your pension contributions are likely to change, tell us how much you''ll pay.
+cc.claimant.income.current.year.employment.parent.income = How much will your income be?
+cc.claimant.income.current.year.employment.parent.pension = How much will you pay into your pension?
 cc.claimant.income.current.year.employment.pension.parent.hint = Optional, only include if through your payroll
-cc.claimant.income.current.year.other.parent.income = How much will your other income be?
-cc.claimant.income.current.year.benefits.parent.income = What''s the total amount you''ll get?
+cc.claimant.income.current.year.other.parent.income = How much will your other income be from 6 April {0} to 5 April {1}?
+cc.claimant.income.current.year.benefits.parent.income = How much will you get in total from 6 April {0} to 5 April {1}?
 cc.claimant.income.current.year.parent.pension.higher = Your pension payments cannot be more than your income from employment
 cc.claimant.income.current.year.parent.benefits.carers.selected = As you get Carer’s Allowance, you must enter a number greater than 0 and less than 10000.00
 
 ######### PARTNER ##########
 cc.claimant.income.current.year.partner.heading = Is your partner''s income likely to change this year?
-cc.claimant.income.current.year.employment.partner.income = What will their income be?
-cc.claimant.income.current.year.employment.partner.pension = If their pension contributions are likely to change, tell us how much they''ll pay.
+cc.claimant.income.current.year.employment.partner.income = How much will your partner''s income be?
+cc.claimant.income.current.year.employment.partner.pension = How much will they pay into their pension?
 cc.claimant.income.current.year.employment.pension.partner.hint = Optional, only include if through their payroll
-cc.claimant.income.current.year.other.partner.income = How much will their other income be?
-cc.claimant.income.current.year.benefits.partner.income = What''s the total amount they''ll get?
+cc.claimant.income.current.year.other.partner.income = How much will your partner''s other income be from 6 April {0} to 5 April {1}?
+cc.claimant.income.current.year.benefits.partner.income = How much will your partner get in total from 6 April {0} to 5 April {1}?
 cc.claimant.income.current.year.partner.pension.higher = Their pension payments cannot be more than their income from employment
 cc.claimant.income.current.year.partner.benefits.carers.selected = As they get Carer’s Allowance, you must enter a number greater than 0 and less than 10000.00
 ###### END INCOME CURRENT YEAR ######

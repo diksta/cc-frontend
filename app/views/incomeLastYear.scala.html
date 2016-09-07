@@ -14,9 +14,9 @@
 }
 @incomeLegendText = {
     @if(claimant == 1) {
-        @Messages("cc.parent.income.last.year.employment")
+        @Messages("cc.parent.income.last.year.employment", taxYears._1, taxYears._2)
     } else {
-        @Messages("cc.partner.income.last.year.employment")
+        @Messages("cc.partner.income.last.year.employment", taxYears._1, taxYears._2)
     }
 }
 @incomeHintText = {
@@ -35,16 +35,16 @@
 }
 @otherIncomeTitle = {
     @if(claimant == 1) {
-        @Messages("cc.parent.income.last.year.other")
+        @Messages("cc.parent.income.last.year.other", taxYears._1, taxYears._2)
     } else {
-        @Messages("cc.partner.income.last.year.other")
+        @Messages("cc.partner.income.last.year.other", taxYears._1, taxYears._2)
     }
 }
 @benefitsIncomeQuestion = {
     @if(claimant == 1) {
-        @Messages("cc.parent.income.last.year.benefits")
+        @Messages("cc.parent.income.last.year.benefits", taxYears._1, taxYears._2)
     } else {
-        @Messages("cc.partner.income.last.year.benefits")
+        @Messages("cc.partner.income.last.year.benefits", taxYears._1, taxYears._2)
     }
 }
 @employmentErrorMessage = {
@@ -69,14 +69,6 @@
     }
 }
 
-@employmentIncomeMessage = {
-    @if(claimant == 1) {
-        @Messages("cc.parent.income.last.year.employment.income")
-    } else {
-        @Messages("cc.partner.income.last.year.employment.income")
-    }
-}
-
 @ccInputDynamic(field: play.api.data.Field,
         inputClass : Option[String] = Some("input--small form-field--inline-spaced-left input--no-spinner"),
         label: String,
@@ -85,6 +77,7 @@
         symbolBeforeID : String,
         symbolAfterID : Option[String] = None,
         symbolAfterText : Option[String] = None,
+        hintText: Option[String] = None,
         globalError: String) = {
     @ccInput(
         field = field,
@@ -101,6 +94,7 @@
         '_type -> "number",
         '_symbolAfterId -> symbolAfterID,
         '_symbolAfter -> symbolAfterText,
+        '_inputHint -> hintText,
         '_globalErrorKey -> globalError,
         '_form -> form
     )
@@ -119,9 +113,7 @@
                     label = Messages("cc.parent.income.last.year.employment.income"),
                     errorAttr = "data-input-name=employment-income",
                     errorID = "employmentIncome-error-summary",
-                    symbolAfterID = Some("income-year"),
                     symbolBeforeID = "income-poundSymbol",
-                    symbolAfterText = Some(Messages("cc.childcare.cost.a.year")),
                     globalError = Messages("cc.parent.income.last.year.income.empty"))
             } else {
                 @ccInputDynamic(
@@ -132,7 +124,6 @@
                     errorID = "employmentIncome-error-summary",
                     symbolBeforeID = "income-poundSymbol",
                     symbolAfterID = Some("income-year"),
-                    symbolAfterText = Some(Messages("cc.childcare.cost.a.year")),
                     globalError = Messages("cc.partner.income.last.year.income.empty"))
             }
             @if(claimant == 1) {
@@ -145,6 +136,7 @@
                     symbolBeforeID = "pension-poundSymbol",
                     symbolAfterID = Some("pension-month"),
                     symbolAfterText = Some(Messages("cc.childcare.cost.a.month")),
+                    hintText = Some(Messages("cc.parent.income.last.year.employment.pension.hint")),
                     globalError = Messages("cc.parent.income.last.year.pension.higher"))
             } else {
                 @ccInputDynamic(
@@ -156,6 +148,7 @@
                     symbolBeforeID = "pension-poundSymbol",
                     symbolAfterID = Some("pension-month"),
                     symbolAfterText = Some(Messages("cc.childcare.cost.a.month")),
+                    hintText = Some(Messages("cc.partner.income.last.year.employment.pension.hint")),
                     globalError = Messages("cc.partner.income.last.year.pension.higher"))
             }
     </div>

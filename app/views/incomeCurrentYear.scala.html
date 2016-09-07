@@ -28,17 +28,17 @@
 
 @otherLabel = {
     @if(index == 1) {
-        @Messages("cc.claimant.income.current.year.other.parent.income")
+        @Messages("cc.claimant.income.current.year.other.parent.income", taxYearFrom, taxYearTo)
     } else {
-        @Messages("cc.claimant.income.current.year.other.partner.income")
+        @Messages("cc.claimant.income.current.year.other.partner.income", taxYearFrom, taxYearTo)
     }
 }
 
 @benefitLabel = {
     @if(index == 1) {
-        @Messages("cc.claimant.income.current.year.benefits.parent.income")
+        @Messages("cc.claimant.income.current.year.benefits.parent.income", taxYearFrom, taxYearTo)
     } else {
-        @Messages("cc.claimant.income.current.year.benefits.partner.income")
+        @Messages("cc.claimant.income.current.year.benefits.partner.income", taxYearFrom, taxYearTo)
     }
 }
 
@@ -59,7 +59,7 @@
             @if(hasError(form, Messages("cc.claimant.income.current.year.income.empty"))) {form-field--error}'>
                 <fieldset class="inline">
                     <legend class="bold-small">
-                        @Messages("cc.claimant.income.current.year.change.question")
+                        @Messages("cc.claimant.income.current.year.change.question", taxYearFrom, taxYearTo)
                     </legend>
                     <span class="form-hint">
                         @Messages("cc.claimant.income.current.year.select.all.hint")
@@ -121,8 +121,6 @@
                 '_labelTextClass -> "bold-small",
                 '_symbolBefore -> Messages("cc.currency.pound"),
                 '_symbolBeforeId -> "income-poundSymbol",
-                '_symbolAfterId -> "income-year",
-                '_symbolAfter -> Messages("cc.childcare.cost.a.year"),
                 '_containerClass -> "form-field",
                 '_type -> "number",
                 '_globalErrorKey -> Messages("cc.claimant.income.current.year.employment.empty"),
@@ -144,6 +142,7 @@
                     '_symbolBefore -> Messages("cc.currency.pound"),
                     '_symbolAfter -> Messages("cc.childcare.cost.a.month"),
                     '_containerClass -> "form-field",
+                    '_inputHint -> Messages("cc.claimant.income.current.year.employment.pension.parent.hint"),
                     '_type -> "number",
                     '_globalErrorKey -> Messages("cc.claimant.income.current.year.parent.pension.higher"),
                     '_labelTextClass -> "bold-small",
@@ -167,6 +166,7 @@
                     '_containerClass -> "form-field",
                     '_globalErrorKey -> Messages("cc.claimant.income.current.year.partner.pension.higher"),
                     '_labelTextClass -> "bold-small",
+                    '_inputHint -> Messages("cc.claimant.income.current.year.employment.pension.partner.hint"),
                     '_type -> "number",
                     '_form -> form
             )
