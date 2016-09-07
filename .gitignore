@@ -33,3 +33,5 @@ test-result
 tmp
 .idea_modules
 bin
+app/assets/js/node_modules/
+public/
