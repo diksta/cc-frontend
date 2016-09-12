@@ -263,7 +263,7 @@ cc.claimant.income.current.year.parent.pension.higher = Your pension payments ca
 cc.claimant.income.current.year.parent.benefits.carers.selected = As you get Carer’s Allowance, you must enter a number greater than 0 and less than 10000.00
 
 ######### PARTNER ##########
-cc.claimant.income.current.year.partner.heading = Is your partner''s income likely to change this year?
+cc.claimant.income.current.year.partner.heading = Is their income likely to change this year?
 cc.claimant.income.current.year.employment.partner.income = How much will your partner''s income be?
 cc.claimant.income.current.year.employment.partner.pension = How much will they pay into their pension?
 cc.claimant.income.current.year.employment.pension.partner.hint = Optional, only include if paid through their payroll
