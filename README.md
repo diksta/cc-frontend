@@ -96,4 +96,6 @@ To provide messages files with variables that are passed in then use the followi
 @Messages("cc.compare.total.household.spend", totalHouseholdSpend)
 cc.compare.total.household.spend = You told us your childcare costs are {0} a month
 ```
+## License
 
+This code is open source software licensed under the [Apache 2.0 License]("http://www.apache.org/licenses/LICENSE-2.0.html").
