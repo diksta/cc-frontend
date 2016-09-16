@@ -23,10 +23,10 @@ fieldset legend {
 
 .bullets-child {
   display: block;
+  margin-left: 1em;
 
   .list-child-bullet {
     display: list-item;
-    list-style-position: inside;
   }
 }
 
