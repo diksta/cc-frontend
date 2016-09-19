@@ -35,6 +35,7 @@ class ResultsTemplateSpec extends UnitSpec with CCSession with FakeCCApplication
     ucAmountByUser = 0,
     tcAmountByUser = 0,
     tfcEligibility = false,
+    tcEligibility = false,
     escEligibility = false,
     escVouchersAvailable = EscVouchersAvailablePageModel()
   )
@@ -44,6 +45,7 @@ class ResultsTemplateSpec extends UnitSpec with CCSession with FakeCCApplication
     ucAmountByUser = 0,
     tcAmountByUser = 50,
     tfcEligibility = false,
+    tcEligibility = false,
     escEligibility = false,
     escVouchersAvailable = EscVouchersAvailablePageModel()
   )
@@ -53,6 +55,7 @@ class ResultsTemplateSpec extends UnitSpec with CCSession with FakeCCApplication
     ucAmountByUser = 50,
     tcAmountByUser = 0,
     tfcEligibility = false,
+    tcEligibility = false,
     escEligibility = false,
     escVouchersAvailable = EscVouchersAvailablePageModel()
   )
@@ -110,6 +113,7 @@ class ResultsTemplateSpec extends UnitSpec with CCSession with FakeCCApplication
           tcAmountByUser = 0,
           ucAmountByUser = 0,
           tfcEligibility = false,
+          tcEligibility = false,
           escEligibility = false,
           escVouchersAvailable = EscVouchersAvailablePageModel(true, Some(true))
         ))(request)
@@ -126,6 +130,7 @@ class ResultsTemplateSpec extends UnitSpec with CCSession with FakeCCApplication
           tcAmountByUser = 0,
           ucAmountByUser = 0,
           tfcEligibility = false,
+          tcEligibility = false,
           escEligibility = false,
           escVouchersAvailable = EscVouchersAvailablePageModel(true, Some(false))
         ))(request)
@@ -143,6 +148,7 @@ class ResultsTemplateSpec extends UnitSpec with CCSession with FakeCCApplication
           tcAmountByUser = 0,
           ucAmountByUser = 0,
           tfcEligibility = false,
+          tcEligibility = false,
           escEligibility = false,
           escVouchersAvailable = EscVouchersAvailablePageModel(false, Some(true))
         ))(request)
@@ -160,6 +166,7 @@ class ResultsTemplateSpec extends UnitSpec with CCSession with FakeCCApplication
           tcAmountByUser = 0,
           ucAmountByUser = 0,
           tfcEligibility = false,
+          tcEligibility = false,
           escEligibility = false,
           escVouchersAvailable = EscVouchersAvailablePageModel(true, None)
         ))(request)
@@ -177,6 +184,7 @@ class ResultsTemplateSpec extends UnitSpec with CCSession with FakeCCApplication
           tcAmountByUser = 0,
           ucAmountByUser = 0,
           tfcEligibility = false,
+          tcEligibility = false,
           escEligibility = false,
           escVouchersAvailable = EscVouchersAvailablePageModel(false, Some(false))
         ))(request)
@@ -194,6 +202,7 @@ class ResultsTemplateSpec extends UnitSpec with CCSession with FakeCCApplication
           tcAmountByUser = 0,
           ucAmountByUser = 0,
           tfcEligibility = false,
+          tcEligibility = false,
           escEligibility = false,
           escVouchersAvailable = EscVouchersAvailablePageModel()
         ))(request)
@@ -208,6 +217,7 @@ class ResultsTemplateSpec extends UnitSpec with CCSession with FakeCCApplication
           tcAmountByUser = 0,
           ucAmountByUser = 0,
           tfcEligibility = false,
+          tcEligibility = false,
           escEligibility = false,
           escVouchersAvailable = EscVouchersAvailablePageModel()
         ))(request)
@@ -222,6 +232,7 @@ class ResultsTemplateSpec extends UnitSpec with CCSession with FakeCCApplication
           tcAmountByUser = 0,
           ucAmountByUser = 0,
           tfcEligibility = false,
+          tcEligibility = false,
           escEligibility = false,
           escVouchersAvailable = EscVouchersAvailablePageModel()
         ))(request)
@@ -236,6 +247,7 @@ class ResultsTemplateSpec extends UnitSpec with CCSession with FakeCCApplication
           tcAmountByUser = 0,
           ucAmountByUser = 0,
           tfcEligibility = false,
+          tcEligibility = false,
           escEligibility = false,
           escVouchersAvailable = EscVouchersAvailablePageModel()
         ))(request)
@@ -250,6 +262,7 @@ class ResultsTemplateSpec extends UnitSpec with CCSession with FakeCCApplication
           tcAmountByUser = 0,
           ucAmountByUser = 0,
           tfcEligibility = false,
+          tcEligibility = false,
           escEligibility = false,
           escVouchersAvailable = EscVouchersAvailablePageModel()
         ))(request)
@@ -264,6 +277,7 @@ class ResultsTemplateSpec extends UnitSpec with CCSession with FakeCCApplication
           tcAmountByUser = 0,
           ucAmountByUser = 0,
           tfcEligibility = false,
+          tcEligibility = false,
           escEligibility = false,
           escVouchersAvailable = EscVouchersAvailablePageModel()
         ))(request)
@@ -302,6 +316,7 @@ class ResultsTemplateSpec extends UnitSpec with CCSession with FakeCCApplication
           tcAmountByUser = 0,
           ucAmountByUser = 0,
           tfcEligibility = false,
+          tcEligibility = false,
           escEligibility = false,
           escVouchersAvailable = EscVouchersAvailablePageModel()
         ))(request)
@@ -316,6 +331,7 @@ class ResultsTemplateSpec extends UnitSpec with CCSession with FakeCCApplication
           tcAmountByUser = 0,
           ucAmountByUser = 0,
           tfcEligibility = false,
+          tcEligibility = false,
           escEligibility = false,
           escVouchersAvailable = EscVouchersAvailablePageModel()
         ))(request)
@@ -330,6 +346,7 @@ class ResultsTemplateSpec extends UnitSpec with CCSession with FakeCCApplication
           tcAmountByUser = 0,
           ucAmountByUser = 0,
           tfcEligibility = false,
+          tcEligibility = false,
           escEligibility = false,
           escVouchersAvailable = EscVouchersAvailablePageModel()
         ))(request)
@@ -344,6 +361,7 @@ class ResultsTemplateSpec extends UnitSpec with CCSession with FakeCCApplication
           tcAmountByUser = 0,
           ucAmountByUser = 0,
           tfcEligibility = true,
+          tcEligibility = false,
           escEligibility = false,
           escVouchersAvailable = EscVouchersAvailablePageModel()
         ))(request)
@@ -359,6 +377,7 @@ class ResultsTemplateSpec extends UnitSpec with CCSession with FakeCCApplication
           tcAmountByUser = 0,
           ucAmountByUser = 0,
           tfcEligibility = false,
+          tcEligibility = false,
           escEligibility = true,
           escVouchersAvailable = EscVouchersAvailablePageModel()
         ))(request)
@@ -375,12 +394,43 @@ class ResultsTemplateSpec extends UnitSpec with CCSession with FakeCCApplication
           tcAmountByUser = 0,
           ucAmountByUser = 0,
           tfcEligibility = false,
+          tcEligibility = false,
           escEligibility = true,
           escVouchersAvailable = EscVouchersAvailablePageModel()
         ))(request)
         val doc = Jsoup.parse(contentAsString(template))
         doc.getElementById("escEligibleZeroChildcare") should not be null
         doc.getElementById("additionalSupportESCMessage") should not be null
+      }
+
+      "display you may have childcare cost for esc message if esc savings are zero and parent eligible" in {
+        val template = views.html.results(ResultsPageModel(
+          annualCost = 2000,
+          List(Scheme("TFC",0), Scheme("ESC",0), Scheme("TC", 0)),
+          tcAmountByUser = 0,
+          ucAmountByUser = 0,
+          tfcEligibility = false,
+          tcEligibility = false,
+          escEligibility = true,
+          escVouchersAvailable = EscVouchersAvailablePageModel()
+        ))(request)
+        val doc = Jsoup.parse(contentAsString(template))
+        doc.getElementById("escEligibleNoSavings") should not be null
+      }
+
+      "display you may be eligible for tc message if tc savings are zero" in {
+        val template = views.html.results(ResultsPageModel(
+          annualCost = 2000,
+          List(Scheme("TFC",0), Scheme("ESC",0), Scheme("TC", 0)),
+          tcAmountByUser = 0,
+          ucAmountByUser = 0,
+          tfcEligibility = false,
+          tcEligibility = true,
+          escEligibility = false,
+          escVouchersAvailable = EscVouchersAvailablePageModel()
+        ))(request)
+        val doc = Jsoup.parse(contentAsString(template))
+        doc.getElementById("tcEligibleNoSavings") should not be null
       }
 
     }

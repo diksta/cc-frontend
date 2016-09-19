@@ -105,7 +105,12 @@
                 @if(results.escEligibility && results.annualCost == 0){
                     <p id="escEligibleZeroChildcare">@Messages("cc.results.page.esc.eligible.without.childcare.cost")</p>
                 } else {
-                    <p id="notEligibleForESC">@Messages("cc.results.page.not.eligible")</p>
+                        @if(results.escEligibility){
+                        <p id="escEligibleNoSavings">@Messages("cc.results.page.esc.eligible.no.savings")</p>
+                        }
+                        else {
+                            <p id="notEligibleForESC">@Messages("cc.results.page.not.eligible")</p>
+                        }
                 }
             }
         </div>
@@ -164,7 +169,12 @@
                     <p class="bold-large amount" id="tcEntitlement">@Messages("cc.results.page.entitlements.amount", {schemeAmount("TC")._2}) <span class="bold-medium">@Messages("cc.results.page.a.year")</span></p>
                     <p>@Messages("cc.results.page.you.entitlement.tc.text.after")</p>
                 } else {
-                    <p>@Messages("cc.results.page.not.eligible")</p>
+                     @if(results.tcEligibility){
+                         <p id="tcEligibleNoSavings">@Messages("cc.results.page.you.entitlement.tc.no.savings")</p>
+                    }
+                   else {
+                        <p>@Messages("cc.results.page.not.eligible")</p>
+                   }
                 }
             }
         </div>
