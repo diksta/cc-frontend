@@ -148,7 +148,7 @@ class HowManyChildrenControllerSpec extends UnitSpec with MockitoSugar with Fake
         when(mockController.cacheClient.saveChildren(mockEq(modified.get))(any(), any())).thenReturn(Future.successful(modified))
         val result = await(mockController.onSubmit()(request))
         status(result) shouldBe Status.SEE_OTHER
-        result.header.headers.get("Location").get shouldBe "/childcare-calculator/children/details/1"
+        result.header.headers.get("Location").get shouldBe "/childcare-calculator/children/dob/1"
       }
 
       "redirect when POST is successful with no value already in keystore" in {
@@ -174,7 +174,7 @@ class HowManyChildrenControllerSpec extends UnitSpec with MockitoSugar with Fake
         when(mockController.cacheClient.saveChildren(mockEq(children.get))(any(), any())).thenReturn(Future.successful(children))
         val result = await(mockController.onSubmit()(request))
         status(result) shouldBe Status.SEE_OTHER
-        result.header.headers.get("Location").get shouldBe "/childcare-calculator/children/details/1"
+        result.header.headers.get("Location").get shouldBe "/childcare-calculator/children/dob/1"
       }
 
       "redirect to technical difficulties when keystore is down whilst saving children" in {

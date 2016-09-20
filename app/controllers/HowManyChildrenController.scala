@@ -41,7 +41,7 @@ trait HowManyChildrenController extends FrontendController {
 
   val auditEvent : AuditEvents
 
-  private val onSubmitRedirect : Call = routes.ChildDetailsController.onPageLoad(index = 1)
+  private val onSubmitRedirect : Call = routes.ChildDobController.onPageLoad(index = 1)
 
   private def saveChildren(children : List[_root_.models.child.Child])(implicit hc : HeaderCarrier, request : Request[AnyContent]) = {
     Logger.debug(s"HowManyChildrenController.saveChildren: ")

@@ -4,6 +4,9 @@ GET         /error                                      controllers.CCController
 GET         /children/number                            controllers.HowManyChildrenController.onPageLoad
 POST        /children/number                            controllers.HowManyChildrenController.onSubmit
 
+GET         /children/dob/:index                        controllers.ChildDobController.onPageLoad(index: Int)
+POST        /children/dob/:index                        controllers.ChildDobController.onSubmit(index: Int)
+
 GET         /children/details/:index                    controllers.ChildDetailsController.onPageLoad(index: Int)
 POST        /children/details/:index                    controllers.ChildDetailsController.onSubmit(index: Int)
 
