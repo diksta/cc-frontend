@@ -81,10 +81,10 @@
 
 @esc = {
     <div class="grid-layout">
-        <div data-mh="esc" id="escHeading" class="@if((schemeAmount("ESC")._2 > 0) || (results.escEligibility && results.annualCost == 0)){schemeName} else {schemeName not-eligible} grid-layout__column--1-3">
+        <div data-mh="esc" id="escHeading" class="@if((schemeAmount("ESC")._2 > 0) || results.escEligibility){schemeName} else {schemeName not-eligible} grid-layout__column--1-3">
             <h3 class="heading-medium">@Messages("cc.results.page.esc")</h3>
         </div>
-        <div data-mh="esc" id="escEligibility" class="@if((schemeAmount("ESC")._2 > 0) || (results.escEligibility && results.annualCost == 0)){entitlement} else {entitlement not-eligible} grid-layout__column--1-3">
+        <div data-mh="esc" id="escEligibility" class="@if((schemeAmount("ESC")._2 > 0) || results.escEligibility){entitlement} else {entitlement not-eligible} grid-layout__column--1-3">
             @if(schemeAmount("ESC")._2 > 0){
                 @if(results.escVouchersAvailable.partner.isDefined) {
                     @if(results.escVouchersAvailable.parent && results.escVouchersAvailable.partner.get) {
@@ -105,7 +105,11 @@
                 @if(results.escEligibility && results.annualCost == 0){
                     <p id="escEligibleZeroChildcare">@Messages("cc.results.page.esc.eligible.without.childcare.cost")</p>
                 } else {
-                    <p id="notEligibleForESC">@Messages("cc.results.page.not.eligible")</p>
+                        @if(results.escEligibility){
+                        <p id="escEligibleNoSavings">@Messages("cc.results.page.esc.eligible.no.savings")</p>
+                        } else {
+                            <p id="notEligibleForESC">@Messages("cc.results.page.not.eligible")</p>
+                        }
                 }
             }
         </div>
@@ -140,14 +144,14 @@
 
 @tc = {
     <div class="grid-layout">
-        <div data-mh="tfc" id="tcHeading" class="@if(tcORucEligible){schemeName} else {schemeName not-eligible} grid-layout__column--1-3">
+        <div data-mh="tfc" id="tcHeading" class="@if(tcORucEligible || results.tcEligibility){schemeName} else {schemeName not-eligible} grid-layout__column--1-3">
             @if(results.ucAmountByUser > 0) {
                 <h3 class="heading-medium">@Messages("cc.results.page.uc")</h3>
             } else {
                 <h3 class="heading-medium">@Messages("cc.results.page.tc")</h3>
             }
         </div>
-        <div data-mh="tfc" id="tcEligibility" class="@if(tcORucEligible){entitlement} else {entitlement not-eligible} grid-layout__column--1-3">
+        <div data-mh="tfc" id="tcEligibility" class="@if(tcORucEligible || results.tcEligibility){entitlement} else {entitlement not-eligible} grid-layout__column--1-3">
             @if(currentlyOnTCUC){
                 <p>@Messages("cc.results.page.you.currently.get")</p>
                 @if(results.tcAmountByUser > 0) {
@@ -164,7 +168,11 @@
                     <p class="bold-large amount" id="tcEntitlement">@Messages("cc.results.page.entitlements.amount", {schemeAmount("TC")._2}) <span class="bold-medium">@Messages("cc.results.page.a.year")</span></p>
                     <p>@Messages("cc.results.page.you.entitlement.tc.text.after")</p>
                 } else {
-                    <p>@Messages("cc.results.page.not.eligible")</p>
+                     @if(results.tcEligibility){
+                         <p id="tcEligibleNoSavings">@Messages("cc.results.page.you.entitlement.tc.no.savings")</p>
+                    } else {
+                        <p>@Messages("cc.results.page.not.eligible")</p>
+                   }
                 }
             }
         </div>

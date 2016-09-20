@@ -329,6 +329,7 @@ class FreeEntitlementSpec extends UnitSpec with CCSession with FakeCCApplication
           tcAmountByUser = 0,
           ucAmountByUser = 0,
           tfcEligibility = false,
+          tcEligibility = false,
           escEligibility = false,
           freeEntitlement = Some(FreeEntitlementPageModel(
             twoYearOld = true,
@@ -349,6 +350,7 @@ class FreeEntitlementSpec extends UnitSpec with CCSession with FakeCCApplication
           tcAmountByUser = 0,
           ucAmountByUser = 0,
           tfcEligibility = false,
+          tcEligibility = false,
           escEligibility = false,
           freeEntitlement = Some(FreeEntitlementPageModel(
             twoYearOld = true,
@@ -369,6 +371,7 @@ class FreeEntitlementSpec extends UnitSpec with CCSession with FakeCCApplication
           tcAmountByUser = 0,
           ucAmountByUser = 0,
           tfcEligibility = false,
+          tcEligibility = false,
           escEligibility = false,
           freeEntitlement = Some(FreeEntitlementPageModel(
             twoYearOld = false,
@@ -389,6 +392,7 @@ class FreeEntitlementSpec extends UnitSpec with CCSession with FakeCCApplication
           tcAmountByUser = 0,
           ucAmountByUser = 0,
           tfcEligibility = false,
+          tcEligibility = false,
           escEligibility = false,
           freeEntitlement = Some(FreeEntitlementPageModel(
             twoYearOld = false,
@@ -409,6 +413,7 @@ class FreeEntitlementSpec extends UnitSpec with CCSession with FakeCCApplication
           tcAmountByUser = 0,
           ucAmountByUser = 0,
           tfcEligibility = false,
+          tcEligibility = false,
           escEligibility = false,
           freeEntitlement = Some(FreeEntitlementPageModel(
             twoYearOld = true,
@@ -430,6 +435,7 @@ class FreeEntitlementSpec extends UnitSpec with CCSession with FakeCCApplication
           tcAmountByUser = 0,
           ucAmountByUser = 0,
           tfcEligibility = true,
+          tcEligibility = false,
           escEligibility = false,
           freeEntitlement = Some(FreeEntitlementPageModel(
             twoYearOld = true,

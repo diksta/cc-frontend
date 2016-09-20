@@ -243,6 +243,7 @@ trait ResultsController extends FrontendController {
                       tcAmountByUser = tcAmountByUser,
                       ucAmountByUser = ucAmountByUser,
                       tfcEligibility = tfcEligibility,
+                      tcEligibility = tcEligibility,
                       escEligibility = if((escClaimantEligibilityResult._1 || escClaimantEligibilityResult._2) && escChildrenEligibilityResult) true else false,
                       freeEntitlement = determineFreeEntitlementMessage(claimants.head, children, tfcEligibility),
                       escVouchersAvailable = determineEscVouchersAvailable(claimants)

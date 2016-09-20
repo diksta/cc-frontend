@@ -27,6 +27,7 @@ case class ResultsPageModel (
                               tcAmountByUser : Int,
                               ucAmountByUser : Int,
                               tfcEligibility : Boolean,
+                              tcEligibility : Boolean,
                               escEligibility : Boolean,
                               freeEntitlement: Option[FreeEntitlementPageModel] = None,
                               escVouchersAvailable : EscVouchersAvailablePageModel
