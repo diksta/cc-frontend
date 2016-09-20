@@ -44,7 +44,7 @@ class ChildDobTemplateSpec extends UnitSpec with CCSession with FakeCCApplicatio
       val form = ChildDobForm.form
       val template = views.html.childDob(form, 1,routes.HowManyChildrenController.onPageLoad())(request)
       val doc = Jsoup.parse(contentAsString(template))
-      doc.getElementById("page-title").text() shouldBe "Child 1's details"
+      doc.getElementById("page-title").text() shouldBe "Child 1's date of birth"
     }
 
     "display the input field" in {
@@ -153,68 +153,5 @@ class ChildDobTemplateSpec extends UnitSpec with CCSession with FakeCCApplicatio
         success => success should not be None
       )
     }
-
-
-    "display errors when the form has date errors" in {
-      val form = ChildDobForm.form.bind(Map(
-        "dateOfBirth.day" -> "",
-        "dateOfBirth.month" -> "",
-        "dateOfBirth.year" -> ""
-      ))
-      form.fold(
-        errors => {
-          val template = views.html.childDob(form, 1,routes.HowManyChildrenController.onPageLoad())(request)
-          val doc = Jsoup.parse(contentAsString(template))
-          doc.getElementById("error-summary-display") should not be null
-          doc.getElementById("dateOfBirth-error-summary") should not be null
-       
-        },
-        success => success should not be None
-      )
-    }
-
-
-    "display errors when the form has disability(no selection) errors" in {
-      val form = ChildDobForm.form.bind(Map(
-        "dateOfBirth.day" -> "20",
-        "dateOfBirth.month" -> "12",
-        "dateOfBirth.year" -> "2005",
-        "disability.benefitDisabled" -> "false",
-        "disability.benefitSevereDisabled" -> "false",
-        "disability.benefitBlind" -> "false",
-        "disability.benefitNone" -> "false"
-      ))
-      form.fold(
-        errors => {
-          val template = views.html.childDob(form, 1,routes.HowManyChildrenController.onPageLoad())(request)
-          val doc = Jsoup.parse(contentAsString(template))
-          doc.getElementById("error-summary-display") should not be null
-          doc.getElementById("disability-error-summary") should not be null
-        },
-        success => success should not be None
-      )
-    }
-
-    "display errors when the form has disability(benefit and none selected) errors" in {
-      val form = ChildDobForm.form.bind(Map(
-        "dateOfBirth.day" -> "20",
-        "dateOfBirth.month" -> "12",
-        "dateOfBirth.year" -> "2005",
-        "disability.benefitDisabled" -> "false",
-        "disability.benefitSevereDisabled" -> "true",
-        "disability.benefitBlind" -> "false",
-        "disability.benefitNone" -> "true"
-      ))
-      form.fold(
-        errors => {
-          val template = views.html.childDob(form, 1,routes.HowManyChildrenController.onPageLoad())(request)
-          val doc = Jsoup.parse(contentAsString(template))
-          doc.getElementById("error-summary-display") should not be null
-          doc.getElementById("disability-error-summary") should not be null
-        },
-        success => success should not be None
-      )
-    }
-
   }
 }
