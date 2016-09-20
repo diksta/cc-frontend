@@ -1,0 +1,37 @@
+@(form : Form[_root_.models.pages.ChildDobPageModel], index:Int, backUrl : Call)(implicit request:Request[_])
+
+@import play.api.i18n._
+@import uk.gov.hmrc.play.views.html._
+@import views.html.helpers._
+@import views.html.helpers.checkbox._
+
+
+@cccommon.ccMain(
+    pageTitle = Messages("cc.child.dob.heading",index.toString),
+    heading = Messages("cc.child.dob.heading", index.toString)
+) {
+    @helpers.form(
+    action = controllers.routes.ChildDetailsController.onSubmit(index),
+    args = 'class -> "form", 'autocomplete -> "off", 'novalidate -> "") {
+        @helpers.errorSummary(Messages("cc.error.title"), form)
+
+        @date.dateFieldsFree(
+            formItem = form,
+            fieldName = "dateOfBirth",
+            label = Html(Messages("cc.child.dob",index.toString)),
+            isNested = false,
+            '_groupClass -> "form-date form-group dateOfBirth",
+            '_idName -> "dateOfBirth",
+            '_hintText -> Messages("cc.date.child.example"),
+            '_hintId -> "dateOfBirth-hint",
+            '_legendClass -> "bold-small"
+        )
+
+        @buttons.nextButton(
+            title = "",
+            label = Some(Messages("childcare.button.continue")),
+            hrefMethod = Some(backUrl)
+        )
+
+    }
+}

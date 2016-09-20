@@ -132,6 +132,12 @@ cc.how.many.children.heading = How many children do you have?
 cc.how.many.children.lede.text = Include children under the age of 20 that you''re responsible for.
 cc.how.many.children.back.url = https://www.gov.uk/childcare-calculator
 
+#### CHILD'S DOB ####
+cc.child.dob.mandatory = Check all date of birth fields are complete and only contain numbers
+cc.child.dob.heading = Child {0}''s date of birth
+cc.child.dob = What''s Child {0}''s date of birth?
+cc.child.details.invalid.dob = Invalid date of birth
+
 #### CHILD'S DETAILS ####
 cc.child.details.no.benefits.selected = You must select at least one check box
 cc.child.details.invalid.benefits.selected = You can''t select "None of these apply" if you have selected any benefits
